@@ -1,6 +1,7 @@
 import Footer from "./pages/Footer";
 import Header from "./pages/Header";
-
+import HeroSection from "./pages/HeroSection";
+import KeyFeatures from "./pages/keyFeature";
 const Home = () => {
   return (
     <div>
@@ -18,7 +19,8 @@ const Home = () => {
           </p>
         </div>
       </main>
-
+      <HeroSection />
+      <KeyFeatures />
       <Footer />
     </div>
   );
