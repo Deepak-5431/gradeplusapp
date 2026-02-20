@@ -112,14 +112,14 @@ const Review = () => {
   const currentSlide = Math.floor(currentIndex / itemsPerPage);
 
   return (
-    <section className="bg-linear-to-b from-gray-900 to-black py-20 px-4">
+    <section className="bg-white py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Loved by <span className="text-blue-500">10,000+</span> Students
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Loved by <span className="text-[#016DAB]">10,000+</span> Students
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-600 text-lg">
             See how GradePlus is changing the way students learn.
           </p>
         </div>
@@ -137,21 +137,21 @@ const Review = () => {
                     {reviews.slice(slideIndex * itemsPerPage, (slideIndex + 1) * itemsPerPage).map((review) => (
                       <div 
                         key={review.id}
-                        className="bg-linear-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20"
+                        className="bg-linear-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-200 hover:border-[#01CB89] transition-all duration-300 hover:shadow-xl hover:shadow-[#01CB89]/20"
                       >
                         {/* User Info */}
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-full bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-lg">
+                            <div className="w-12 h-12 rounded-full bg-linear-to-br from-[#016DAB] to-[#01CB89] flex items-center justify-center text-white font-semibold text-lg">
                               {review.name.charAt(0)}
                             </div>
                             <div>
-                              <h3 className="text-white font-semibold">{review.name}</h3>
-                              <p className="text-gray-400 text-sm">{review.role}</p>
+                              <h3 className="text-gray-900 font-semibold">{review.name}</h3>
+                              <p className="text-gray-600 text-sm">{review.role}</p>
                             </div>
                           </div>
                           {review.badge && (
-                            <span className="bg-blue-500/20 text-blue-400 text-xs px-3 py-1 rounded-full border border-blue-500/30">
+                            <span className="bg-[#016DAB]/10 text-[#016DAB] text-xs px-3 py-1 rounded-full border border-[#016DAB]/30">
                               {review.badge}
                             </span>
                           )}
@@ -171,17 +171,17 @@ const Review = () => {
                         </div>
 
                         {/* Review Text */}
-                        <p className="text-gray-300 mb-6 leading-relaxed">
+                        <p className="text-gray-700 mb-6 leading-relaxed">
                           "{review.text}"
                         </p>
 
                         {/* Like/Dislike */}
-                        <div className="flex items-center gap-4 pt-4 border-t border-gray-700">
-                          <button className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors">
+                        <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
+                          <button className="flex items-center gap-2 text-gray-600 hover:text-[#01CB89] transition-colors">
                             <ThumbsUp className="w-4 h-4" />
                             <span className="text-sm">{review.likes}</span>
                           </button>
-                          <button className="flex items-center gap-2 text-gray-400 hover:text-red-400 transition-colors">
+                          <button className="flex items-center gap-2 text-gray-600 hover:text-red-500 transition-colors">
                             <ThumbsDown className="w-4 h-4" />
                             <span className="text-sm">{review.dislikes}</span>
                           </button>
@@ -199,14 +199,14 @@ const Review = () => {
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-gray-800 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white hover:bg-[#016DAB] text-[#016DAB] hover:text-white border border-gray-200 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
                 aria-label="Previous reviews"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-gray-800 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white hover:bg-[#01CB89] text-[#01CB89] hover:text-white border border-gray-200 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
                 aria-label="Next reviews"
               >
                 <ChevronRight className="w-6 h-6" />
@@ -224,8 +224,8 @@ const Review = () => {
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   currentSlide === index 
-                    ? 'bg-blue-500 w-8' 
-                    : 'bg-gray-600 hover:bg-gray-500'
+                    ? 'bg-[#016DAB] w-8' 
+                    : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -234,12 +234,12 @@ const Review = () => {
         )}
 
         {/* Newsletter Section */}
-        <div className="bg-linear-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 border border-gray-700 max-w-3xl mx-auto">
+        <div className="bg-linear-to-br from-gray-50 to-white rounded-2xl p-8 md:p-12 border border-gray-200 max-w-3xl mx-auto shadow-lg">
           <div className="text-center mb-6">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
               Join our newsletter
             </h3>
-            <p className="text-gray-400">
+            <p className="text-gray-600">
               Get study tips and AI updates in your inbox.
             </p>
           </div>
@@ -251,11 +251,11 @@ const Review = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
-              className="flex-1 px-6 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+              className="flex-1 px-6 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#016DAB] focus:ring-2 focus:ring-[#016DAB]/20 transition-all"
             />
             <button
               type="submit"
-              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 hover:scale-105"
+              className="px-8 py-3 bg-[#01CB89] hover:bg-[#01CB89]/90 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#01CB89]/50 hover:scale-105"
             >
               Subscribe
             </button>
