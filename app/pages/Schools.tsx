@@ -75,7 +75,7 @@ const Schools = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-[#4A7BA7] to-[#016DAB] bg-clip-text text-transparent">Testimonials</span>
+            <span className="bg-linear-to-r from-[#4A7BA7] to-[#016DAB] bg-clip-text text-transparent">Testimonials</span>
           </h2>
           <p className="text-gray-600 text-xl">
             Here What our Users Say...
@@ -94,7 +94,7 @@ const Schools = () => {
                   <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 h-full hover:border-[#01CB89] hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                     {/* Logo */}
                     <div className="flex justify-start mb-6">
-                      <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                      <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-gray-100 shrink-0">
                         <Image
                           src={testimonial.logo}
                           alt={testimonial.schoolName}
@@ -131,7 +131,7 @@ const Schools = () => {
           {canScrollPrev && (
             <button
               onClick={scrollPrev}
-              className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-[#016DAB] to-[#01CB89] text-white p-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-linear-to-r from-[#016DAB] to-[#01CB89] text-white p-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110"
               aria-label="Previous testimonials"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -141,7 +141,7 @@ const Schools = () => {
           {canScrollNext && (
             <button
               onClick={scrollNext}
-              className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-[#016DAB] to-[#01CB89] text-white p-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110"
+              className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-linear-to-r from-[#016DAB] to-[#01CB89] text-white p-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110"
               aria-label="Next testimonials"
             >
               <ChevronRight className="w-6 h-6" />

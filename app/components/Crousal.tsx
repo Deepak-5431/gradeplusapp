@@ -2,23 +2,47 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Phone } from 'lucide-react';
 
 const Crousal = () => {
   const [current, setCurrent] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
 
   const slides = [
-    '/crowsel/first.png',
-    '/crowsel/secomd.png', 
-    '/crowsel/third.png',
+    {
+      title: 'AI-Powered Learning',
+      description: 'Experience personalized education with our advanced AI technology that adapts to your learning style and pace.',
+      image: '/crowsel/1.png',
+      buttons: [
+        { text: 'Play Store', icon: Play },
+        { text: 'Ask For Demo', icon: Phone }
+      ]
+    },
+    {
+      title: 'Smart Study Assistant',
+      description: 'Get instant help with our AI tutor available 24/7. Learn and practice in your own time and schedule beside given school assignments.',
+      image: '/crowsel/2.png',
+      buttons: [
+        { text: 'Play Store', icon: Play },
+        { text: 'Ask For Demo', icon: Phone }
+      ]
+    },
+    {
+      title: 'Self-Paced Learning',
+      description: 'You can learn and practice in your own time and schedule beside given school home assignments or exam.',
+      image: '/crowsel/3.png',
+      buttons: [
+        { text: 'Play Store', icon: Play },
+        { text: 'Ask For Demo', icon: Phone }
+      ]
+    }
   ];
 
   useEffect(() => {
     if (!autoPlay) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, [autoPlay, slides.length]);
 
@@ -38,28 +62,72 @@ const Crousal = () => {
   };
 
   return (
-    <section className="w-full py-6">
-      {/* Carousel Container - Full Width */}
+    <section className="w-full">
+      {/* Carousel Container */}
       <div
-        className="relative w-full bg-transparent overflow-hidden shadow-lg"
+        className="relative w-full bg-linear-to-r from-[#016DAB] to-[#01CB89] overflow-hidden"
         onMouseEnter={() => setAutoPlay(false)}
         onMouseLeave={() => setAutoPlay(true)}
       >
-        {/* Slides */}
-        <div className="relative w-full h-96 md:h-112.5 lg:h-150">
+        {/* Fixed Heights: Taller on mobile (650px) to stack text+image, shorter on desktop (450px/500px) */}
+        <div className="relative w-full h-[650px] md:h-[450px] lg:h-[500px]">
           {slides.map((slide, index) => (
             <div
               key={index}
               className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                index === current ? 'opacity-100' : 'opacity-0'
-              }`}
+                index === current ? 'opacity-100' : 'opacity-0 z-0'
+              } ${index === current ? 'z-10' : ''}`}
             >
-              <Image
-                src={slide}
-                alt={`Slide ${index + 1}`}
-                fill
-                className="object-contain"
-              />
+              <div className="container mx-auto px-4 md:px-8 lg:px-16 h-full">
+                <div className="flex flex-col md:flex-row items-center justify-between h-full py-10 md:py-12 gap-8">
+                  
+                  {/* Left Side - Text Content */}
+                  <div className="w-full md:w-1/2 text-white space-y-4 md:space-y-6 mt-8 md:mt-0 text-center md:text-left">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                      {slide.title}
+                    </h1>
+                    <p className="text-base md:text-lg lg:text-xl text-white/90 leading-relaxed max-w-xl mx-auto md:mx-0">
+                      {slide.description}
+                    </p>
+                    
+                    {/* Buttons */}
+                    <div className="flex flex-wrap gap-4 pt-2 justify-center md:justify-start">
+                      {slide.buttons.map((button, idx) => {
+                        const Icon = button.icon;
+                        return (
+                          <button
+                            key={idx}
+                            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg ${
+                              idx === 0
+                                ? 'bg-white text-[#016DAB] hover:bg-gray-100'
+                                : 'bg-transparent border-2 border-white text-white hover:bg-white/10'
+                            }`}
+                          >
+                            <Icon className="w-5 h-5" />
+                            {button.text}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Right Side - Image */}
+                  <div className="w-full md:w-1/2 flex justify-center items-center h-64 md:h-full">
+                    {/* Removed aspect-square, using explicit predictable heights */}
+                    <div className="relative w-full max-w-md h-full min-h-[250px] md:min-h-[350px]">
+                      <Image
+                        src={slide.image}
+                        alt={slide.title}
+                        fill
+                        className="object-contain drop-shadow-2xl"
+                        priority={index === 0}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -67,23 +135,23 @@ const Crousal = () => {
         {/* Previous Button */}
         <button
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition-all duration-300 transform hover:scale-110"
+          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 md:p-3 rounded-full transition-all duration-300 transform hover:scale-110"
           aria-label="Previous slide"
         >
-          <ChevronLeft size={28} />
+          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
         </button>
 
         {/* Next Button */}
         <button
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition-all duration-300 transform hover:scale-110"
+          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 md:p-3 rounded-full transition-all duration-300 transform hover:scale-110"
           aria-label="Next slide"
         >
-          <ChevronRight size={28} />
+          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
         </button>
 
         {/* Dots Navigation */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
           {slides.map((_, index) => (
             <button
               key={index}

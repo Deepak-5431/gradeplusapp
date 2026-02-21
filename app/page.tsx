@@ -26,6 +26,7 @@ const Home = () => {
         </div>
       </main> */}
       <Crousal />
+     {/* <HeroSection /> */}
       <HeroSection />
       <Details />
       <KeyFeatures />

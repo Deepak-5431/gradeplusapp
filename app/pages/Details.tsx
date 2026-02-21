@@ -77,7 +77,7 @@ const Details = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our <span className="bg-gradient-to-r from-[#016DAB] to-[#01CB89] bg-clip-text text-transparent">Key Features</span>
+            Our <span className="bg-linear-to-r from-[#016DAB] to-[#01CB89] bg-clip-text text-transparent">Key Features</span>
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Discover powerful tools designed to transform the educational experience
@@ -89,7 +89,7 @@ const Details = () => {
           {features.map((feature, index) => (
             <div
               key={feature.id}
-              className={`bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 ${
+              className={`bg-linear-to-br from-gray-50 to-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 ${
                 index % 2 === 0 ? 'hover:border-[#01CB89]' : 'hover:border-[#016DAB]'
               }`}
             >
@@ -120,7 +120,7 @@ const Details = () => {
                   <ul className="space-y-4">
                     {feature.points.map((point, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className={`w-6 h-6 flex-shrink-0 mt-0.5 ${
+                        <CheckCircle2 className={`w-6 h-6 shrink-0 mt-0.5 ${
                           index % 2 === 0 ? 'text-[#01CB89]' : 'text-[#016DAB]'
                         }`} />
                         <span className="text-gray-700 leading-relaxed">{point}</span>
