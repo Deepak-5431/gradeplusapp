@@ -5,13 +5,13 @@ const Header = () => {
 		<header className="w-full bg-white">
 			<div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
 				<Link href="/" className="flex items-center gap-2">
-					<span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-teal-600 text-white">
+					<span className="inline-flex h-10 w-12 items-center justify-center rounded-full bg-teal-600 text-white">
 						G
 					</span>
-					<span className="text-lg font-semibold text-slate-800">GradePlus</span>
+					<span className=" font-semibold text-slate-800 text-2xl">GradePlus</span>
 				</Link>
 
-				<nav className="hidden items-center gap-6 text-sm text-slate-600 md:flex">
+				<nav className="hidden items-center gap-10 text-xl text-slate-600 md:flex">
 					<Link href="#home" className="text-blue-600">
 						Home
 					</Link>

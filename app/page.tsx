@@ -2,12 +2,18 @@ import Footer from "./pages/Footer";
 import Header from "./pages/Header";
 import HeroSection from "./pages/HeroSection";
 import KeyFeatures from "./pages/keyFeature";
+import Gallery from "./components/Gallery";
+import Form from "./components/Form";
+import Crousal from "./components/Crousal";
+import Client from "./pages/Client";
+import Schools from "./pages/Schools";
+import Details from "./pages/Details";
 const Home = () => {
   return (
     <div>
       <Header />
 
-      <main className="mx-auto max-w-6xl px-4 py-12 md:px-6">
+     { /*<main className="mx-auto max-w-6xl px-4 py-12 md:px-6">
         <div className="rounded-2xl border border-slate-100 bg-slate-50 p-10 text-slate-700">
           <h1 className="text-2xl font-semibold text-slate-900">
             GradePlus App Platform
@@ -18,9 +24,15 @@ const Home = () => {
             hero, product highlights, and call-to-action blocks.
           </p>
         </div>
-      </main>
+      </main> */}
+      <Crousal />
       <HeroSection />
+      <Details />
       <KeyFeatures />
+      <Gallery />
+      <Form />
+      <Schools />
+      <Client />
       <Footer />
     </div>
   );
