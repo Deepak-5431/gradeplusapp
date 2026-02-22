@@ -12,7 +12,7 @@ const Crousal = () => {
     {
       title: 'AI-Powered Learning',
       description: 'Experience personalized education with our advanced AI technology that adapts to your learning style and pace.',
-      image: '/crowsel/1.png',
+      image: '/crowsel/h10.png',
       buttons: [
         { text: 'Play Store', icon: Play },
         { text: 'Ask For Demo', icon: Phone }
@@ -21,7 +21,7 @@ const Crousal = () => {
     {
       title: 'Smart Study Assistant',
       description: 'Get instant help with our AI tutor available 24/7. Learn and practice in your own time and schedule beside given school assignments.',
-      image: '/crowsel/2.png',
+      image: '/crowsel/h11.png',
       buttons: [
         { text: 'Play Store', icon: Play },
         { text: 'Ask For Demo', icon: Phone }
@@ -30,7 +30,7 @@ const Crousal = () => {
     {
       title: 'Self-Paced Learning',
       description: 'You can learn and practice in your own time and schedule beside given school home assignments or exam.',
-      image: '/crowsel/3.png',
+      image: '/crowsel/h12.png',
       buttons: [
         { text: 'Play Store', icon: Play },
         { text: 'Ask For Demo', icon: Phone }
@@ -69,8 +69,8 @@ const Crousal = () => {
         onMouseEnter={() => setAutoPlay(false)}
         onMouseLeave={() => setAutoPlay(true)}
       >
-        {/* Fixed Heights: Taller on mobile (650px) to stack text+image, shorter on desktop (450px/500px) */}
-        <div className="relative w-full h-[650px] md:h-[450px] lg:h-[500px]">
+        {/* Updated: Using Tailwind's canonical spacing classes instead of arbitrary pixel brackets */}
+        <div className="relative w-full h-162.5 md:h-112.5 lg:h-125">
           {slides.map((slide, index) => (
             <div
               key={index}
@@ -113,8 +113,8 @@ const Crousal = () => {
 
                   {/* Right Side - Image */}
                   <div className="w-full md:w-1/2 flex justify-center items-center h-64 md:h-full">
-                    {/* Removed aspect-square, using explicit predictable heights */}
-                    <div className="relative w-full max-w-md h-full min-h-[250px] md:min-h-[350px]">
+                    {/* Updated: Using canonical min-height classes */}
+                    <div className="relative w-full max-w-md h-full min-h-62.5 md:min-h-87.5">
                       <Image
                         src={slide.image}
                         alt={slide.title}

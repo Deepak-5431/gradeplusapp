@@ -41,7 +41,6 @@ const FeaturesSection = () => {
     <section className="bg-[#F8FAFC] py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-[#5A6A85] mb-4">
             Why GradePlus is a right choice for you
@@ -52,19 +51,15 @@ const FeaturesSection = () => {
           </p>
         </div>
 
-        {/* Content Layout */}
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
           
-          {/* Left Side: Features Grid */}
           <div className="w-full lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
             {features.map((feature, index) => (
               <div key={index} className="flex items-start gap-4">
-                {/* Icon */}
                 <div className="shrink-0 mt-1 text-[#016DAB]">
                   <feature.icon size={36} strokeWidth={2} />
                 </div>
                 
-                {/* Text Content */}
                 <div>
                   <h3 className="text-lg font-bold text-[#016DAB] mb-2">
                     {feature.title}
@@ -82,7 +77,6 @@ const FeaturesSection = () => {
             ))}
           </div>
 
-          {/* Right Side: Illustration */}
           <div className="w-full lg:w-2/5 flex justify-center lg:justify-end relative">
             <div className="relative w-full max-w-500 aspect-square">
               <Image

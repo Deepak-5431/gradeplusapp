@@ -15,7 +15,6 @@ const Details = () => {
         'Homework & Assignments Integration with Dedicated Performance Analysis',
         'Generated/Cancelled Certificates'
       ],
-      imagePosition: 'left'
     },
     {
       id: 2,
@@ -28,7 +27,6 @@ const Details = () => {
         'Get Progress Graphical Certificate',
         'Secured Performance Marks'
       ],
-      imagePosition: 'right'
     },
     {
       id: 3,
@@ -41,7 +39,6 @@ const Details = () => {
         'Comprehensive M/S Reports (Integration with Machine School Ledger)',
         'Evaluate payment Activity & Detailed Attendance facility'
       ],
-      imagePosition: 'left'
     },
     {
       id: 4,
@@ -54,8 +51,9 @@ const Details = () => {
         'Hourly, Classwise & Individual TimetTable View',
         'Substitute Teacher Report for Availability'
       ],
-      imagePosition: 'right'
     },
+    // Commented out the 5th item to make a perfect 2x2 (4 card) grid
+    /*
     {
       id: 5,
       title: 'Attendance Management',
@@ -67,8 +65,8 @@ const Details = () => {
         'Automated SMS and mobile app alerts system',
         'Online leave Applications'
       ],
-      imagePosition: 'left'
     }
+    */
   ];
 
   return (
@@ -84,56 +82,56 @@ const Details = () => {
           </p>
         </div>
 
-        {/* Feature Cards */}
-        <div className="space-y-16">
+        {/* Feature Cards - 2x2 Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
           {features.map((feature, index) => (
             <div
               key={feature.id}
-              className={`bg-linear-to-br from-gray-50 to-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 ${
+              className={`flex flex-col bg-linear-to-br from-gray-50 to-white rounded-3xl p-8 md:p-10 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 h-full ${
                 index % 2 === 0 ? 'hover:border-[#01CB89]' : 'hover:border-[#016DAB]'
               }`}
             >
-              <div className={`flex flex-col ${feature.imagePosition === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-12`}>
-                {/* Image */}
-                <div className="w-full md:w-1/2 flex justify-center">
-                  <div className="relative w-full max-w-md aspect-square">
-                    <Image
-                      src={feature.image}
-                      alt={feature.title}
-                      fill
-                      className="object-contain drop-shadow-2xl"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  </div>
+              {/* Image Area - Moved to top of card */}
+              <div className="w-full flex justify-center mb-8">
+                {/* Updated: max-w-70 */}
+                <div className="relative w-full max-w-70 aspect-square">
+                  <Image
+                    src={feature.image}
+                    alt={feature.title}
+                    fill
+                    className="object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
+              </div>
 
-                {/* Content */}
-                <div className="w-full md:w-1/2">
-                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-                    {feature.description}
-                  </p>
+              {/* Content Area */}
+              {/* Updated: grow instead of flex-grow */}
+              <div className="w-full flex flex-col grow">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 text-center md:text-left">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-base md:text-lg mb-6 leading-relaxed text-center md:text-left">
+                  {feature.description}
+                </p>
 
-                  {/* Feature Points */}
-                  <ul className="space-y-4">
-                    {feature.points.map((point, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className={`w-6 h-6 shrink-0 mt-0.5 ${
-                          index % 2 === 0 ? 'text-[#01CB89]' : 'text-[#016DAB]'
-                        }`} />
-                        <span className="text-gray-700 leading-relaxed">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {/* Feature Points - Pushed to bottom using mt-auto if needed */}
+                <ul className="space-y-4 mt-auto">
+                  {feature.points.map((point, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <CheckCircle2 className={`w-5 h-5 shrink-0 mt-1 ${
+                        index % 2 === 0 ? 'text-[#01CB89]' : 'text-[#016DAB]'
+                      }`} />
+                      <span className="text-gray-700 leading-relaxed text-sm md:text-base">{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}
         </div>
 
-        {/* CTA Section */}
+        {/* CTA Section Placeholder */}
         
       </div>
     </section>
