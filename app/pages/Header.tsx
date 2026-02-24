@@ -6,7 +6,6 @@ const Header = () => {
     <header className="w-full bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
-          {/* 2. Replace the text span with the Image component */}
           <span>
             <Image 
               src="/favicon.ico" 
@@ -41,7 +40,7 @@ const Header = () => {
         </nav>
 
         <Link
-          href="#login"
+          href="https://iblib.com/"
           className="rounded-md border border-blue-600 px-4 py-2 text-sm font-medium text-blue-600 transition hover:bg-blue-50"
         >
           Login

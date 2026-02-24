@@ -12,7 +12,7 @@ const Crousal = () => {
     {
       title: 'AI-Powered Learning',
       description: 'Experience personalized education with our advanced AI technology that adapts to your learning style and pace.',
-      image: '/crowsel/h10.png',
+      image: '/crowsel/a1.png',
       buttons: [
         { text: 'Play Store', icon: Play },
         { text: 'Ask For Demo', icon: Phone }
@@ -21,7 +21,7 @@ const Crousal = () => {
     {
       title: 'Smart Study Assistant',
       description: 'Get instant help with our AI tutor available 24/7. Learn and practice in your own time and schedule beside given school assignments.',
-      image: '/crowsel/h11.png',
+      image: '/crowsel/a2.png',
       buttons: [
         { text: 'Play Store', icon: Play },
         { text: 'Ask For Demo', icon: Phone }
@@ -30,7 +30,7 @@ const Crousal = () => {
     {
       title: 'Self-Paced Learning',
       description: 'You can learn and practice in your own time and schedule beside given school home assignments or exam.',
-      image: '/crowsel/h12.png',
+      image: '/crowsel/a3.png',
       buttons: [
         { text: 'Play Store', icon: Play },
         { text: 'Ask For Demo', icon: Phone }
