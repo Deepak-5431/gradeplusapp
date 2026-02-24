@@ -78,13 +78,13 @@ const FeaturesSection = () => {
           </div>
 
           <div className="w-full lg:w-2/5 flex justify-center lg:justify-end relative">
-            <div className="relative w-full max-w-500 aspect-square">
+            <div className="relative w-full max-w-500 aspect-square scale-130">
               <Image
-                src="/school/features.png" 
+                src="/school/featues.png" 
                 alt="GradePlus School Features"
                 fill
                 className="object-contain"
-                sizes="(max-width: 1024px) 100vw, 40vw"
+                sizes="(max-width: 1024px) 100vw, 45vw"
                 priority
               />
             </div>

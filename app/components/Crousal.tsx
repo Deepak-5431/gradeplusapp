@@ -30,7 +30,7 @@ const Crousal = () => {
     {
       title: 'Self-Paced Learning',
       description: 'You can learn and practice in your own time and schedule beside given school home assignments or exam.',
-      image: '/crowsel/a3.png',
+      image: '/crowsel/details.png',
       buttons: [
         { text: 'Play Store', icon: Play },
         { text: 'Ask For Demo', icon: Phone }

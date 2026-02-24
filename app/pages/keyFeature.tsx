@@ -92,7 +92,7 @@ export default function KeyFeatures() {
                 </div>
 
                 <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
-                  <div className="w-16 h-16 mb-6 bg-linear-to-br from-[#016DAB] to-[#01CB89] rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(1,109,171,0.3)]">
+                  <div className="w-24 h-24 mb-6 object-contain rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(1,109,171,0.3)]">
                     <Image
                       src={feature.icon}
                       alt={feature.title}
