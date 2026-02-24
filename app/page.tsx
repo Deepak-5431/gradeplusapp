@@ -13,8 +13,8 @@ const Home = () => {
     <div>
       <Header />
       <section id="home"><Crousal /></section>
-      <section id="herosection"><HeroSection /></section>
       <section id="keyfeatures"><KeyFeatures /></section>
+      <section id="herosection"><HeroSection /></section>
       <Details />
       <section id="gallery"><Gallery /></section>
       <section id="form"><Form /></section>

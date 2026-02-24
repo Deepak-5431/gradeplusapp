@@ -1,24 +1,24 @@
 'use client';
 
 import Image from 'next/image';
-import { Camera, Grid3x3, PenTool, Rocket, Sparkles } from 'lucide-react';
+import { Rocket, Sparkles } from 'lucide-react';
 
 export default function KeyFeatures() {
   const features = [
     {
-      icon: Camera,
+      icon: '/SVG/Detailed Solutions.svg',
       title: 'Detailed solution',
       description: 'Stuck on a problem? Just snap a photo to get instant, detailed solutions. Our AI instantly recognizes complex formulas and text.',
       image: '/AI/4.jpg',
     },
     {
-      icon: Grid3x3,
+      icon: '/SVG/Help me to Solve.svg',
       title: 'Help me to Solve',
       description: "Don't just get the answer. Understand the 'why' with complex logic broken down into bite-sized, digestible steps.",
       image: '/AI/2.png',
     },
     {
-      icon: PenTool,
+      icon: '/SVG/Image Interpreter.svg',
       title: 'Image Interpreter',
       description: 'Write anything. Scribble equations, draw diagrams, or jot down notes and watch our visual AI solve them in real-time.',
       image: '/AI/3.png',
@@ -61,7 +61,6 @@ export default function KeyFeatures() {
 
         <div className="space-y-24 lg:space-y-32 mb-24">
           {features.map((feature, index) => {
-            const Icon = feature.icon;
             const isImageRight = index % 2 !== 0; // Alternates layout
 
             return (
@@ -94,7 +93,13 @@ export default function KeyFeatures() {
 
                 <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
                   <div className="w-16 h-16 mb-6 bg-linear-to-br from-[#016DAB] to-[#01CB89] rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(1,109,171,0.3)]">
-                    <Icon className="text-white" size={32} />
+                    <Image
+                      src={feature.icon}
+                      alt={feature.title}
+                      width={32}
+                      height={32}
+                      className="invert"
+                    />
                   </div>
                   
                   <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white">
@@ -124,7 +129,7 @@ export default function KeyFeatures() {
 
         <div className="flex flex-col items-center gap-4 relative z-20">
           <button className="group px-8 py-4 bg-transparent border-2 border-[#01CB89] rounded-2xl font-bold text-white text-lg hover:bg-[#01CB89] hover:text-slate-900 transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(1,203,137,0.2)] hover:shadow-[0_0_40px_rgba(1,203,137,0.6)]">
-            Initialize AI Tutor
+            Try Gradeplus AI Assits
             <Rocket size={20} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
           </button>
         </div>
