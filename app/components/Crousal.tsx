@@ -12,7 +12,7 @@ const Crousal = () => {
     {
       title: 'AI-Powered Learning',
       description: 'Experience personalized education with our advanced AI technology that adapts to your learning style and pace.',
-      image: '/crowsel/a1.png',
+      image: '/crowsel/a13.png',
       buttons: [
         { text: 'Play Store', icon: Play },
         { text: 'Ask For Demo', icon: Phone }
@@ -21,7 +21,7 @@ const Crousal = () => {
     {
       title: 'Smart Study Assistant',
       description: 'Get instant help with our AI tutor available 24/7. Learn and practice in your own time and schedule beside given school assignments.',
-      image: '/crowsel/a2.png',
+      image: '/crowsel/aipowers.png',
       buttons: [
         { text: 'Play Store', icon: Play },
         { text: 'Ask For Demo', icon: Phone }
@@ -30,7 +30,7 @@ const Crousal = () => {
     {
       title: 'Self-Paced Learning',
       description: 'You can learn and practice in your own time and schedule beside given school home assignments or exam.',
-      image: '/crowsel/details.png',
+      image: '/crowsel/selfpacedlearning.png',
       buttons: [
         { text: 'Play Store', icon: Play },
         { text: 'Ask For Demo', icon: Phone }
@@ -63,13 +63,11 @@ const Crousal = () => {
 
   return (
     <section className="w-full">
-      {/* Carousel Container */}
       <div
         className="relative w-full bg-linear-to-r from-[#016DAB] to-[#01CB89] overflow-hidden"
         onMouseEnter={() => setAutoPlay(false)}
         onMouseLeave={() => setAutoPlay(true)}
       >
-        {/* Updated: Using Tailwind's canonical spacing classes instead of arbitrary pixel brackets */}
         <div className="relative w-full h-162.5 md:h-112.5 lg:h-125">
           {slides.map((slide, index) => (
             <div
@@ -81,7 +79,6 @@ const Crousal = () => {
               <div className="container mx-auto px-4 md:px-8 lg:px-16 h-full">
                 <div className="flex flex-col md:flex-row items-center justify-between h-full py-10 md:py-12 gap-8">
                   
-                  {/* Left Side - Text Content */}
                   <div className="w-full md:w-1/2 text-white space-y-4 md:space-y-6 mt-8 md:mt-0 text-center md:text-left">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                       {slide.title}
