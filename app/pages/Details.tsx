@@ -9,7 +9,7 @@ const Details = () => {
       id: 1,
       title: 'Comprehensive Study Material',
       description: 'Gain an expansive Online CBSE-ICSE & all state board subjects materials in one place.',
-      image: '/school/Asset 3-8.png',
+      image: '/school/comprehensive.png',
       points: [
         'Conceptualized Reports on MCQs/Case Studies',
         'Homework & Assignments Integration with Dedicated Performance Analysis',
@@ -20,7 +20,7 @@ const Details = () => {
       id: 2,
       title: 'Examination System',
       description: 'Manage Exams with our integrated Examination Management System',
-      image: '/school/Asset 4-8.png',
+      image: '/school/exam.png',
       points: [
         'MCQs & Subjective Questions Feature',
         'Online and Schedule Exams',
@@ -70,7 +70,7 @@ const Details = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-10 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -91,7 +91,6 @@ const Details = () => {
                 index % 2 === 0 ? 'hover:border-[#01CB89]' : 'hover:border-[#016DAB]'
               }`}
             >
-              {/* Image Area - Moved to top of card */}
               <div className="w-full flex justify-center mb-8">
                 {/* Updated: max-w-70 */}
                 <div className="relative w-full max-w-70 aspect-square">
