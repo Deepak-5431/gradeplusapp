@@ -3,10 +3,12 @@ const Applink = () => {
     <section className="bg-slate-200 py-20">
       <div className="mx-auto max-w-4xl px-6 text-center">
         
+        {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-semibold text-slate-800">
           Download GradePlus!
         </h2>
 
+        {/* Description */}
         <p className="mt-6 text-lg text-slate-700 leading-relaxed">
           GradePlus for Parents/Students is a simple application. Parents can
           check and monitor their kids performance and activities in school.
@@ -15,10 +17,13 @@ const Applink = () => {
           more details.
         </p>
 
-        <div className="mt-10 flex justify-center">
+        {/* Download Section */}
+        <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-8">
+
+          {/* Play Store Button */}
           <a
             href="#"
-            className="inline-block transition-transform duration-300 hover:scale-105"
+            className="transition-transform duration-300 hover:scale-105"
           >
             <img
               src="/AI/playstore.png" 
@@ -26,6 +31,19 @@ const Applink = () => {
               className="h-14 w-auto"
             />
           </a>
+
+          {/* QR Code */}
+          <div className="flex flex-col items-center">
+            <img
+              src="/AI/GradePlusApp.png"
+              alt="Scan QR Code"
+              className="h-28 w-28 rounded-lg shadow-md"
+            />
+            <span className="mt-2 text-sm text-slate-600">
+              Scan to Download
+            </span>
+          </div>
+
         </div>
 
       </div>
