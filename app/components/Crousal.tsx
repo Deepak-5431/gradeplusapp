@@ -110,7 +110,6 @@ const Crousal = () => {
 
                   {/* Right Side - Image */}
                   <div className="w-full md:w-1/2 flex justify-center items-center h-64 md:h-full">
-                    {/* Updated: Using canonical min-height classes */}
                     <div className="relative w-full max-w-md h-full min-h-62.5 md:min-h-87.5">
                       <Image
                         src={slide.image}

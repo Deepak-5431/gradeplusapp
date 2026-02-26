@@ -8,6 +8,7 @@ import Crousal from "./components/Crousal";
 import Client from "./pages/Client";
 import Schools from "./pages/Schools";
 import Details from "./pages/Details";
+import Applink from "./components/Applink";
 const Home = () => {
   return (
     <div>
@@ -20,6 +21,7 @@ const Home = () => {
       <section id="form"><Form /></section>
       <section id="testimonies"><Schools /></section>
       <Client />
+      <Applink />
       <Footer />
     </div>
   );

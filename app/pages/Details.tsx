@@ -20,7 +20,7 @@ const Details = () => {
       id: 2,
       title: 'Examination System',
       description: 'Manage Exams with our integrated Examination Management System',
-      image: '/school/exam.png',
+      image: '/school/Asset 22-8.png',
       points: [
         'MCQs & Subjective Questions Feature',
         'Online and Schedule Exams',
@@ -44,7 +44,7 @@ const Details = () => {
       id: 4,
       title: 'TimeTable Management System',
       description: 'Set Your Subject Wise and Class Wise Timetable Respectively',
-      image: '/school/Asset 22-8.png',
+      image: '/school/timetable.png',
       points: [
         'Fully Customizable Period & Timetable',
         'Teacher Practice List Records',
