@@ -22,7 +22,7 @@ const Applink = () => {
 
           {/* Play Store Button */}
           <a
-            href="#"
+            href="https://play.google.com/store/apps/details?id=com.app.iblib"
             className="transition-transform duration-300 hover:scale-105"
           >
             <img
