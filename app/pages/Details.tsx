@@ -20,7 +20,7 @@ const Details = () => {
       id: 2,
       title: 'Examination System',
       description: 'Manage Exams with our integrated Examination Management System',
-      image: '/school/Asset 22-8.png',
+      image: '/school/examination system.png',
       points: [
         'MCQs & Subjective Questions Feature',
         'Online and Schedule Exams',
@@ -32,7 +32,7 @@ const Details = () => {
       id: 3,
       title: 'School Fee Management System',
       description: 'Streamline Fee collection with School Login & Payment Details',
-      image: '/school/Asset 5-8.png',
+      image: '/school/Feemanagement.png',
       points: [
         'Automated Fee Invoice with School Logo & Payment Details',
         'Integrated Payment Invoice Generation',
@@ -70,7 +70,7 @@ const Details = () => {
   ];
 
   return (
-    <section className="py-10 px-4 bg-white">
+    <section className="py-4 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -93,7 +93,7 @@ const Details = () => {
             >
               <div className="w-full flex justify-center mb-8">
                 {/* Updated: max-w-70 */}
-                <div className="relative w-full max-w-70 aspect-square">
+                <div className="relative w-full max-w-2xs aspect-square">
                   <Image
                     src={feature.image}
                     alt={feature.title}

@@ -109,8 +109,8 @@ const Crousal = () => {
                   </div>
 
                   {/* Right Side - Image */}
-                  <div className="w-full md:w-1/2 flex justify-center items-center h-64 md:h-full">
-                    <div className="relative w-full max-w-md h-full min-h-62.5 md:min-h-87.5">
+                  <div className="w-full md:w-1/2 flex justify-center items-center h-80 md:h-full">
+                    <div className="relative w-full h-full min-h-80 md:min-h-96">
                       <Image
                         src={slide.image}
                         alt={slide.title}

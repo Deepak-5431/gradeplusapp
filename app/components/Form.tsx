@@ -35,7 +35,7 @@ const Form = () => {
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-12">
 					{/* Contact Info */}
-					<div className="space-y-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 						{/* Address */}
 						<div className="bg-white p-6 rounded-lg shadow-sm">
 							<div className="flex items-center gap-4 mb-3">
