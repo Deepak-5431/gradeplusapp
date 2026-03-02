@@ -9,7 +9,7 @@ const Details = () => {
       id: 1,
       title: 'Comprehensive Study Material',
       description: 'Gain an expansive Online CBSE-ICSE & all state board subjects materials in one place.',
-      image: '/school/comprehensive.png',
+      image: '/school/comprehens.png',
       points: [
         'Conceptualized Reports on MCQs/Case Studies',
         'Homework & Assignments Integration with Dedicated Performance Analysis',
@@ -91,9 +91,8 @@ const Details = () => {
                 index % 2 === 0 ? 'hover:border-[#01CB89]' : 'hover:border-[#016DAB]'
               }`}
             >
-              <div className="w-full flex justify-center mb-8">
-                {/* Updated: max-w-70 */}
-                <div className="relative w-full max-w-2xs aspect-square">
+              <div className="w-full flex  ">
+                <div className="relative w-full  aspect-square">
                   <Image
                     src={feature.image}
                     alt={feature.title}
