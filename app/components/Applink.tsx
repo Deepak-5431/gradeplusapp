@@ -16,7 +16,7 @@ const Applink = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <img
-            src="/AI/playstore1.png"
+            src="/AI/tilt-5.png"
             alt="GradePlus App Preview"
             className="w-full max-w-87.5 h-auto max-h-[90vh] object-contain rounded-xl"
           />

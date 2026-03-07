@@ -51,7 +51,15 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-linear-to-br from-[#0BA0C8] via-[#0BA0C8] to-[#01CB89] p-4 md:p-8 relative overflow-hidden">
+    <div 
+      className="min-h-screen w-full flex items-center justify-center bg-linear-to-br from-[#0BA0C8] via-[#0BA0C8] to-[#01CB89] p-4 md:p-8 relative overflow-hidden"
+      style={{
+        backgroundImage: 'url(/AI/bglogin.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       
       {/* Animated Background Circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -62,7 +70,7 @@ const Login = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-white/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="w-full max-w-5xl bg-white/95 backdrop-blur-sm rounded-3xl md:rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10">
+      <div className="w-full max-w-5xl bg-white/45 backdrop-blur-md rounded-3xl md:rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10">
 
         {/* Left Side - App Download Section (Hidden on mobile) */}
         <div className="hidden md:flex md:w-1/2 bg-linear-to-br from-[#0BA0C8] to-[#01CB89] p-8 lg:p-12 flex-col items-center justify-between relative overflow-hidden">
@@ -98,7 +106,7 @@ const Login = () => {
               {/* Play Store Card */}
               <div className=" p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center object-contain">
                 <Image
-                  src="/AI/playstore1.png"
+                  src="/AI/tilt-5.png"
                   alt="Available on Play Store"
                   width={140}
                   height={100}
