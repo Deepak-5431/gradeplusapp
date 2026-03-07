@@ -77,8 +77,8 @@ const FeaturesSection = () => {
             ))}
           </div>
 
-          <div className="w-full lg:w-2/5 flex justify-center lg:justify-end relative">
-            <div className="relative w-full max-w-500 aspect-square scale-130">
+          <div className="w-full lg:w-2/5 flex justify-center lg:justify-end relative overflow-hidden">
+            <div className="relative w-full max-w-125 aspect-square scale-100 lg:scale-110">
               <Image
                 src="/school/featues.png" 
                 alt="GradePlus School Features"
