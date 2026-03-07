@@ -16,9 +16,9 @@ const Applink = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <img
-            src="/AI/phone.png" 
+            src="/AI/tilted-1.png" 
             alt="GradePlus App Preview"
-            className="w-full max-w-70 h-auto object-contain rounded-xl shadow-lg"
+            className="w-full max-w-70 h-auto object-contain rounded-xl "
           />
         </motion.div>
 
