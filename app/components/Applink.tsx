@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 const Applink = () => {
   return (
-    <section className="bg-slate-200 py-20 overflow-hidden">
-      <div className="mx-auto max-w-6xl px-6 flex flex-col md:flex-row items-center gap-12">
-        
+    <section className="bg-slate-200  overflow-hidden">
+      <div className="mx-auto max-w-6xl  flex flex-col md:flex-row items-center gap-12">
+
         {/* Left Side: App Image (Animated Slide-in from Left) */}
-        <motion.div 
+        <motion.div
           className="w-full md:w-[30%] flex justify-center md:justify-start"
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -16,21 +16,21 @@ const Applink = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <img
-            src="/AI/tilted-1.png" 
+            src="/AI/playstore1.png"
             alt="GradePlus App Preview"
-            className="w-full max-w-70 h-auto object-contain rounded-xl "
+            className="w-full max-w-87.5 h-auto max-h-[90vh] object-contain rounded-xl"
           />
         </motion.div>
 
         {/* Right Side: Text & Download Section (Animated Fade-in) */}
-        <motion.div 
+        <motion.div
           className="w-full md:w-[70%] text-center md:text-left"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          
+
           <h2 className="text-4xl md:text-5xl font-semibold text-slate-800">
             Download GradePlus!
           </h2>
@@ -42,7 +42,7 @@ const Applink = () => {
             attendance, fee invoices, exam results, performance in tests and many
             more details.
           </p>
-          
+
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-8">
 
             <a
@@ -50,7 +50,7 @@ const Applink = () => {
               className="transition-transform duration-300 hover:scale-105"
             >
               <img
-                src="/AI/playstore.png" 
+                src="/AI/playstore.png"
                 alt="Get it on Google Play"
                 className="h-14 w-auto"
               />
