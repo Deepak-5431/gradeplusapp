@@ -76,14 +76,14 @@ const Crousal = () => {
                 index === current ? 'opacity-100' : 'opacity-0 z-0'
               } ${index === current ? 'z-10' : ''}`}
             >
-              <div className="container mx-auto px-4 md:px-8 lg:px-16 h-full">
+              <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 h-full">
                 <div className="flex flex-col md:flex-row items-center justify-between h-full py-10 md:py-12 gap-8">
                   
                   <div className="w-full md:w-1/2 text-white space-y-4 md:space-y-6 mt-8 md:mt-0 text-center md:text-left">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                       {slide.title}
                     </h1>
-                    <p className="text-base md:text-lg lg:text-xl text-white/90 leading-relaxed max-w-xl mx-auto md:mx-0">
+                    <p className="text-sm md:text-base lg:text-lg text-white/90 leading-relaxed max-w-xl mx-auto md:mx-0">
                       {slide.description}
                     </p>
                     

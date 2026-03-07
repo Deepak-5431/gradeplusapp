@@ -83,7 +83,24 @@ const reviews: Review[] = [
 const Review = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [email, setEmail] = useState('');
-  const itemsPerPage = 3;
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+
+  // Adjust items per page based on screen size
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsPerPage(2);
+      } else {
+        setItemsPerPage(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
@@ -133,7 +150,11 @@ const Review = () => {
             >
               {Array.from({ length: totalSlides }).map((_, slideIndex) => (
                 <div key={slideIndex} className="w-full shrink-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+                  <div className={`grid gap-6 px-4 ${
+                    itemsPerPage === 1 ? 'grid-cols-1' : 
+                    itemsPerPage === 2 ? 'grid-cols-1 md:grid-cols-2' : 
+                    'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                  }`}>
                     {reviews.slice(slideIndex * itemsPerPage, (slideIndex + 1) * itemsPerPage).map((review) => (
                       <div 
                         key={review.id}

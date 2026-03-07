@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 const Applink = () => {
   return (
     <section className="bg-slate-200  overflow-hidden">
-      <div className="mx-auto max-w-6xl  flex flex-col md:flex-row items-center gap-12">
-
-        {/* Left Side: App Image (Animated Slide-in from Left) */}
+      <div className="mx-auto max-w-6xl  flex flex-col md:flex-row-reverse items-center gap-12">
+        
+        {/* Right Side: App Image (Animated Slide-in from Right) */}
         <motion.div
-          className="w-full md:w-[30%] flex justify-center md:justify-start"
-          initial={{ opacity: 0, x: -60 }}
+          className="w-full md:w-[30%] flex justify-center md:justify-end"
+          initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
@@ -22,7 +22,7 @@ const Applink = () => {
           />
         </motion.div>
 
-        {/* Right Side: Text & Download Section (Animated Fade-in) */}
+        {/* Left Side: Text & Download Section (Animated Fade-in) */}
         <motion.div
           className="w-full md:w-[70%] text-center md:text-left"
           initial={{ opacity: 0, y: 30 }}
@@ -30,7 +30,6 @@ const Applink = () => {
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-
           <h2 className="text-4xl md:text-5xl font-semibold text-slate-800">
             Download GradePlus!
           </h2>
@@ -44,7 +43,6 @@ const Applink = () => {
           </p>
 
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-8">
-
             <a
               href="https://play.google.com/store/apps/details?id=com.app.iblib"
               className="transition-transform duration-300 hover:scale-105"
@@ -66,7 +64,6 @@ const Applink = () => {
                 Scan to Download
               </span>
             </div>
-
           </div>
         </motion.div>
 

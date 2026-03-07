@@ -62,13 +62,7 @@ const Login = () => {
     >
       
       {/* Animated Background Circles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-20 right-20 w-48 h-48 bg-white/10 rounded-full"></div>
-        <div className="absolute bottom-20 left-40 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-white/10 rounded-full"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-white/5 rounded-full blur-3xl"></div>
-      </div>
+      
 
       <div className="w-full max-w-5xl bg-white/45 backdrop-blur-md rounded-3xl md:rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10">
 
@@ -92,7 +86,7 @@ const Login = () => {
             {/* QR Code and Play Store Cards */}
             <div className="flex gap-6 mb-8">
               {/* QR Code Card */}
-              <div className=" p-6 rounded-2xl shadow-xl flex  items-center">
+              <div className=" p-6 rounded-2xl shadow-xl flex-col content-center items-center">
                 <Image
                   src="/AI/GradePlusApp.png"
                   alt="Scan to Download"
@@ -100,13 +94,13 @@ const Login = () => {
                   height={140}
                   className="object-contain mb-3"
                 />
-                
+                <p>Scan to download</p>
               </div>
 
               {/* Play Store Card */}
               <div className=" p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center object-contain">
                 <Image
-                  src="/AI/tilt-5.png"
+                  src="/AI/applaystore.jpeg"
                   alt="Available on Play Store"
                   width={140}
                   height={100}
@@ -119,19 +113,7 @@ const Login = () => {
           
           </div>
 
-          <div className="relative z-10 w-full flex items-center justify-center">
-            <div className="flex items-center gap-4">
-              <div className="flex flex-col gap-2">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-white text-xs font-semibold">
-                  ENGLISH
-                </div>
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-white text-xs font-semibold">
-                  MATH
-                </div>
-              </div>
-              <div className="text-white/40 text-6xl">📚</div>
-            </div>
-          </div>
+          
         </div>
 
         <div className="w-full md:w-1/2 flex flex-col bg-white p-8 md:p-10 lg:p-12">
