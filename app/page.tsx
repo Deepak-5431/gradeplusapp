@@ -6,7 +6,7 @@ import Gallery from "./components/Gallery";
 import Form from "./components/Form";
 import Crousal from "./components/Crousal";
 import Client from "./pages/Client";
-import StudentReviews from "./pages/Schools";
+import Schools from "./pages/Schools";
 import Details from "./pages/Details";
 import Applink from "./components/Applink";
 const Home = () => {
@@ -19,7 +19,7 @@ const Home = () => {
       <Details />
       <section id="gallery"><Gallery /></section>
       <section id="form"><Form /></section>
-      <section id="testimonies"><StudentReviews /></section>
+      <section id="testimonies"><Schools /></section>
       <Client />
       <Applink />
       <Footer />

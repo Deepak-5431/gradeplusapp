@@ -14,8 +14,8 @@ const Crousal = () => {
       description: 'Experience personalized education with our advanced AI technology that adapts to your learning style and pace.',
       image: '/crowsel/a13.png',
       buttons: [
-        { text: 'Play Store', icon: Play },
-        { text: 'Ask For Demo', icon: Phone }
+        { text: 'Play Store', icon: Play, link:'https://play.google.com/store/apps/details?id=com.app.iblib' },
+        { text: 'Ask For Demo', icon: Phone, link: 'tel:+1234567890' }
       ]
     },
     {
@@ -23,8 +23,8 @@ const Crousal = () => {
       description: 'Get instant help with our AI tutor available 24/7. Learn and practice in your own time and schedule beside given school assignments.',
       image: '/crowsel/aipowers.png',
       buttons: [
-        { text: 'Play Store', icon: Play },
-        { text: 'Ask For Demo', icon: Phone }
+        { text: 'Play Store', icon: Play,link:'https://play.google.com/store/apps/details?id=com.app.iblib'},
+        { text: 'Ask For Demo', icon: Phone, link: 'tel:+1234567890' }
       ]
     },
     {
@@ -32,8 +32,8 @@ const Crousal = () => {
       description: 'You can learn and practice in your own time and schedule beside given school home assignments or exam.',
       image: '/crowsel/selfpacedlearning.png',
       buttons: [
-        { text: 'Play Store', icon: Play },
-        { text: 'Ask For Demo', icon: Phone }
+        { text: 'Play Store', icon: Play ,link:'https://play.google.com/store/apps/details?id=com.app.iblib'},
+        { text: 'Ask For Demo', icon: Phone ,link: 'tel:+1234567890'}
       ]
     }
   ];
@@ -92,8 +92,10 @@ const Crousal = () => {
                       {slide.buttons.map((button, idx) => {
                         const Icon = button.icon;
                         return (
-                          <button
+                          <a
                             key={idx}
+                            href={button.link}
+                            target={idx === 0 ? "_blank" : "_self"}
                             className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg ${
                               idx === 0
                                 ? 'bg-white text-[#016DAB] hover:bg-gray-100'
@@ -102,7 +104,7 @@ const Crousal = () => {
                           >
                             <Icon className="w-5 h-5" />
                             {button.text}
-                          </button>
+                          </a>
                         );
                       })}
                     </div>
