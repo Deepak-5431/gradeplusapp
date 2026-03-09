@@ -98,9 +98,9 @@ const Login = () => {
               </div>
 
               {/* Play Store Card */}
-              <div className=" p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center object-contain">
+              <div className=" p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center object-fill">
                 <Image
-                  src="/AI/applaystore.jpeg"
+                  src="/AI/logins.png"
                   alt="Available on Play Store"
                   width={140}
                   height={100}

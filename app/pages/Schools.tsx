@@ -5,47 +5,48 @@ import { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 
-const Schools = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center', slidesToScroll: 2 });
+const StudentReviews = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
   const testimonials = [
     {
       id: 1,
-      schoolName: 'St Gabriel Convent',
-      role: 'School Principal',
-      logo: '/client/client-01.1.png',
-      text: 'Always available to answer any questions. Very knowledgeable about the services they provide. Would recommend to everyone!',
+      name: 'Sarah Jenkins',
+      role: 'High School Senior',
+      avatar: '/client/client-01.1.png', 
+      text: 'The Image Interpreter is a lifesaver! Whenever I get stuck on a tricky geometry diagram, I just snap a picture, and the AI instantly recognizes the problem and explains it.',
     },
     {
       id: 2,
-      schoolName: 'Samir International',
-      role: 'School Principal',
-      logo: '/client/client-2.png',
-      text: 'I feel privileged to share my views on IBLIB, it\'s not been too much time connected with them but I can say that my teaching staff and students are delighted nd comfortable in using it.',
+      name: 'David Chen',
+      role: 'College Freshman',
+      avatar: '/client/client-2.png',
+      text: 'I love the "Help Me to Solve" feature. Instead of just giving me the final answer, it acts like a real tutor, guiding me step-by-step so I actually learn the core concepts.',
     },
     {
       id: 3,
-      schoolName: 'Delhi Public School',
-      role: 'Academic Head',
-      logo: '/client/client-3.png',
-      text: 'The platform has revolutionized how we manage our curriculum. The interface is intuitive and students love using it for their studies.',
+      name: 'Emily Rodriguez',
+      role: '10th Grade Student',
+      avatar: '/client/client-3.png',
+      text: 'Getting a Detailed Solution for my physics homework has boosted my grades so much. It breaks down complex equations into simple, easy-to-understand steps.',
     },
     {
       id: 4,
-      schoolName: 'Modern Education Institute',
-      role: 'Director',
-      logo: '/client/client-4.jpg',
-      text: 'Outstanding support team and seamless integration with our existing systems. Highly appreciated by both staff and students.',
+      name: 'Michael Chang',
+      role: 'Middle School Student',
+      avatar: '/client/client-4.jpg',
+      text: 'Whenever I don\'t understand a math word problem, I just take a photo. The image interpreter scans it perfectly and gives me a detailed solution that makes complete sense.',
     },
     {
       id: 5,
-      schoolName: 'Cambridge International',
-      role: 'School Principal',
-      logo: '/client/client-5.png',
-      text: 'The analytics and reporting features have given us invaluable insights into student performance and learning patterns.',
+      name: 'Jessica Taylor',
+      role: 'High School Junior',
+      avatar: '/client/client-5.png',
+      text: 'The combination of the image scanner and the step-by-step solver makes studying for exams so much less stressful. It\'s the best AI study buddy I\'ve ever had!',
     },
   ];
 
@@ -58,66 +59,63 @@ const Schools = () => {
 
   useEffect(() => {
     if (!emblaApi) return;
+    
     onSelect();
+    setScrollSnaps(emblaApi.scrollSnapList()); 
+
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
+    emblaApi.on('reInit', () => setScrollSnaps(emblaApi.scrollSnapList())); 
   }, [emblaApi, onSelect]);
 
   const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
   const scrollNext = () => emblaApi && emblaApi.scrollNext();
   const scrollTo = (index: number) => emblaApi && emblaApi.scrollTo(index);
 
-  const totalSlides = Math.ceil(testimonials.length / 2);
-
   return (
-    <section className="py-20 px-4 bg-gray-50">
+    <section className="py-20 px-4 bg-gray-50 overflow-hidden">
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span className="bg-linear-to-r from-[#4A7BA7] to-[#016DAB] bg-clip-text text-transparent">Testimonials</span>
           </h2>
-          <p className="text-gray-600 text-xl">
-            Here What our Users Say...
+          <p className="text-gray-600 text-lg md:text-xl px-4">
+            See how our AI tools are helping students succeed...
           </p>
         </div>
 
-        {/* Embla Carousel */}
         <div className="relative">
           <div className="overflow-hidden rounded-3xl" ref={emblaRef}>
-            <div className="flex">
+            <div className="flex -ml-4"> 
               {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.id}
-                  className="min-w-0 flex-[0_0_50%] md:flex-[0_0_50%] lg:flex-[0_0_50%] p-4"
+                  className="min-w-0 flex-[0_0_100%] md:flex-[0_0_50%] pl-4 py-4"
                 >
-                  <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 h-full hover:border-[#01CB89] hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                    {/* Logo */}
-                    <div className="flex justify-start mb-6">
-                      <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-gray-100 shrink-0">
+                  <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 md:p-8 h-full hover:border-[#01CB89] hover:shadow-xl transition-all duration-300 transform md:hover:scale-105">
+                    
+                    <div className="flex justify-start mb-4 md:mb-6">
+                      <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden bg-gray-100 shrink-0">
                         <Image
-                          src={testimonial.logo}
-                          alt={testimonial.schoolName}
+                          src={testimonial.avatar}
+                          alt={testimonial.name}
                           fill
                           className="object-contain p-2"
-                          sizes="100px"
+                          sizes="(max-width: 768px) 80px, 100px"
                         />
                       </div>
                     </div>
 
-                    {/* School Name */}
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      {testimonial.schoolName}
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                      {testimonial.name}
                     </h3>
 
-                    {/* Testimonial Text */}
-                    <p className="text-gray-700 leading-relaxed mb-6">
-                      {testimonial.text}
+                    <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-6">
+                      "{testimonial.text}"
                     </p>
 
-                    {/* Role */}
-                    <div className="pt-6 border-t border-gray-200">
-                      <p className="text-sm font-semibold text-gray-600">
+                    <div className="pt-4 md:pt-6 border-t border-gray-200 mt-auto">
+                      <p className="text-xs md:text-sm font-semibold text-gray-600">
                         {testimonial.role}
                       </p>
                     </div>
@@ -127,11 +125,10 @@ const Schools = () => {
             </div>
           </div>
 
-          {/* Navigation Buttons */}
           {canScrollPrev && (
             <button
               onClick={scrollPrev}
-              className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-linear-to-r from-[#016DAB] to-[#01CB89] text-white p-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110"
+              className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-linear-to-r from-[#016DAB] to-[#01CB89] text-white p-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110"
               aria-label="Previous testimonials"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -141,7 +138,7 @@ const Schools = () => {
           {canScrollNext && (
             <button
               onClick={scrollNext}
-              className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-linear-to-r from-[#016DAB] to-[#01CB89] text-white p-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110"
+              className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-linear-to-r from-[#016DAB] to-[#01CB89] text-white p-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110"
               aria-label="Next testimonials"
             >
               <ChevronRight className="w-6 h-6" />
@@ -149,18 +146,17 @@ const Schools = () => {
           )}
         </div>
 
-        {/* Pagination Dots */}
-        <div className="flex justify-center gap-2 mt-12">
-          {Array.from({ length: totalSlides }).map((_, index) => (
+        <div className="flex justify-center gap-2 mt-8 md:mt-12">
+          {scrollSnaps.map((_, index) => (
             <button
               key={index}
-              onClick={() => scrollTo(index * 2)}
+              onClick={() => scrollTo(index)}
               className={`transition-all duration-300 rounded-full ${
                 index === selectedIndex
                   ? 'bg-[#016DAB] w-3 h-3'
                   : 'bg-gray-300 w-2 h-2 hover:bg-gray-400'
               }`}
-              aria-label={`Go to testimonials ${index + 1}`}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
@@ -169,4 +165,4 @@ const Schools = () => {
   );
 };
 
-export default Schools;
+export default StudentReviews;

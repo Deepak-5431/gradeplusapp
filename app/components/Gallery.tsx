@@ -39,6 +39,17 @@ const Gallery = () => {
     emblaApi.on('reInit', onSelect);
   }, [emblaApi, onSelect]);
 
+  // Auto-scroll every 3 seconds
+  useEffect(() => {
+    if (!emblaApi) return;
+    
+    const interval = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [emblaApi]);
+
   const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
   const scrollNext = () => emblaApi && emblaApi.scrollNext();
   const scrollTo = (index: number) => emblaApi && emblaApi.scrollTo(index);
@@ -119,26 +130,6 @@ const Gallery = () => {
             </div>
           </div>
 
-          {/* Navigation Arrows */}
-          {canScrollPrev && (
-            <button
-              onClick={scrollPrev}
-              className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 shadow-lg text-gray-800 p-3 rounded-full hover:bg-white transition-all duration-300 hover:scale-110"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-          )}
-
-          {canScrollNext && (
-            <button
-              onClick={scrollNext}
-              className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 shadow-lg text-gray-800 p-3 rounded-full hover:bg-white transition-all duration-300 hover:scale-110"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          )}
         </div>
 
         {/* Pagination Dots */}

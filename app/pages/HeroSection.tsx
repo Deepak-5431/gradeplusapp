@@ -1,39 +1,39 @@
 'use client';
 
 import Image from 'next/image';
-import { Brain, FileText, Atom, Video, BarChart2, Contact } from 'lucide-react';
+import { Brain, FileText, BarChart2, Video, ScanSearch, Sparkles } from 'lucide-react';
 
 const FeaturesSection = () => {
   const features = [
     {
-      icon: Brain,
-      title: 'Adaptive E-Learning Features',
-      description: 'Adaptive Learning provides an intuitive, practical and highly interactive approach between the user and the platform.',
+      icon: ScanSearch,
+      title: 'AI Image Interpreter',
+      description: 'Stuck on a problem? Simply snap a picture. Our AI instantly interprets complex equations, geometry diagrams, and word problems.',
     },
     {
-      icon: Video,
-      title: 'Video Conferencing',
-      description: 'Take your classes online with our fully integrated video conferencing system on our platform. No need to download any other app.',
+      icon: Sparkles,
+      title: '"Help Me to Solve" Tutor',
+      description: 'Instead of just giving the final answer, our AI acts as a personal tutor, guiding students step-by-step to master core concepts.',
     },
     {
       icon: FileText,
-      title: 'Conduct Online Test',
-      description: 'Create test papers and assign to individual or group of students. And check their performance graphically.',
+      title: 'Detailed AI Solutions',
+      description: 'Generate instant, comprehensive step-by-step solutions for homework and test preparation across all major subjects.',
+    },
+    {
+      icon: Brain,
+      title: 'Adaptive AI Learning',
+      description: 'Our AI analyzes learning patterns to provide a highly personalized and interactive path tailored to each student\'s pace.',
     },
     {
       icon: BarChart2,
-      title: 'Performance Analysis',
-      description: 'Our Artificial intelligence tool helps in analyzing teachers and students performance',
+      title: 'Predictive Performance',
+      description: 'Leverage artificial intelligence to analyze student and teacher performance trends, predicting areas where extra support is needed.',
     },
     {
-      icon: Atom,
-      title: 'Finance Management',
-      description: 'This system manage student fees, school expenses, inventory and create realtime MIS view and much more.',
-    },
-    {
-      icon: Contact,
-      title: 'Integrated Communication',
-      description: 'Official integrated communication platform for Schools, Teachers, Students and Parents',
+      icon: Video,
+      title: 'Smart Video Classrooms',
+      description: 'Take classes online with our fully integrated video conferencing system, enhanced with AI-driven engagement tracking.',
     },
   ];
 
@@ -46,8 +46,8 @@ const FeaturesSection = () => {
             Why GradePlus is a right choice for you
           </h2>
           <p className="text-gray-500 max-w-4xl mx-auto text-sm md:text-base">
-            GradePlus's advanced features makes it a best choice for your educational institute. 
-            Find some advanced feature highlights of GradePlus.
+            GradePlus's advanced AI features make it the best choice for your educational institute. 
+            Explore how our smart tools empower students and educators.
           </p>
         </div>
 
