@@ -12,10 +12,8 @@ const Header = () => {
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Update URL hash without jumping
       window.history.pushState(null, '', href);
     }
-    // Close mobile menu after navigation
     setIsMobileMenuOpen(false);
   };
 
@@ -36,7 +34,6 @@ const Header = () => {
           />
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-10 text-xl text-slate-600 md:flex">
           <Link href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-blue-600 hover:text-slate-900 transition-colors">
             Home
@@ -58,7 +55,6 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Desktop Login Button */}
         <Link
           href="/login"
           className="hidden md:block rounded-md border border-blue-600 px-4 py-2 text-sm font-medium text-blue-600 transition hover:bg-blue-50"
@@ -66,7 +62,6 @@ const Header = () => {
           Login
         </Link>
 
-        {/* Mobile Hamburger Button */}
         <button
           onClick={toggleMobileMenu}
           className="md:hidden flex flex-col gap-1.5 p-2"
@@ -78,7 +73,6 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <div className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isMobileMenuOpen ? 'max-h-screen' : 'max-h-0'}`}>
         <nav className="flex flex-col bg-white px-4 py-4 space-y-4 border-t border-slate-100">
           <Link href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-blue-600 hover:text-slate-900 transition-colors py-2">

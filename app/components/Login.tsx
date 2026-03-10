@@ -61,21 +61,15 @@ const Login = () => {
       }}
     >
       
-      {/* Animated Background Circles */}
-      
-
       <div className="w-full max-w-5xl bg-white/45 backdrop-blur-md rounded-3xl md:rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10">
 
-        {/* Left Side - App Download Section (Hidden on mobile) */}
-        <div className="hidden md:flex md:w-1/2 bg-linear-to-br from-[#0BA0C8] to-[#01CB89] p-8 lg:p-12 flex-col items-center justify-between relative overflow-hidden">
+        <div className="hidden md:flex md:w-1/2 bg-linear-to-br from-[#0BA0C8] to-[#01CB89] p-8 lg:p-12 flex-col items-center justify-center relative overflow-hidden">
           
-          {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -mr-24 -mt-24"></div>
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16"></div>
           
           <div className="relative z-10 w-full flex flex-col items-center">
-            {/* Header */}
-            <div className="text-center text-white mb-8">
+            <div className="text-center text-white mb-6">
               <div className="flex items-center justify-center gap-2 mb-3">
                 <Smartphone className="w-7 h-7" />
                 <h3 className="text-2xl lg:text-3xl font-bold">Get Our Mobile App</h3>
@@ -83,50 +77,58 @@ const Login = () => {
               <p className="text-base lg:text-lg opacity-90">Experience GradePlus on the go!</p>
             </div>
             
-            {/* QR Code and Play Store Cards */}
-            <div className="flex gap-6 mb-8">
-              {/* QR Code Card */}
-              <div className=" p-6 rounded-2xl shadow-xl flex-col content-center items-center">
+            <div className="mb-8 flex justify-center  drop-shadow-2xl">
+              <Image
+                src="/AI/logins.png" 
+                alt="GradePlus Mobile App"
+                width={400}
+                height={400}
+                className="object-contain h-56 lg:h-64 w-auto transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+
+            <div className="flex flex-row gap-4 items-stretch justify-center w-full">
+              <div className="bg-white/20 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl flex flex-col items-center justify-center transition-transform hover:-translate-y-1 hover:bg-white/30">
                 <Image
                   src="/AI/GradePlusApp.png"
                   alt="Scan to Download"
-                  width={140}
-                  height={140}
-                  className="object-contain mb-3"
+                  width={80}
+                  height={80}
+                  className="object-contain mb-2 rounded-lg bg-white p-1"
                 />
-                <p>Scan to download</p>
+                <p className="text-white text-xs font-medium whitespace-nowrap">Scan to download</p>
               </div>
 
-              {/* Play Store Card */}
-              <div className=" p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center object-fill">
-                <Image
-                  src="/AI/logins.png"
-                  alt="Available on Play Store"
-                  width={140}
-                  height={100}
-                  className="object-contain mb-3"
-                />
+              <div className="bg-white/20 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl flex flex-col items-center justify-center transition-transform hover:-translate-y-1 hover:bg-white/30 px-6">
+                <Link href="https://play.google.com/store/apps/details?id=com.app.iblib" target="_blank" className="flex items-center justify-center">
+                  <Image
+                    src="/AI/playstore.png" 
+                    alt="Available on Play Store"
+                    width={110}
+                    height={35}
+                    className="object-contain"
+                  />
+                </Link>
               </div>
             </div>
-
-          
-          
+            
           </div>
-
-          
         </div>
 
+        {/* Right Side - Login Form */}
         <div className="w-full md:w-1/2 flex flex-col bg-white p-8 md:p-10 lg:p-12">
           
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16  rounded-2xl mb-4 ">
-              <span className="text-white text-3xl font-bold"><Image 
-                src="/favicon.ico" 
-                alt="GradePlus Logo" 
-                width={48} 
-                height={48} 
-                className="object-contain"
-              /></span>
+              <span className="text-white text-3xl font-bold">
+                <Image 
+                  src="/favicon.ico" 
+                  alt="GradePlus Logo" 
+                  width={48} 
+                  height={48} 
+                  className="object-contain"
+                />
+              </span>
             </div>
             <h1 className="text-2xl font-bold text-slate-800 mb-1">GradePlus</h1>
             <p className="text-sm text-slate-500">Sign in to continue your journey</p>
@@ -245,7 +247,6 @@ const Login = () => {
             </button>
           </form>
 
-          {/* Sign Up Link */}
           <div className="text-center mt-6 text-sm text-slate-600">
             Don't have an account?{' '}
             <Link href="/signup" className="font-bold text-[#0BA0C8] hover:text-[#01CB89] transition-colors">

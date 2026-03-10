@@ -68,7 +68,8 @@ const Crousal = () => {
         onMouseEnter={() => setAutoPlay(false)}
         onMouseLeave={() => setAutoPlay(true)}
       >
-        <div className="relative w-full h-162.5 md:h-112.5 lg:h-125">
+        {/* Applied min-h-175 instead of min-h-[700px] */}
+        <div className="relative w-full min-h-175 md:min-h-0 md:h-112.5 lg:h-125">
           {slides.map((slide, index) => (
             <div
               key={index}
@@ -77,9 +78,12 @@ const Crousal = () => {
               } ${index === current ? 'z-10' : ''}`}
             >
               <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 h-full">
-                <div className="flex flex-col md:flex-row items-center justify-between h-full py-10 md:py-12 gap-8">
+                
+                {/* Reverted to flex-col so Text is on Top, Image is on Bottom on mobile */}
+                <div className="flex flex-col md:flex-row items-center justify-center md:justify-between h-full pt-12 pb-20 md:py-12 gap-6 md:gap-8">
                   
-                  <div className="w-full md:w-1/2 text-white space-y-4 md:space-y-6 mt-8 md:mt-0 text-center md:text-left">
+                  {/* Left Side - Text (Top on Mobile) */}
+                  <div className="w-full md:w-1/2 text-white space-y-4 md:space-y-6 text-center md:text-left z-10">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                       {slide.title}
                     </h1>
@@ -110,9 +114,11 @@ const Crousal = () => {
                     </div>
                   </div>
 
-                  {/* Right Side - Image */}
-                  <div className="w-full md:w-1/2 flex justify-center items-center h-80 md:h-full">
-                    <div className="relative w-full h-full min-h-80 md:min-h-96">
+                  {/* Right Side - Image (Bottom on Mobile) */}
+                  {/* Applied h-70 instead of h-[280px] */}
+                  <div className="w-full md:w-1/2 flex justify-center items-center h-70 sm:h-80 md:h-full shrink-0 md:shrink">
+                    {/* Applied min-h-62.5 and sm:min-h-75 */}
+                    <div className="relative w-full h-full min-h-62.5 sm:min-h-75 md:min-h-96">
                       <Image
                         src={slide.image}
                         alt={slide.title}
