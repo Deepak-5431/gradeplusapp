@@ -9,6 +9,7 @@ import Client from "./pages/Client";
 import Schools from "./pages/Schools";
 import Details from "./pages/Details";
 import Applink from "./components/Applink";
+import AboutUs from "./pages/AboutUs";
 const Home = () => {
   return (
     <div>
@@ -17,6 +18,7 @@ const Home = () => {
       <section id="keyfeatures"><KeyFeatures /></section>
       <section id="herosection"><HeroSection /></section>
       <Details />
+      <section id="About us"><AboutUs /></section>
       <section id="gallery"><Gallery /></section>
       <section id="form"><Form /></section>
       <section id="testimonies"><Schools /></section>

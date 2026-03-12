@@ -6,16 +6,16 @@ import { Rocket, Sparkles } from 'lucide-react';
 export default function KeyFeatures() {
   const features = [
     {
-      icon: '/SVG/Detailed Solutions.svg',
-      title: 'Detailed solution',
-      description: 'Stuck on a problem? Just snap a photo to get instant, detailed solutions. Our AI instantly recognizes complex formulas and text.',
-      image: '/AI/4.jpg',
-    },
-    {
       icon: '/SVG/Help me to Solve.svg',
       title: 'Help me to Solve',
       description: "Don't just get the answer. Understand the 'why' with complex logic broken down into bite-sized, digestible steps.",
       image: '/AI/2.png',
+    },
+    {
+      icon: '/SVG/Detailed Solutions.svg',
+      title: 'Detailed solution',
+      description: 'Stuck on a problem? Just snap a photo to get instant, detailed solutions. Our AI instantly recognizes complex formulas and text.',
+      image: '/AI/4.jpg',
     },
     {
       icon: '/SVG/Image Interpreter.svg',
@@ -61,7 +61,7 @@ export default function KeyFeatures() {
 
         <div className="space-y-24 lg:space-y-32 mb-24">
           {features.map((feature, index) => {
-            const isImageRight = index % 2 !== 0; // Alternates layout
+            const isImageRight = index % 2 !== 0; 
 
             return (
               <div 

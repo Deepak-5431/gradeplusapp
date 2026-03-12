@@ -83,7 +83,7 @@ const Login = () => {
                 alt="GradePlus Mobile App"
                 width={400}
                 height={400}
-                className="object-contain h-56 lg:h-64 w-auto transition-transform duration-500 hover:scale-105"
+                className="object-contain h-56 lg:h-auto w-92 transition-transform duration-500 hover:scale-105"
               />
             </div>
 

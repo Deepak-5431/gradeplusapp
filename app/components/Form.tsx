@@ -27,16 +27,14 @@ const Form = () => {
 
 	return (
 		<section className="py-16 bg-gray-50">
-			<div className="mx-auto max-w-6xl px-4 md:px-6">
+			<div className="mx-auto max-w-6xl px-4 text-center md:px-6">
 				<h2 className="text-4xl font-bold text-slate-900 mb-3">Contact</h2>
 				<p className="text-slate-600 mb-12">
 					Please complete the form below. A member of our staff will respond to you promptly.
 				</p>
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-					{/* Contact Info */}
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-						{/* Address */}
 						<div className="bg-white p-6 rounded-lg shadow-sm">
 							<div className="flex items-center gap-4 mb-3">
 								<MapPin className="text-blue-500" size={24} />
