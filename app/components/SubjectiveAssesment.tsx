@@ -14,7 +14,7 @@ const SubjectiveAssesment = () => {
             GradePlus AI
           </div>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tight mb-4">
-            AI Study Assistant: Revise & Present Effortlessly
+            Subjective Assesment
           </h2>
           <p className="text-slate-500 font-medium text-lg md:text-xl">
             Optimize your revision workflow with smart AI tools.
@@ -27,7 +27,7 @@ const SubjectiveAssesment = () => {
             <div className="flex items-center justify-center gap-3 mb-8">
               <Presentation className="w-6 h-6 text-blue-600" />
               <h3 className="text-lg md:text-xl font-black text-slate-800 uppercase tracking-wider text-center">
-                Text-to-Presentation Converter
+                Summary maker
               </h3>
             </div>
 
