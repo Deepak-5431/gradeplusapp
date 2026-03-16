@@ -5,9 +5,8 @@ import { motion } from "framer-motion";
 const Applink = () => {
   return (
     <section className="bg-slate-200  overflow-hidden">
-      <div className="mx-auto max-w-6xl  flex flex-col md:flex-row-reverse items-center gap-12 py-16 px-4">
+      <div className="mx-auto max-w-6xl  flex flex-col md:flex-row-reverse items-center gap-12  px-4">
         
-        {/* Right Side: App Image (Animated Slide-in from Right) */}
         <motion.div
           className="w-full md:w-[30%] flex justify-center md:justify-end"
           initial={{ opacity: 0, x: 60 }}
@@ -15,11 +14,10 @@ const Applink = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          {/* DESKTOP IMAGE: Hidden on mobile, visible on medium screens and up */}
           <img
-            src="/AI/tilt-5.png"
+            src="/AI/newsr.png"
             alt="GradePlus App Preview Desktop"
-            className="hidden md:block w-full max-w-87.5 h-auto max-h-[90vh] object-contain rounded-xl"
+            className="hidden md:block w-[150%] max-w-none h-auto max-h-[90vh] object-contain rounded-xl"
           />
 
           

@@ -10,15 +10,19 @@ import Schools from "./pages/Schools";
 import Details from "./pages/Details";
 import Applink from "./components/Applink";
 import AboutUs from "./pages/AboutUs";
+import Featuredcourses from "./components/FeaturedCourses";
+import SubjectiveAssessment from "./components/SubjectiveAssesment";
 const Home = () => {
   return (
     <div>
       <Header />
       <section id="home"><Crousal /></section>
       <section id="keyfeatures"><KeyFeatures /></section>
+      <SubjectiveAssessment />
       <section id="herosection"><HeroSection /></section>
       <Details />
       <section id="About us"><AboutUs /></section>
+      <Featuredcourses />
       <section id="gallery"><Gallery /></section>
       <section id="form"><Form /></section>
       <section id="testimonies"><Schools /></section>

@@ -77,7 +77,6 @@ const Client = () => {
     emblaApi.on('reInit', () => setScrollSnaps(emblaApi.scrollSnapList()));
   }, [emblaApi, onSelect]);
 
-  // Autoplay Effect (3 seconds)
   useEffect(() => {
     if (!emblaApi || !autoPlay) return;
     const timer = setInterval(() => {
@@ -104,7 +103,6 @@ const Client = () => {
           </p>
         </div>
 
-        {/* Embla Carousel */}
         <div 
           className="relative"
           onMouseEnter={() => setAutoPlay(false)}
@@ -112,9 +110,8 @@ const Client = () => {
           onTouchStart={() => setAutoPlay(false)}
           onTouchEnd={() => setAutoPlay(true)}
         >
-          {/* Using -mx-4 and px-4 padding tricks to prevent hover clipping */}
           <div className="overflow-hidden px-4 -mx-4" ref={emblaRef}>
-            <div className="flex -ml-4 py-6"> {/* py-6 added for hover expansion space */}
+            <div className="flex -ml-4 py-6"> 
               {schoolReviews.map((review) => (
                 <div 
                   key={review.id} 
