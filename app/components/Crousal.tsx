@@ -114,24 +114,35 @@ const Crousal = () => {
     },
     {
       id: 'self-paced',
-      type: 'split',
-      bgClass: 'bg-gradient-to-r from-[#016DAB] to-[#01CB89]',
-      image: '/crowsel/selfpacedlearning.png',
-      content: (
-        <div className="text-white flex flex-col items-center md:items-start text-center md:text-left z-10 w-full max-w-xl">
-          <h1 className="text-3xl md:text-4xl font-black leading-tight mb-4">Self-Paced Learning</h1>
-          <p className="text-sm md:text-base text-white/90 leading-relaxed mb-6">
-            You can learn and practice in your own time and schedule beside given school home assignments or exam.
-          </p>
+      type: 'full-bleed',
+      image: '/crowsel/thirdd.png',
+       content: (
+         <motion.div 
+          className="text-white flex flex-col items-center md:items-start text-center md:text-left z-10 w-full max-w-xl p-4 md:p-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          key={current} 
+        >
+          <div className="mb-8">
+            <h1 className="text-3xl md:text-5xl font-black leading-tight mb-4 [text-shadow:0px_2px_12px_rgba(0,0,0,0.9),0px_4px_25px_rgba(0,0,0,0.6)] text-white">
+              Self-Paced Learning
+            </h1>
+            <p className="text-sm md:text-lg text-white/95 leading-relaxed font-semibold [text-shadow:0px_2px_8px_rgba(0,0,0,0.9),0px_2px_15px_rgba(0,0,0,0.8)]">
+               You can learn and practice in your own time and schedule beside given school home assignments or exam.
+            </p>
+          </div>
+
           <div className="flex flex-wrap gap-3 justify-center md:justify-start w-full">
             <a href="https://play.google.com/store/apps/details?id=com.app.iblib" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-white text-[#016DAB] hover:bg-gray-100 text-sm">
               <Play className="w-4 h-4 fill-current" /> Play Store
             </a>
-            <Link href="/know-more/self-paced" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-transparent border-2 border-white/50 text-white hover:border-white hover:bg-white/10 text-sm">
+            <Link href="/know-more/ai-learning" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-[0_4px_15px_rgba(0,0,0,0.5)] bg-slate-900/60 backdrop-blur-sm border-2 border-white/50 text-white hover:border-white hover:bg-white/20 text-sm">
               <Info className="w-4 h-4" /> Know More
             </Link>
           </div>
-        </div>
+        </motion.div>
       )
     }
   ];

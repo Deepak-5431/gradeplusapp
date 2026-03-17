@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Rocket, Sparkles } from 'lucide-react';
 
-export default function KeyFeatures() {
+const KeyFeatures = () => {
   const features = [
     {
       icon: '/SVG/Help me to Solve.svg',
@@ -28,17 +28,18 @@ export default function KeyFeatures() {
   return (
     <div className="relative min-h-screen bg-[#0B1121] text-white py-24 overflow-hidden flex flex-col items-center">
       
+      {/* PERFECT GPU-ACCELERATED ANIMATION LOOP */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes scan {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(1000%); }
+          0% { transform: translate3d(0, -100%, 0); }
+          100% { transform: translate3d(0, 400%, 0); }
         }
         .animate-scanner {
-          animation: scan 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+          animation: scan 2.5s linear infinite;
+          will-change: transform;
         }
       `}} />
 
-   
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[40px_40px]"></div>
       
       <div className="absolute top-[10%] left-[-10%] w-160 h-160 rounded-full bg-[#01CB89] opacity-10 blur-[120px] pointer-events-none"></div>
@@ -77,8 +78,9 @@ export default function KeyFeatures() {
 
                   <div className="relative z-10 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl aspect-4/3 flex items-center justify-center">
                     
+                    {/* OPTIMIZED SCANNER: absolute top-0, exact 25% height */}
                     <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
-                      <div className="w-full h-32 bg-linear-to-b from-transparent via-[#01CB89]/10 to-[#01CB89]/30 border-b-2 border-[#01CB89] shadow-[0_5px_20px_rgba(1,203,137,0.4)] animate-scanner"></div>
+                      <div className="absolute top-0 left-0 right-0 w-full h-[25%] bg-linear-to-b from-transparent via-[#01CB89]/10 to-[#01CB89]/40 border-b-2 border-[#01CB89] shadow-[0_5px_20px_rgba(1,203,137,0.5)] animate-scanner"></div>
                     </div>
 
                     <Image
@@ -138,3 +140,5 @@ export default function KeyFeatures() {
     </div>
   );
 }
+
+export default KeyFeatures;
