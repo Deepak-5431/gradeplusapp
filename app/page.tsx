@@ -11,7 +11,8 @@ import Details from "./pages/Details";
 import Applink from "./components/Applink";
 import AboutUs from "./pages/AboutUs";
 import Featuredcourses from "./components/FeaturedCourses";
-import SubjectiveAssessment from "./components/SubjectiveAssesment";
+import SubjectiveAssessment from "./components/SubjectiveAssessment";
+import School from "./components/School";
 const Home = () => {
   return (
     <div>
@@ -19,6 +20,7 @@ const Home = () => {
       <section id="home"><Crousal /></section>
       <section id="keyfeatures"><KeyFeatures /></section>
       <SubjectiveAssessment />
+      <School />
       <section id="herosection"><HeroSection /></section>
       <Details />
       <section id="About us"><AboutUs /></section>

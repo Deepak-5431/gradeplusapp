@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link'; 
 import { ChevronLeft, ChevronRight, Play, Info } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Crousal = () => {
   const [current, setCurrent] = useState(0);
@@ -20,15 +21,12 @@ const Crousal = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight mb-3">
             Knowledge Championship 
           </h1>
-
-
           <p className="text-white text-sm md:text-base font-medium mb-5">
             For Class 6th to 12th Students <br className="hidden sm:block" />
             <span className="text-white/80 text-xs md:text-sm font-normal mt-1 inline-block">
               (All Boards: CBSE | ICSE | State Boards)
             </span>
           </p>
-
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 w-full">
             <a
               href="https://play.google.com/store/apps/details?id=com.app.iblib"
@@ -38,7 +36,6 @@ const Crousal = () => {
             >
               <Play className="w-4 h-4 fill-current" /> Download App
             </a>
-            {/* CHANGED to Link component */}
             <Link
               href="/know-more/mega-championship"
               className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-transparent border-2 border-white/50 text-white hover:border-white hover:bg-white/10 text-sm"
@@ -51,47 +48,68 @@ const Crousal = () => {
     },
     {
       id: 'ai-learning',
-      type: 'split',
-      bgClass: 'bg-gradient-to-r from-[#016DAB] to-[#01CB89]',
-      image: '/crowsel/a13.png',
+      type: 'full-bleed', 
+      image: '/crowsel/one.png', 
       content: (
-        <div className="text-white flex flex-col items-center md:items-start text-center md:text-left z-10 w-full max-w-xl">
-          <h1 className="text-3xl md:text-4xl font-black leading-tight mb-4">AI-Powered Learning</h1>
-          <p className="text-sm md:text-base text-white/90 leading-relaxed mb-6">
-            Experience personalized education with our advanced AI technology that adapts to your learning style and pace.
-          </p>
+        <motion.div 
+          className="text-white flex flex-col items-center md:items-start text-center md:text-left z-10 w-full max-w-xl p-4 md:p-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          key={current} 
+        >
+          <div className="mb-8">
+            <h1 className="text-3xl md:text-5xl font-black leading-tight mb-4 [text-shadow:0px_2px_12px_rgba(0,0,0,0.9),0px_4px_25px_rgba(0,0,0,0.9)] text-white">
+              AI-Powered Learning
+            </h1>
+            <p className="text-sm md:text-lg text-white/95 leading-relaxed font-semibold [text-shadow:0px_2px_8px_rgba(0,0,0,0.9),0px_2px_15px_rgba(0,0,0,0.8)]">
+              Experience personalized education with our advanced AI technology that adapts to your learning style and pace.
+            </p>
+          </div>
+
           <div className="flex flex-wrap gap-3 justify-center md:justify-start w-full">
             <a href="https://play.google.com/store/apps/details?id=com.app.iblib" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-white text-[#016DAB] hover:bg-gray-100 text-sm">
               <Play className="w-4 h-4 fill-current" /> Play Store
             </a>
-            <Link href="/know-more/ai-learning" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-transparent border-2 border-white/50 text-white hover:border-white hover:bg-white/10 text-sm">
+            <Link href="/know-more/ai-learning" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-[0_4px_15px_rgba(0,0,0,0.5)] bg-slate-900/60 backdrop-blur-sm border-2 border-white/50 text-white hover:border-white hover:bg-white/20 text-sm">
               <Info className="w-4 h-4" /> Know More
             </Link>
           </div>
-        </div>
+        </motion.div>
       )
     },
     {
       id: 'smart-assistant',
-      type: 'split',
-      bgClass: 'bg-gradient-to-r from-[#016DAB] to-[#01CB89]',
-      image: '/crowsel/aipowers.png',
+      type: 'full-bleed',
+      image: '/crowsel/twoo.png',
       content: (
-        <div className="text-white flex flex-col items-center md:items-start text-center md:text-left z-10 w-full max-w-xl">
-          <h1 className="text-3xl md:text-4xl font-black leading-tight mb-4">Smart Study Assistant</h1>
-          <p className="text-sm md:text-base text-white/90 leading-relaxed mb-6">
-            Get instant help with our AI tutor available 24/7. Learn and practice in your own time and schedule beside given school assignments.
-          </p>
+         <motion.div 
+          className="text-white flex flex-col items-center md:items-start text-center md:text-left z-10 w-full max-w-xl p-4 md:p-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          key={current} 
+        >
+          <div className="mb-8">
+            <h1 className="text-3xl md:text-5xl font-black leading-tight mb-4 [text-shadow:0px_2px_12px_rgba(0,0,0,0.9),0px_4px_25px_rgba(0,0,0,0.6)] text-white">
+              Smart Study Assistant
+            </h1>
+            <p className="text-sm md:text-lg text-white/95 leading-relaxed font-semibold [text-shadow:0px_2px_8px_rgba(0,0,0,0.9),0px_2px_15px_rgba(0,0,0,0.8)]">
+              Get instant help with our AI tutor available 24/7. Learn and practice in your own time and schedule beside given school assignments.
+            </p>
+          </div>
+
           <div className="flex flex-wrap gap-3 justify-center md:justify-start w-full">
             <a href="https://play.google.com/store/apps/details?id=com.app.iblib" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-white text-[#016DAB] hover:bg-gray-100 text-sm">
               <Play className="w-4 h-4 fill-current" /> Play Store
             </a>
-            {/* CHANGED to Link component */}
-            <Link href="/know-more/smart-assistant" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-transparent border-2 border-white/50 text-white hover:border-white hover:bg-white/10 text-sm">
+            <Link href="/know-more/ai-learning" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-[0_4px_15px_rgba(0,0,0,0.5)] bg-slate-900/60 backdrop-blur-sm border-2 border-white/50 text-white hover:border-white hover:bg-white/20 text-sm">
               <Info className="w-4 h-4" /> Know More
             </Link>
           </div>
-        </div>
+        </motion.div>
       )
     },
     {
@@ -109,7 +127,6 @@ const Crousal = () => {
             <a href="https://play.google.com/store/apps/details?id=com.app.iblib" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-white text-[#016DAB] hover:bg-gray-100 text-sm">
               <Play className="w-4 h-4 fill-current" /> Play Store
             </a>
-            {/* CHANGED to Link component */}
             <Link href="/know-more/self-paced" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-transparent border-2 border-white/50 text-white hover:border-white hover:bg-white/10 text-sm">
               <Info className="w-4 h-4" /> Know More
             </Link>
@@ -151,38 +168,77 @@ const Crousal = () => {
       >
         <div className="relative w-full flex items-center min-h-145 md:min-h-0 md:h-112.5 lg:h-125">
           
-          {slides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${slide.bgClass} ${
-                index === current ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              }`}
-            >
-              <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 h-full">
-                
-                <div className="flex flex-col md:flex-row items-center justify-center md:justify-between h-full pt-10 pb-20 md:py-10 gap-6 md:gap-8">
+          <AnimatePresence>
+            {slides.map((slide, index) => {
+              if (index !== current) return null; 
+
+              return (
+                <motion.div
+                  key={slide.id}
+                  className={`absolute inset-0 w-full h-full flex items-center`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1 }}
+                >
                   
-                  <div className="w-full md:w-1/2 flex justify-center md:justify-start z-10">
-                    {slide.content}
-                  </div>
+                  {slide.type === 'full-bleed' && (
+                    <>
+                      <motion.div 
+                        className="absolute inset-0 z-0"
+                        initial={{ scale: 1.1, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 1.1, opacity: 0 }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <Image
+                          src={slide.image}
+                          alt="AI Learning Background"
+                          fill
+                          className="object-cover"
+                          priority
+                          sizes="100vw"
+                        />
+                      </motion.div>
+                      
+                      <div className="relative z-20 mx-auto max-w-7xl px-4 md:px-8 lg:px-16 w-full flex justify-center md:justify-start h-full items-center">
+                        {slide.content}
+                      </div>
+                    </>
+                  )}
 
-                  <div className="w-full md:w-1/2 flex justify-center items-center shrink-0 md:shrink h-56 sm:h-72 md:h-full">
-                    <div className="relative w-full h-full min-h-60 sm:min-h-70 md:min-h-95">
-                      <Image
-                        src={slide.image}
-                        alt="Slide Image"
-                        fill
-                        className="object-contain drop-shadow-2xl"
-                        priority={index === 0}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
+                  {slide.type === 'split' && (
+                    <div className={`${slide.bgClass} w-full h-full`}>
+                      <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 h-full">
+                        <div className="flex flex-col md:flex-row items-center justify-center md:justify-between h-full pt-10 pb-20 md:py-10 gap-6 md:gap-8">
+                          
+                          <div className="w-full md:w-1/2 flex justify-center md:justify-start z-10">
+                            {slide.content}
+                          </div>
+
+                          <div className="w-full md:w-1/2 flex justify-center items-center shrink-0 md:shrink h-56 sm:h-72 md:h-full">
+                            <div className="relative w-full h-full min-h-60 sm:min-h-70 md:min-h-95">
+                              <Image
+                                src={slide.image}
+                                alt="Slide Image"
+                                fill
+                                className="object-contain drop-shadow-2xl"
+                                priority={index === 0}
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                              />
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
-                </div>
-              </div>
-            </div>
-          ))}
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+          
         </div>
 
         <button
