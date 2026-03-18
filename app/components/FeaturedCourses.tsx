@@ -60,7 +60,7 @@ const FeaturedCourses = () => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <h2 className="text-xl md:text-2xl font-black text-slate-900 leading-none tracking-tight">
-                Featured <span className="text-red-600">Lectures</span>
+                Featured <span className="text-red-600">Courses</span>
               </h2>
               <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-slate-300"></span>
               <p className="hidden sm:block text-sm text-slate-500 font-medium">

@@ -23,7 +23,7 @@ const Home = () => {
       <School />
       <section id="herosection"><HeroSection /></section>
       <Details />
-      <section id="About us"><AboutUs /></section>
+     <section id="About us"><AboutUs /></section>
       <Featuredcourses />
       <section id="gallery"><Gallery /></section>
       <section id="form"><Form /></section>

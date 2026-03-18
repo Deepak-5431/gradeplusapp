@@ -1,189 +1,293 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, Code, Brain, Globe, Calculator, Atom, FileText, Cpu, ChevronRight, Flame, ChevronDown } from 'lucide-react';
+import { 
+  Search, BookOpen, MonitorPlay, Users, FileText, 
+  Clock, ArrowRight, Flame, GraduationCap, Calendar
+} from 'lucide-react';
 
-const courseData = [
+const courseCatalog = [
   {
-    id: 'foundation',
-    title: 'K-12 Foundation',
-    icon: BookOpen,
-    courses: [
-      { name: 'Mathematics Mastery', level: 'Class 6-10', desc: 'Core algebra, geometry, and early calculus.', icon: Calculator, highlighted: true, price: '₹1,999/mo' },
-      { name: 'Science Explorer', level: 'Class 6-10', desc: 'Physics, chemistry, and biology fundamentals.', icon: Atom, price: '₹1,499/mo' },
-      { name: 'English Literature', level: 'Class 8-12', desc: 'Reading comprehension and essay writing.', icon: FileText, price: '₹1,299/mo' },
-      { name: 'Social Studies', level: 'Class 6-10', desc: 'History, Geography, and Civics foundation.', icon: Globe, price: '₹1,199/mo' }, 
-    ]
+    id: 1,
+    title: 'JEE Advanced Physics Mastery',
+    desc: 'Complete physics curriculum with advanced problem-solving techniques.',
+    class: 'Class 12',
+    type: 'Recorded',
+    year: '2025',
+    price: '₹3,499',
+    originalPrice: '₹5,000',
+    popular: true,
   },
   {
-    id: 'competitive',
-    title: 'Competitive Exams',
-    icon: Brain,
-    courses: [
-      { name: 'JEE Prep', level: 'Class 11-12', desc: 'Advanced engineering entrance preparation.', icon: Cpu, highlighted: true, price: '₹3,499/mo' },
-      { name: 'NEET Focus', level: 'Class 11-12', desc: 'Comprehensive medical entrance biology.', icon: Atom, price: '₹3,499/mo' },
-      { name: 'Olympiad Training', level: 'Class 8-10', desc: 'Advanced problem-solving techniques.', icon: Brain, price: '₹2,999/mo' },
-    ]
+    id: 2,
+    title: 'NEET Biology Crash Course',
+    desc: 'High-yield biology revision covering NCERT line-by-line.',
+    class: 'Dropper',
+    type: 'Live',
+    year: '2025',
+    price: '₹2,999',
+    originalPrice: '₹4,500',
+    popular: false,
   },
   {
-    id: 'coding',
-    title: 'Coding & AI',
-    icon: Code,
-    courses: [
-      { name: 'Web Development', level: 'Beginner to Pro', desc: 'Build modern websites with React & Next.js.', icon: Code, highlighted: true, price: '₹2,499/mo' },
-      { name: 'Python Basics', level: 'Beginner', desc: 'Learn programming fundamentals with Python.', icon: FileText, price: '₹1,999/mo' },
-      { name: 'Intro to AI', level: 'Intermediate', desc: 'Understand the basics of Artificial Intelligence.', icon: Cpu, price: '₹2,999/mo' },
-    ]
+    id: 3,
+    title: '10th Board Achievers Batch',
+    desc: 'Offline classroom program covering Maths and Science comprehensively.',
+    class: 'Class 10',
+    type: 'Offline',
+    year: '2026',
+    price: '₹12,000',
+    originalPrice: '₹15,000',
+    popular: true,
   },
   {
-    id: 'languages',
-    title: 'Language Arts',
-    icon: Globe,
-    courses: [
-      { name: 'Spoken English', level: 'All Levels', desc: 'Improve fluency and public speaking skills.', icon: Globe, highlighted: true, price: '₹999/mo' },
-      { name: 'French Basics', level: 'Beginner', desc: 'Introduction to French vocabulary and grammar.', icon: BookOpen, price: '₹1,499/mo' },
-    ]
+    id: 4,
+    title: 'All India JEE Mock Test Series',
+    desc: '30 full-length mock tests with detailed AI performance analysis.',
+    class: 'Class 12',
+    type: 'Test Series',
+    year: '2025',
+    price: '₹999',
+    originalPrice: '₹1,500',
+    popular: true,
+  },
+  {
+    id: 5,
+    title: 'Foundation Mathematics',
+    desc: 'Build strong basics in algebra and geometry for future competitive exams.',
+    class: 'Class 9',
+    type: 'Recorded',
+    year: '2026',
+    price: '₹1,499',
+    originalPrice: '₹2,000',
+    popular: false,
+  },
+  {
+    id: 6,
+    title: 'Class 11 Chemistry Essentials',
+    desc: 'Physical and organic chemistry detailed lectures and notes.',
+    class: 'Class 11',
+    type: 'Recorded',
+    year: '2026',
+    price: '₹2,499',
+    originalPrice: '₹3,500',
+    popular: false,
   }
 ];
 
-const AboutUs = () => {
-  const [activeCategory, setActiveCategory] = useState(courseData[0].id);
 
-  const currentCourses = courseData.find(cat => cat.id === activeCategory)?.courses || [];
+const FILTERS = {
+  classes: ['All', 'Class 9', 'Class 10', 'Class 11', 'Class 12', 'Dropper'],
+  types: ['All', 'Recorded', 'Live', 'Offline', 'Test Series'],
+  years: ['All', '2025', '2026']
+};
+
+const ExploreCourses = () => {
+  
+  const [activeClass, setActiveClass] = useState('All');
+  const [activeType, setActiveType] = useState('All');
+  const [activeYear, setActiveYear] = useState('All');
+
+  
+  const filteredCourses = courseCatalog.filter((course) => {
+    const matchClass = activeClass === 'All' || course.class === activeClass;
+    const matchType = activeType === 'All' || course.type === activeType;
+    const matchYear = activeYear === 'All' || course.year === activeYear;
+    return matchClass && matchType && matchYear;
+  });
+
+  
+  const getTypeIcon = (type: string) => {
+    switch (type) {
+      case 'Recorded': return <MonitorPlay className="w-4 h-4" />;
+      case 'Live': return <Clock className="w-4 h-4" />;
+      case 'Offline': return <Users className="w-4 h-4" />;
+      case 'Test Series': return <FileText className="w-4 h-4" />;
+      default: return <BookOpen className="w-4 h-4" />;
+    }
+  };
+
+
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case 'Recorded': return 'bg-blue-50 text-blue-700 border-blue-200';
+      case 'Live': return 'bg-red-50 text-red-700 border-red-200';
+      case 'Offline': return 'bg-purple-50 text-purple-700 border-purple-200';
+      case 'Test Series': return 'bg-orange-50 text-orange-700 border-orange-200';
+      default: return 'bg-slate-50 text-slate-700 border-slate-200';
+    }
+  };
 
   return (
-    <section className="py-20 bg-slate-100"> 
+    <section className="py-20 bg-slate-100 min-h-screen font-sans">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         
-        <div className="mb-12 text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Our Learning <span className="text-teal-600">Paths</span>
+       
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+            Find Your Perfect <span className="text-teal-600">Course</span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl">
-            Explore our comprehensive curriculum designed to build strong foundations and advanced skills at a comfortable pace.
+          <p className="text-lg text-slate-600 font-medium">
+            Filter by your class, preferred learning mode, and target exam year to get exactly what you need.
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+        
+        <div className="bg-white p-4 md:p-6 rounded-2xl md:rounded-full shadow-sm border border-slate-200 mb-12 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
           
-          <div className="w-full lg:w-[30%] flex flex-col gap-2 bg-slate-50/60 p-3 rounded-3xl border border-slate-200/50">
-            {courseData.map((category) => {
-              const Icon = category.icon;
-              const isActive = activeCategory === category.id;
-              
-              return (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`group flex items-center justify-between w-full p-4 rounded-2xl text-left transition-all duration-500 border ${
-                    isActive 
-                      ? 'bg-white border-teal-100 shadow-sm text-teal-700 translate-x-1' 
-                      : 'bg-transparent border-transparent text-slate-700 hover:bg-slate-200/50 hover:text-slate-900'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg transition-colors duration-500 ${isActive ? 'bg-teal-50 text-teal-600' : 'bg-slate-200/50 text-slate-500 group-hover:bg-white group-hover:text-slate-700'}`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span className={`font-medium text-base ${isActive ? 'font-semibold' : ''}`}>{category.title}</span>
-                  </div>
-                  <ChevronRight className={`w-4 h-4 transition-all duration-500 ease-out ${isActive ? 'opacity-100 text-teal-400 translate-x-0' : 'opacity-0 -translate-x-4'}`} />
-                </button>
-              );
-            })}
+          <div className="flex flex-col md:flex-row gap-4 w-full overflow-x-auto pb-2 md:pb-0 hide-scrollbar" style={{ scrollbarWidth: 'none' }}>
+            
+           
+            <div className="flex items-center gap-2 shrink-0">
+              <GraduationCap className="w-5 h-5 text-slate-400" />
+              <div className="flex bg-slate-100 p-1 rounded-full">
+                {FILTERS.classes.map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => setActiveClass(c)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+                      activeClass === c 
+                        ? 'bg-white text-slate-900 shadow-sm' 
+                        : 'text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden md:block w-px h-8 bg-slate-200 shrink-0"></div>
+
+            
+            <div className="flex items-center gap-2 shrink-0">
+              <MonitorPlay className="w-5 h-5 text-slate-400" />
+              <div className="flex bg-slate-100 p-1 rounded-full">
+                {FILTERS.types.map((t) => (
+                  <button
+                    key={t}
+                    onClick={() => setActiveType(t)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+                      activeType === t 
+                        ? 'bg-white text-slate-900 shadow-sm' 
+                        : 'text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden md:block w-px h-8 bg-slate-200 shrink-0"></div>
+
+            
+            <div className="flex items-center gap-2 shrink-0">
+              <Calendar className="w-5 h-5 text-slate-400" />
+              <div className="flex bg-slate-100 p-1 rounded-full">
+                {FILTERS.years.map((y) => (
+                  <button
+                    key={y}
+                    onClick={() => setActiveYear(y)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+                      activeYear === y 
+                        ? 'bg-white text-slate-900 shadow-sm' 
+                        : 'text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    {y}
+                  </button>
+                ))}
+              </div>
+            </div>
+
           </div>
+        </div>
 
-          <div className="w-full lg:w-[70%]">
-            <div className="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100">
-              
-              <h3 className="text-2xl font-bold text-slate-900 mb-6 pb-4 border-b border-slate-100">
-                {courseData.find(c => c.id === activeCategory)?.title} Courses
-              </h3>
-              
-              <div className="relative">
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 max-h-105 overflow-y-auto pr-2 pb-8 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                  
-                  {currentCourses.map((course, idx) => {
-                    const CourseIcon = course.icon;
-                    const isHighlighted = course.highlighted;
-
-                    return (
-                      <div 
-                        key={idx} 
-                        className={`relative flex flex-col overflow-hidden group rounded-2xl transition-all duration-300 border hover:-translate-y-1 ${
-                          isHighlighted 
-                            ? 'border-amber-200 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-100/40' 
-                            : 'border-slate-200 hover:border-slate-300 hover:shadow-md'
-                        }`}
-                      >
-                        <div className={`p-4 flex-1 ${isHighlighted ? 'bg-amber-50/40' : 'bg-white'}`}>
-                          <div className="flex items-start justify-between gap-2">
-                            
-                            <div className="flex items-center gap-3">
-                              <div className={`w-10 h-10 shrink-0 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105 ${
-                                isHighlighted ? 'bg-amber-100 text-amber-600' : 'bg-slate-100 text-slate-600 group-hover:bg-teal-50 group-hover:text-teal-600'
-                              }`}>
-                                <CourseIcon className="w-5 h-5" />
-                              </div>
-                              <div>
-                                <h4 className="text-base font-bold text-slate-900 leading-tight mb-1 group-hover:text-teal-700 transition-colors">
-                                  {course.name}
-                                </h4>
-                                <div className="inline-block px-2 py-0.5 bg-slate-100 border border-slate-200 text-slate-600 text-[10px] font-semibold rounded">
-                                  {course.level}
-                                </div>
-                              </div>
-                            </div>
-
-                            {isHighlighted && (
-                              <div className="flex shrink-0 items-center gap-1 bg-linear-to-r from-amber-100 to-orange-100 border border-amber-200 text-amber-700 text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md shadow-sm">
-                                <Flame className="w-3 h-3 fill-amber-500 text-amber-500" />
-                                Popular
-                              </div>
-                            )}
-                          </div>
-
-                          <p className="text-sm text-slate-600 leading-relaxed mt-3 line-clamp-2">
-                            {course.desc}
-                          </p>
-                        </div>
-
-                        <div className={`px-4 py-3 border-t flex items-center justify-between ${
-                          isHighlighted ? 'bg-amber-100/30 border-amber-100' : 'bg-slate-50 border-slate-100'
-                        }`}>
-                          <div className="flex flex-col">
-                            <span className="text-[10px] uppercase tracking-wide font-semibold text-slate-500 mb-0.5">Starting at</span>
-                            <span className="text-base font-bold text-slate-900">{course.price}</span>
-                          </div>
-                          <button className={`px-4 py-1.5 text-sm font-semibold rounded-lg transition-all duration-300 ${
-                            isHighlighted 
-                              ? 'bg-amber-500 text-white hover:bg-amber-600 shadow-sm shadow-amber-200' 
-                              : 'bg-white border border-slate-200 text-slate-800 hover:bg-slate-100 hover:border-slate-300'
-                          }`}>
-                            Book Seat
-                          </button>
-                        </div>
-
-                      </div>
-                    );
-                  })}
-                </div>
+        
+        {filteredCourses.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {filteredCourses.map((course) => (
+              <div 
+                key={course.id} 
+                className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
                 
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white via-white/80 to-transparent pointer-events-none flex items-end justify-center pb-2">
-                  <button className="pointer-events-auto flex items-center gap-2 px-5 py-2 bg-slate-100 border border-slate-200 hover:bg-slate-200 text-slate-700 rounded-full text-sm font-semibold transition-all shadow-sm hover:shadow-md translate-y-2">
-                    View More Courses <ChevronDown className="w-4 h-4" />
+                <div className="p-6 pb-4 flex items-start justify-between gap-4">
+                  <div className="flex flex-wrap gap-2">
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border ${getTypeColor(course.type)}`}>
+                      {getTypeIcon(course.type)}
+                      {course.type}
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                      Target {course.year}
+                    </span>
+                  </div>
+                  
+                  {course.popular && (
+                    <div className="flex items-center gap-1 text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border border-amber-200 shrink-0">
+                      <Flame className="w-3 h-3 fill-amber-500" /> Popular
+                    </div>
+                  )}
+                </div>
+
+               
+                <div className="px-6 flex-1">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 leading-tight group-hover:text-teal-700 transition-colors">
+                    {course.title}
+                  </h3>
+                  <div className="text-xs font-bold text-teal-600 mb-3 uppercase tracking-wide">
+                    {course.class}
+                  </div>
+                  <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">
+                    {course.desc}
+                  </p>
+                </div>
+
+                
+                <div className="p-6 mt-4 border-t border-slate-100 flex items-center justify-between bg-slate-50/50">
+                  <div>
+                    <div className="text-xs text-slate-400 font-semibold line-through mb-0.5">
+                      {course.originalPrice}
+                    </div>
+                    <div className="text-xl font-black text-slate-900">
+                      {course.price}
+                    </div>
+                  </div>
+                  
+                  <button className="flex items-center gap-2 px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold rounded-xl transition-colors shadow-sm shadow-teal-600/20">
+                    Enroll Now
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
 
               </div>
-              
-            </div>
+            ))}
           </div>
+        ) : (
+          
+          <div className="text-center py-20 bg-white rounded-3xl border border-dashed border-slate-300">
+            <Search className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-slate-900 mb-2">No courses found</h3>
+            <p className="text-slate-500">
+              Try adjusting your filters to see more available options.
+            </p>
+            <button 
+              onClick={() => {
+                setActiveClass('All');
+                setActiveType('All');
+                setActiveYear('All');
+              }}
+              className="mt-6 px-6 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-full transition-colors"
+            >
+              Clear Filters
+            </button>
+          </div>
+        )}
 
-        </div>
       </div>
     </section>
   );
-};
+}
 
-export default AboutUs;
+export default ExploreCourses;
