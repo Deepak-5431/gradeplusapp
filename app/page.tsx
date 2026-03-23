@@ -9,7 +9,7 @@ import Client from "./pages/Client";
 import Schools from "./pages/Schools";
 import Details from "./pages/Details";
 import Applink from "./components/Applink";
-import AboutUs from "./pages/AboutUs";
+import ExploreCourses from "./pages/ExploreCourses";
 import Featuredcourses from "./components/FeaturedCourses";
 import SubjectiveAssessment from "./components/SubjectiveAssessment";
 import School from "./components/School";
@@ -23,7 +23,7 @@ const Home = () => {
       <School />
       <section id="herosection"><HeroSection /></section>
       <Details />
-     <section id="About us"><AboutUs /></section>
+     <section id="About us"><ExploreCourses /></section>
       <Featuredcourses />
       <section id="gallery"><Gallery /></section>
       <section id="form"><Form /></section>

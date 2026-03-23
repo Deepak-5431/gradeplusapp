@@ -21,7 +21,6 @@ const SocialIcon = ({ label, href }: { label: string; href: string }) => {
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Show button when page is scrolled down
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
@@ -35,7 +34,6 @@ const Footer = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  // Smooth scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

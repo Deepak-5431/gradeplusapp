@@ -12,38 +12,23 @@ const Crousal = () => {
 
   const slides = [
     {
-      id: 'mega-championship',
-      type: 'split',
-      bgClass: 'bg-gradient-to-r from-[#016DAB] to-[#01CB89]',
-      image: '/crowsel/girly1.png',
+      id: 'banner',
+      type: 'full-bleed', 
+      image: '/crowsel/banner.png', 
+      mobileImage: '/crowsel/mobileview.png', 
       content: (
-        <div className="flex flex-col items-center md:items-start text-center md:text-left z-10 w-full max-w-xl">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight mb-3">
-            Knowledge Championship 
-          </h1>
-          <p className="text-white text-sm md:text-base font-medium mb-5">
-            For Class 6th to 12th Students <br className="hidden sm:block" />
-            <span className="text-white/80 text-xs md:text-sm font-normal mt-1 inline-block">
-              (All Boards: CBSE | ICSE | State Boards)
-            </span>
-          </p>
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 w-full">
-            <a
-              href="https://play.google.com/store/apps/details?id=com.app.iblib"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-white text-[#016DAB] hover:bg-gray-100 text-sm"
-            >
-              <Play className="w-4 h-4 fill-current" /> Download App
-            </a>
-            <Link
-              href="/know-more/mega-championship"
-              className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-transparent border-2 border-white/50 text-white hover:border-white hover:bg-white/10 text-sm"
-            >
+        <motion.div 
+          className="text-white flex flex-row items-center text-center z-10 w-full max-w-xl p-4 md:p-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          key={current} 
+        >
+        {/* <Link href="/know-more/mega-championship" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-[0_4px_15px_rgba(0,0,0,0.5)] bg-slate-900/60 backdrop-blur-sm border-2 border-white/50 text-white hover:border-white hover:bg-white/20 text-sm">
               <Info className="w-4 h-4" /> Know More
-            </Link>
-          </div>
-        </div>
+            </Link> */}
+        </motion.div>
       )
     },
     {
@@ -202,14 +187,35 @@ const Crousal = () => {
                         exit={{ scale: 1.1, opacity: 0 }}
                         transition={{ duration: 0.8 }}
                       >
-                        <Image
-                          src={slide.image}
-                          alt="AI Learning Background"
-                          fill
-                          className="object-cover"
-                          priority
-                          sizes="100vw"
-                        />
+                        {slide.mobileImage ? (
+                          <>
+                            <Image
+                              src={slide.image}
+                              alt="Carousel Background Desktop"
+                              fill
+                              className="object-cover hidden md:block" 
+                              priority
+                              sizes="100vw"
+                            />
+                            <Image
+                              src={slide.mobileImage}
+                              alt="Carousel Background Mobile"
+                              fill
+                              className="object-cover block md:hidden" 
+                              priority
+                              sizes="100vw"
+                            />
+                          </>
+                        ) : (
+                          <Image
+                            src={slide.image}
+                            alt="Carousel Background"
+                            fill
+                            className="object-cover"
+                            priority
+                            sizes="100vw"
+                          />
+                        )}
                       </motion.div>
                       
                       <div className="relative z-20 mx-auto max-w-7xl px-4 md:px-8 lg:px-16 w-full flex justify-center md:justify-start h-full items-center">
@@ -219,7 +225,7 @@ const Crousal = () => {
                   )}
 
                   {slide.type === 'split' && (
-                    <div className={`${slide.bgClass} w-full h-full`}>
+                    <div className={`${slide} w-full h-full`}>
                       <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 h-full">
                         <div className="flex flex-col md:flex-row items-center justify-center md:justify-between h-full pt-10 pb-20 md:py-10 gap-6 md:gap-8">
                           
