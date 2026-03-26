@@ -16,6 +16,7 @@ const Crousal = () => {
       type: 'full-bleed', 
       image: '/crowsel/banner.png', 
       mobileImage: '/crowsel/mobileview.png', 
+      
       content: (
         <motion.div 
           className="text-white flex flex-row items-center text-center z-10 w-full max-w-xl p-4 md:p-8"
@@ -195,6 +196,7 @@ const Crousal = () => {
                               fill
                               className="object-cover hidden md:block" 
                               priority
+                              quality={80}
                               sizes="100vw"
                             />
                             <Image
@@ -203,6 +205,7 @@ const Crousal = () => {
                               fill
                               className="object-cover block md:hidden" 
                               priority
+                              quality={80}
                               sizes="100vw"
                             />
                           </>
@@ -213,12 +216,21 @@ const Crousal = () => {
                             fill
                             className="object-cover"
                             priority
+                            quality={80}
                             sizes="100vw"
                           />
                         )}
                       </motion.div>
+
+                      {slide.id === 'banner' && (
+                        <Link
+                          href="/know-more/mega-championship"
+                          aria-label="Open Mega Championship details"
+                          className="absolute inset-0 z-10 cursor-pointer"
+                        />
+                      )}
                       
-                      <div className="relative z-20 mx-auto max-w-7xl px-4 md:px-8 lg:px-16 w-full flex justify-center md:justify-start h-full items-center">
+                      <div className={`relative z-20 mx-auto max-w-7xl px-4 md:px-8 lg:px-16 w-full flex justify-center md:justify-start h-full items-center ${slide.id === 'banner' ? 'pointer-events-none' : ''}`}>
                         {slide.content}
                       </div>
                     </>
@@ -241,6 +253,7 @@ const Crousal = () => {
                                 fill
                                 className="object-contain drop-shadow-2xl"
                                 priority={index === 0}
+                                quality={80}
                                 sizes="(max-width: 768px) 100vw, 50vw"
                               />
                             </div>
