@@ -1,247 +1,233 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, BookOpen, Shield, Award } from 'lucide-react';
+import { 
+  ChevronDown,
+  BookOpen, 
+  Shield, 
+  Award, 
+  Landmark, 
+  MapPin, 
+  GraduationCap, 
+  Building2, 
+  Train, 
+  ShieldAlert,
+  Book,
+  Microscope,
+  Scale,
+  Briefcase,
+  LucideIcon 
+} from 'lucide-react';
 
-const ExploreCourse = () => {
-  const [activeMainTab, setActiveMainTab] = useState<'Academic' | 'Government' | 'Entrance'>('Academic');
+type TabKey = 'Academic' | 'Government' | 'Entrance';
 
-  const [isExpanded, setIsExpanded] = useState(false);
+interface SubCategory {
+  id: string;
+  title: string;
+  desc: string;
+  icon: LucideIcon;
+  items: string[];
+}
 
-  const [activeBoard, setActiveBoard] = useState('CBSE');
-  const [activeClass, setActiveClass] = useState('CLASS-X');
+interface TabConfig {
+  icon: LucideIcon;
+  color: string;
+  activeBorder: string;
+}
 
-  const [activeGovCategory, setActiveGovCategory] = useState('SSC');
-  const [activeGovExam, setActiveGovExam] = useState('SSC-CGL');
-  
-  const [activeEntranceCategory, setActiveEntranceCategory] = useState('Engineering');
-  const [activeEntranceExam, setActiveEntranceExam] = useState('JEE Main');
-
-  const govExamsList = {
-    'SSC': ['Selection Post', 'SSC-CGL', 'SSC-CPO SI', 'SSC-CHSL', 'SSC-GD', 'SSC-MTS', 'SSC-STENO'],
-    'UPSSSC': ['VDO', 'Lekhpal', 'PET'],
-    'Teaching': ['CTET', 'UPTET', 'Super TET'],
-    'Banking': ['IBPS PO', 'SBI Clerk', 'RBI Grade B'],
-    'Railway': ['RRB NTPC', 'RRB Group D', 'ALP'],
-    'Police Exams': ['UP Police Constable', 'Delhi Police SI']
-  };
-
-  const entranceExamsList = {
-    'Engineering': ['JEE Main', 'JEE Advanced', 'BITSAT', 'VITEEE', 'SRMJEEE'],
-    'Medical': ['NEET UG', 'NEET PG', 'AIIMS', 'JIPMER']
-  };
+export default function ExploreCourse() {
+  const [activeTab, setActiveTab] = useState<TabKey>('Academic');
+  const [expandedSubCat, setExpandedSubCat] = useState<string | null>(null); 
+  const [selectedItem, setSelectedItem] = useState<string>('');
 
   const academicClasses = ['LKG', 'UKG', 'CLASS-I', 'CLASS-II', 'CLASS-III', 'CLASS-IV', 'CLASS-V', 'CLASS-VI', 'CLASS-VII', 'CLASS-VIII', 'CLASS-IX', 'CLASS-X', 'CLASS-XI', 'CLASS-XII'];
-  const academicBoards = ['CBSE', 'ICSE', 'UP-BOARD', 'UP-BOARD HINDI', 'SSC-BOARD'];
 
-  
-  const handleTabChange = (tab: 'Academic' | 'Government' | 'Entrance') => {
-    setActiveMainTab(tab);
-    setIsExpanded(false); 
+  const dataMap: Record<TabKey, SubCategory[]> = {
+    Government: [
+      { id: 'SSC', title: 'SSC', desc: 'Staff Selection Commission', icon: Landmark, items: ['Selection Post', 'SSC-CGL', 'SSC-CPO SI', 'SSC-CHSL', 'SSC-GD', 'SSC-MTS', 'SSC-STENO'] },
+      { id: 'UPSSSC', title: 'UPSSSC', desc: 'Uttar Pradesh State Services', icon: MapPin, items: ['VDO', 'Lekhpal', 'PET'] },
+      { id: 'Teaching', title: 'Teaching', desc: 'Teaching & Education Exams', icon: GraduationCap, items: ['CTET', 'UPTET', 'Super TET'] },
+      { id: 'Banking', title: 'Banking', desc: 'Banking & Insurance Exams', icon: Building2, items: ['IBPS PO', 'SBI Clerk', 'RBI Grade B'] },
+      { id: 'Railway', title: 'Railway', desc: 'RRB & Railway Recruitment', icon: Train, items: ['RRB NTPC', 'RRB Group D', 'ALP'] },
+      { id: 'Police Exams', title: 'Police Exams', desc: 'State & Central Police', icon: ShieldAlert, items: ['UP Police Constable', 'Delhi Police SI'] }
+    ],
+    Academic: [
+      { id: 'CBSE', title: 'CBSE Board', desc: 'Central Board of Secondary Ed.', icon: Book, items: academicClasses },
+      { id: 'ICSE', title: 'ICSE Board', desc: 'Indian Certificate of Secondary Ed.', icon: BookOpen, items: academicClasses },
+      { id: 'UP', title: 'UP Board', desc: 'Uttar Pradesh State Board', icon: MapPin, items: academicClasses },
+      { id: 'SSC-BOARD', title: 'State Board', desc: 'Secondary School Certificate', icon: Shield, items: academicClasses }
+    ],
+    Entrance: [
+      { id: 'Eng', title: 'Engineering', desc: 'JEE, BITSAT, VITEEE', icon: Microscope, items: ['JEE Main', 'JEE Advanced', 'BITSAT', 'VITEEE', 'SRMJEEE'] },
+      { id: 'Med', title: 'Medical', desc: 'NEET, AIIMS, JIPMER', icon: Award, items: ['NEET UG', 'NEET PG', 'AIIMS', 'JIPMER'] },
+      { id: 'Law', title: 'Law', desc: 'CLAT, AILET, LSAT', icon: Scale, items: ['CLAT', 'AILET', 'LSAT India'] },
+      { id: 'Mgmt', title: 'Management', desc: 'CAT, XAT, MAT', icon: Briefcase, items: ['CAT', 'XAT', 'MAT', 'CMAT'] }
+    ]
   };
 
-  const handleBoardChange = (board: string) => {
-    setActiveBoard(board);
-    setIsExpanded(true);
+  const tabConfigs: Record<TabKey, TabConfig> = {
+    Academic: { icon: BookOpen, color: 'text-blue-700', activeBorder: 'border-blue-700' },
+    Government: { icon: Shield, color: 'text-blue-700', activeBorder: 'border-blue-700' },
+    Entrance: { icon: Award, color: 'text-purple-700', activeBorder: 'border-purple-700' }
   };
 
-  const handleGovCategoryChange = (category: string) => {
-    setActiveGovCategory(category);
-    setActiveGovExam(govExamsList[category as keyof typeof govExamsList][0]);
-    setIsExpanded(true);
+  const activeData = dataMap[activeTab];
+
+  const handleTabChange = (tab: TabKey) => {
+    setActiveTab(tab);
+    setExpandedSubCat(null); 
+    setSelectedItem('');
   };
 
-  const handleEntranceCategoryChange = (category: string) => {
-    setActiveEntranceCategory(category);
-    setActiveEntranceExam(entranceExamsList[category as keyof typeof entranceExamsList][0]);
-    setIsExpanded(true);
+  const toggleExpand = (subCatId: string) => {
+    if (expandedSubCat === subCatId) {
+      setExpandedSubCat(null);
+    } else {
+      setExpandedSubCat(subCatId);
+      setSelectedItem('');
+    }
   };
+
+  const activeCategoryData = activeData.find(cat => cat.id === expandedSubCat);
 
   return (
-    <div className="w-full bg-[#0B0D14] py-16 md:py-24 px-4 flex flex-col items-center font-sans transition-all duration-500 ease-in-out">
+    <div className="min-h-screen w-full bg-[#F4F7FE] py-20 px-6 flex flex-col items-center font-sans">
       
-      <div className="text-center mb-10 px-4">
-        <p className="text-slate-400 text-4xl ">
-          Select your target curriculum, exams, and goals to get started.
-        </p>
+      <div className="text-center mb-16">
+        <h1 className="text-[#1E293B] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">Explore Your Path</h1>
+        <p className="text-slate-500 text-xl md:text-2xl">Select your domain, category, and target to get started.</p>
       </div>
 
-      <div className="w-full max-w-5xl flex flex-col items-center">
+      <div className="w-full max-w-350 rounded-[3rem] bg-white shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-200 overflow-hidden relative pb-12">
         
-        <div className="flex bg-[#15192B] rounded-full p-1.5 mb-10 w-full md:max-w-2xl shadow-inner border border-slate-800/60">
-          {['Academic', 'Government', 'Entrance'].map((tab) => {
-            const isActive = activeMainTab === tab;
+        {/* Top Navigation Tabs */}
+        <div className="flex relative z-10 bg-white border-b-2 border-slate-100">
+          {(Object.keys(tabConfigs) as TabKey[]).map((tab) => {
+            const Icon = tabConfigs[tab].icon;
+            const isActive = activeTab === tab;
             return (
               <button
                 key={tab}
-                onClick={() => handleTabChange(tab as any)}
-                className={`flex-1 py-3.5 text-sm md:text-base font-bold rounded-full transition-all duration-300 ${
+                onClick={() => handleTabChange(tab)}
+                className={`flex-1 py-8 md:py-10 flex items-center justify-center gap-4 transition-all duration-300 border-b-[6px] ${
                   isActive 
-                    ? 'bg-blue-600 text-white border border-blue-400 shadow-[0_0_20px_rgba(37,99,235,0.5)] transform scale-[1.02]' 
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? `${tabConfigs[tab].activeBorder} bg-slate-50` 
+                    : 'border-transparent hover:bg-slate-50'
                 }`}
               >
-                {tab}
+                <Icon className={`w-7 h-7 md:w-10 md:h-10 ${isActive ? tabConfigs[tab].color : 'text-slate-500'}`} />
+                <span className={`font-bold text-xl md:text-3xl ${isActive ? tabConfigs[tab].color : 'text-slate-600'}`}>
+                  {tab}
+                </span>
               </button>
             );
           })}
         </div>
 
-        <div className="w-full flex justify-center items-center gap-3 mb-8">
-          <span className="text-slate-400 text-sm font-medium">Step {isExpanded ? '2' : '1'} of 2</span>
-          <div className="flex gap-1.5 ml-1">
-            <div className={`w-2.5 h-2.5 rounded-full transition-colors ${!isExpanded ? 'bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.8)]' : 'bg-slate-700'}`}></div>
-            <div className={`w-2.5 h-2.5 rounded-full transition-colors ${isExpanded ? 'bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.8)]' : 'bg-slate-700'}`}></div>
-          </div>
+        {/* Decorative Wave - Color matched to your image */}
+        <div className="w-full relative h-20 pointer-events-none z-0">
+           <svg viewBox="0 0 1440 120" className="absolute top-0 w-full h-full preserve-3d" preserveAspectRatio="none">
+             <path 
+               className="fill-[#dee2e7] transition-colors duration-500" 
+               d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
+             ></path>
+           </svg>
         </div>
 
-    
-        <div className="w-full flex flex-col items-center space-y-4">
-          <h3 className="text-white text-lg md:text-xl font-bold px-2 text-center tracking-wide">
-            {activeMainTab === 'Academic' ? 'Select Board' : activeMainTab === 'Government' ? 'Exam Category' : 'Field of Study'}
-          </h3>
-          
-         
-          <div className="w-full md:w-fit max-w-full bg-[#15192B] border border-slate-700/50 rounded-4xl p-2 flex overflow-x-auto md:flex-wrap hide-scrollbar gap-2 shadow-lg justify-start md:justify-center transition-all duration-300">
-            
-            
-            {activeMainTab === 'Academic' && academicBoards.map((board) => (
-              <button
-                key={board}
-                onClick={() => handleBoardChange(board)}
-                className={`px-6 py-3.5 rounded-3xl flex items-center gap-2 whitespace-nowrap text-sm md:text-base font-bold transition-all duration-300 ${
-                  activeBoard === board 
-                    ? 'bg-blue-600/20 text-white border border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.4)]' 
-                    : 'bg-transparent border border-transparent text-slate-400 hover:bg-slate-800 hover:text-slate-200'
-                }`}
-              >
-                {activeBoard === board && <BookOpen className="w-4 h-4 text-blue-400" />}
-                {board}
-              </button>
-            ))}
+        <div className="px-8 md:px-14 relative z-10 pt-4">
+          <h2 className="text-2xl md:text-4xl text-slate-800 font-bold mb-10">
+            Select {activeTab === 'Academic' ? 'Board' : activeTab === 'Entrance' ? 'Field' : 'Category'} & Exam
+          </h2>
 
-           
-            {activeMainTab === 'Government' && Object.keys(govExamsList).map((cat) => (
-              <button
-                key={cat}
-                onClick={() => handleGovCategoryChange(cat)}
-                className={`px-6 py-3.5 rounded-3xl flex items-center gap-2 whitespace-nowrap text-sm md:text-base font-bold transition-all duration-300 ${
-                  activeGovCategory === cat 
-                    ? 'bg-blue-600/20 text-white border border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.4)]' 
-                    : 'bg-transparent border border-transparent text-slate-400 hover:bg-slate-800 hover:text-slate-200'
-                }`}
-              >
-                {activeGovCategory === cat && <Shield className="w-4 h-4 text-blue-400" />}
-                {cat}
-              </button>
-            ))}
-
-          
-            {activeMainTab === 'Entrance' && Object.keys(entranceExamsList).map((field) => (
-              <button
-                key={field}
-                onClick={() => handleEntranceCategoryChange(field)}
-                className={`px-6 py-3.5 rounded-3xl flex items-center gap-2 whitespace-nowrap text-sm md:text-base font-bold transition-all duration-300 ${
-                  activeEntranceCategory === field 
-                    ? 'bg-blue-600/20 text-white border border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.4)]' 
-                    : 'bg-transparent border border-transparent text-slate-400 hover:bg-slate-800 hover:text-slate-200'
-                }`}
-              >
-                {activeEntranceCategory === field && <Award className="w-4 h-4 text-blue-400" />}
-                {field}
-              </button>
-            ))}
-
-          </div>
-        </div>
-
-        <div className="relative w-full max-w-3xl my-8 flex justify-center items-center">
-          <div className="absolute w-full h-px bg-linear-to-r from-transparent via-blue-500/50 to-transparent"></div>
-          <div className="absolute w-32 h-6 bg-blue-500/20 blur-xl rounded-full"></div>
-          <button 
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="relative z-10 text-blue-400 hover:text-blue-300 transition-colors animate-bounce mt-2 focus:outline-none bg-[#0B0D14] px-4"
-          >
-            {isExpanded ? <ChevronUp className="w-6 h-6" /> : <ChevronDown className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {isExpanded && (
-          <div className="w-full flex flex-col items-center space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
-            <h3 className="text-white text-lg md:text-xl font-bold px-2 text-center tracking-wide">
-              {activeMainTab === 'Academic' ? 'Select Class' : 'Target Exam'}
-            </h3>
-            
-            <div className="w-full md:w-fit max-w-full bg-[#15192B] border border-slate-700/50 rounded-4xl p-3 shadow-lg transition-all duration-300">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {activeData.map((subCategory) => {
+              const isActive = expandedSubCat === subCategory.id;
+              const Icon = subCategory.icon;
               
-              {activeMainTab === 'Academic' && (
-                <div className="flex flex-wrap justify-center gap-3 max-h-64 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-600 max-w-4xl">
-                  {academicClasses.map((cls) => (
-                    <button
-                      key={cls}
-                      onClick={() => setActiveClass(cls)}
-                      className={`py-3 px-5 rounded-2xl text-sm font-bold transition-all duration-300 ${
-                        activeClass === cls 
-                          ? 'bg-blue-600/20 text-white border border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.4)]' 
-                          : 'bg-slate-800/40 border border-slate-700/50 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
-                      }`}
-                    >
-                      {cls}
-                    </button>
-                  ))}
-                </div>
-              )}
+              return (
+                <button 
+                  key={subCategory.id}
+                  onClick={() => toggleExpand(subCategory.id)}
+                  className={`w-full p-6 md:p-8 rounded-3xl flex items-center gap-6 transition-all duration-300 border-2 ${
+                    isActive 
+                      ? 'bg-blue-50/50 border-blue-600 shadow-md ring-1 ring-blue-600/20 scale-[1.02]' 
+                      : 'bg-white border-slate-200 hover:border-blue-400 hover:shadow-sm'
+                  }`}
+                >
+                  <div className={`p-4 md:p-5 rounded-2xl shrink-0 transition-colors ${
+                    isActive ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'
+                  }`}>
+                    <Icon className="w-8 h-8 md:w-10 md:h-10" />
+                  </div>
+                  
+                  <div className="flex flex-col text-left">
+                    <span className="font-bold text-2xl md:text-3xl text-slate-800 leading-tight">
+                      {subCategory.title}
+                    </span>
+                    <span className="text-base md:text-lg text-slate-500 mt-2 line-clamp-1">
+                      {subCategory.desc}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
 
-              {activeMainTab === 'Government' && (
-                <div className="flex flex-wrap justify-center gap-3 max-h-64 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-600 max-w-4xl">
-                  {govExamsList[activeGovCategory as keyof typeof govExamsList].map((exam) => (
-                    <button
-                      key={exam}
-                      onClick={() => setActiveGovExam(exam)}
-                      className={`px-5 py-3 rounded-2xl text-sm font-bold transition-all duration-300 ${
-                        activeGovExam === exam 
-                          ? 'bg-blue-600/20 text-white border border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.4)]' 
-                          : 'bg-slate-800/40 border border-slate-700/50 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
-                      }`}
-                    >
-                      {exam}
-                    </button>
-                  ))}
-                </div>
-              )}
-
-              {activeMainTab === 'Entrance' && (
-                <div className="flex flex-wrap justify-center gap-3 max-h-64 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-600 max-w-4xl">
-                  {entranceExamsList[activeEntranceCategory as keyof typeof entranceExamsList].map((exam) => (
-                    <button
-                      key={exam}
-                      onClick={() => setActiveEntranceExam(exam)}
-                      className={`px-5 py-3 rounded-2xl text-sm font-bold transition-all duration-300 ${
-                        activeEntranceExam === exam 
-                          ? 'bg-blue-600/20 text-white border border-blue-500 shadow-[0_0_15px_rgba(37,99,235,0.4)]' 
-                          : 'bg-slate-800/40 border border-slate-700/50 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
-                      }`}
-                    >
-                      {exam}
-                    </button>
-                  ))}
-                </div>
-              )}
-
-            </div>
-            
-            <div className="pt-10 pb-4 flex justify-center w-full">
-               <button className="w-full max-w-xs py-4 rounded-full font-bold text-white text-lg bg-blue-600 hover:bg-blue-500 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] tracking-wide">
-                Continue →
+          <div className={`transition-all duration-500 ease-in-out ${expandedSubCat ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+            <div className="relative w-full flex justify-center items-center mt-14 mb-10">
+              <div className="absolute w-full h-0.5 bg-slate-100 -z-10"></div>
+              <button 
+                onClick={() => setExpandedSubCat(null)}
+                className="bg-white p-3 md:p-4 rounded-full border-2 border-slate-200 text-blue-600 hover:bg-blue-50 transition-colors shadow-sm"
+              >
+                <ChevronDown className="w-8 h-8 md:w-10 md:h-10" />
               </button>
             </div>
-
           </div>
-        )}
 
+          <div className={`transition-all duration-500 ease-in-out origin-top ${
+            expandedSubCat ? 'max-h-300 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+          }`}>
+            
+            {activeCategoryData && (
+              <div className="flex flex-col items-center animate-in fade-in zoom-in-95 duration-300 pb-10">
+                <div className="bg-slate-50 border-2 border-slate-200 rounded-[2.5rem] p-8 md:p-12 w-full flex flex-wrap justify-center gap-4 md:gap-6 shadow-inner">
+                  {activeCategoryData.items.map((item: string) => {
+                    const isSelected = selectedItem === item;
+                    return (
+                      <button
+                        key={item}
+                        onClick={() => setSelectedItem(item)}
+                        className={`px-8 py-5 md:px-10 md:py-6 rounded-2xl text-xl md:text-2xl font-bold transition-all duration-300 border-2 ${
+                          isSelected 
+                            ? 'bg-blue-700 border-blue-700 text-white shadow-[0_4px_20px_rgba(29,78,216,0.3)]' 
+                            : 'bg-white border-slate-200 text-slate-600 hover:border-blue-400 hover:text-blue-700 shadow-sm'
+                        }`}
+                      >
+                        {item}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-14 w-full flex justify-center">
+                  <button 
+                    disabled={!selectedItem}
+                    className={`px-24 py-6 md:px-32 md:py-8 rounded-full font-bold text-2xl md:text-3xl transition-all duration-300 flex items-center justify-center gap-4 ${
+                      selectedItem 
+                        ? 'bg-linear-to-r from-blue-600 to-indigo-700 text-white shadow-[0_10px_40px_rgba(29,78,216,0.4)] hover:-translate-y-2' 
+                        : 'bg-slate-100 text-slate-400 cursor-not-allowed border-2 border-slate-200'
+                    }`}
+                  >
+                    Continue <span className="text-3xl md:text-4xl">→</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+        </div>
       </div>
     </div>
   );
 }
-
-export default ExploreCourse;

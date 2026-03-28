@@ -54,7 +54,7 @@ const Login = () => {
     <div 
       className="min-h-screen w-full flex items-center justify-center bg-linear-to-br from-[#0BA0C8] via-[#0BA0C8] to-[#01CB89] p-4 md:p-8 relative overflow-hidden"
       style={{
-        backgroundImage: 'url(/AI/bglogin.png)',
+        backgroundImage: 'url(/AI/bglogin.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -79,7 +79,7 @@ const Login = () => {
             
             <div className="mb-8 flex justify-center  drop-shadow-2xl">
               <Image
-                src="/AI/logins.png" 
+                src="/AI/logins.webp" 
                 alt="GradePlus Mobile App"
                 width={400}
                 height={400}
@@ -102,7 +102,7 @@ const Login = () => {
               <div className="bg-white/20 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl flex flex-col items-center justify-center transition-transform hover:-translate-y-1 hover:bg-white/30 px-6">
                 <Link href="https://play.google.com/store/apps/details?id=com.app.iblib" target="_blank" className="flex items-center justify-center">
                   <Image
-                    src="/AI/playstore.png" 
+                    src="/AI/playstore.webp" 
                     alt="Available on Play Store"
                     width={110}
                     height={35}

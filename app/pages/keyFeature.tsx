@@ -9,26 +9,26 @@ const KeyFeatures = () => {
       icon: '/SVG/Help me to Solve.svg',
       title: 'Help me to Solve',
       description: "Don't just get the answer. Understand the 'why' with complex logic broken down into bite-sized, digestible steps.",
-      image: '/AI/2.png',
+      image: '/AI/2.webp',
     },
     {
       icon: '/SVG/Detailed Solutions.svg',
       title: 'Detailed solution',
       description: 'Stuck on a problem? Just snap a photo to get instant, detailed solutions. Our AI instantly recognizes complex formulas and text.',
-      image: '/AI/4.jpg',
+      image: '/AI/4.webp',
     },
     {
       icon: '/SVG/Image Interpreter.svg',
       title: 'Image Interpreter',
       description: 'Write anything. Scribble equations, draw diagrams, or jot down notes and watch our visual AI solve them in real-time.',
-      image: '/AI/3.png',
+      image: '/AI/3.webp',
     },
   ];
 
   return (
     <div className="relative min-h-screen bg-[#0B1121] text-white py-24 overflow-hidden flex flex-col items-center">
       
-      {/* PERFECT GPU-ACCELERATED ANIMATION LOOP */}
+      
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes scan {
           0% { transform: translate3d(0, -100%, 0); }

@@ -15,14 +15,14 @@ const Applink = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <img
-            src="/AI/newsr.png"
+            src="/AI/newsr.webp"
             alt="GradePlus App Preview Desktop"
             className="hidden md:block w-[150%] max-w-none h-auto max-h-[90vh] object-contain rounded-xl"
           />
 
           
           <img
-            src="/AI/logins.png"
+            src="/AI/logins.webp"
             alt="GradePlus App Preview Mobile"
             className="block md:hidden w-full max-w-75 h-auto object-contain rounded-xl"
           />
@@ -56,7 +56,7 @@ const Applink = () => {
               className="transition-transform duration-300 hover:scale-105"
             >
               <img
-                src="/AI/playstore.png"
+                src="/AI/playstore.webp"
                 alt="Get it on Google Play"
                 className="h-14 w-auto"
               />
@@ -64,7 +64,7 @@ const Applink = () => {
 
             <div className="flex flex-col items-center">
               <img
-                src="/AI/GradePlusApp.png"
+                src="/AI/GradePlusApp.webp"
                 alt="Scan QR Code"
                 className="h-28 w-28 rounded-lg shadow-md"
               />

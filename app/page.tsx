@@ -10,7 +10,6 @@ import Schools from "./pages/Schools";
 import Details from "./pages/Details";
 import Applink from "./components/Applink";
 import ExploreCourse from "./pages/ExploreCourse";
-//import ExploreCourses from "./pages/ExploreCourses";
 import Featuredcourses from "./components/FeaturedCourses";
 import SubjectiveAssessment from "./components/SubjectiveAssessment";
 import School from "./components/School";
@@ -21,12 +20,14 @@ const Home = () => {
       <Header />
       <section id="home"><Crousal /></section>
       <section id="keyfeatures"><KeyFeatures /></section>
+      
       <SubjectiveAssessment />
+      <section id="About us"><ExploreCourse /></section>
       <School />
       <section id="herosection"><HeroSection /></section>
       <Details />
-      <section id="About us"><ExploreCourse /></section>
-     {/*<section id="About us"><ExploreCourses /></section>*/}
+      
+     
       <Featuredcourses />
       <section id="gallery"><Gallery /></section>
       <section id="form"><Form /></section>
