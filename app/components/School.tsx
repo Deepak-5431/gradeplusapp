@@ -9,7 +9,7 @@ const School = () => {
       
       <div className="absolute inset-0 -z-10 bg-slate-100">
         <Image 
-          src="/AI/section-4-background.png" 
+          src="/AI/section-4-background.webp" 
           alt="Background pattern" 
           fill
           className="object-cover opacity-40" 
@@ -63,7 +63,7 @@ const School = () => {
 
             <div className="relative w-full aspect-4/3 bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden group-hover:shadow-md transition-shadow">
               <Image 
-                src="/AI/us2.png" 
+                src="/AI/us2.webp" 
                 alt="AI Text Summary" 
                 fill
                 className="object-contain p-2"

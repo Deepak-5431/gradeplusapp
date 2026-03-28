@@ -43,7 +43,7 @@ const SubjectiveAssessment = () => {
                 onClick={() => setSelectedImage('/AI/first.jpeg')}
               >
                 <Image 
-                  src="/AI/first.jpeg" 
+                  src="/AI/first.webp" 
                   alt="Original Student Handwriting" 
                   width={400}
                   height={550}
@@ -95,7 +95,7 @@ const SubjectiveAssessment = () => {
                 onClick={() => setSelectedImage('/AI/second.jpeg')}
               >
                 <Image 
-                  src="/AI/second.jpeg"  
+                  src="/AI/second.webp"  
                   alt="AI Evaluated and Corrected Work" 
                   width={400}
                   height={550}
