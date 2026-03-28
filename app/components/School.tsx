@@ -44,7 +44,7 @@ const School = () => {
 
             <div className="relative w-full aspect-4/3 bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden group-hover:shadow-md transition-shadow">
               <Image 
-                src="/AI/use1.png" 
+                src="/AI/use1.webp" 
                 alt="AI PPT Generation" 
                 fill
                 className="object-contain p-2"
