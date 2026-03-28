@@ -26,7 +26,7 @@ const Header = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8 lg:px-16 py-4">
         <Link href="/" className="flex items-center gap-2">
           <Image 
-            src="/AI/logo.png" 
+            src="/AI/logo.webp" 
             alt="GradePlus Logo" 
             width={150} 
             height={35} 
