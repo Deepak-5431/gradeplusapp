@@ -91,16 +91,18 @@ export default function ExploreCourse() {
   const activeCategoryData = activeData.find(cat => cat.id === expandedSubCat);
 
   return (
-    <div className="min-h-screen w-full bg-[#F4F7FE] py-20 px-6 flex flex-col items-center font-sans">
+    <div className="min-h-screen w-full bg-[#F4F7FE] py-12 px-4 md:px-6 flex flex-col items-center font-sans">
       
-      <div className="text-center mb-16">
-        <h1 className="text-[#1E293B] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">Explore Your Path</h1>
-        <p className="text-slate-500 text-xl md:text-2xl">Select your domain, category, and target to get started.</p>
+      {/* Scaled down heading */}
+      <div className="text-center mb-10">
+        <h1 className="text-[#1E293B] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">Explore Your Path</h1>
+        <p className="text-slate-500 text-lg md:text-xl">Select your domain, category, and target to get started.</p>
       </div>
 
-      <div className="w-full max-w-350 rounded-[3rem] bg-white shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-200 overflow-hidden relative pb-12">
+      {/* Reduced max-width from 1400px to 1200px and border radius */}
+      <div className="w-full max-w-300 rounded-4xl bg-white shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-200 overflow-hidden relative pb-10">
         
-        {/* Top Navigation Tabs */}
+        {/* Top Navigation Tabs - Reduced padding and text size */}
         <div className="flex relative z-10 bg-white border-b-2 border-slate-100">
           {(Object.keys(tabConfigs) as TabKey[]).map((tab) => {
             const Icon = tabConfigs[tab].icon;
@@ -109,14 +111,14 @@ export default function ExploreCourse() {
               <button
                 key={tab}
                 onClick={() => handleTabChange(tab)}
-                className={`flex-1 py-8 md:py-10 flex items-center justify-center gap-4 transition-all duration-300 border-b-[6px] ${
+                className={`flex-1 py-5 md:py-6 flex items-center justify-center gap-3 transition-all duration-300 border-b-4 ${
                   isActive 
                     ? `${tabConfigs[tab].activeBorder} bg-slate-50` 
                     : 'border-transparent hover:bg-slate-50'
                 }`}
               >
-                <Icon className={`w-7 h-7 md:w-10 md:h-10 ${isActive ? tabConfigs[tab].color : 'text-slate-500'}`} />
-                <span className={`font-bold text-xl md:text-3xl ${isActive ? tabConfigs[tab].color : 'text-slate-600'}`}>
+                <Icon className={`w-6 h-6 md:w-8 md:h-8 ${isActive ? tabConfigs[tab].color : 'text-slate-500'}`} />
+                <span className={`font-bold text-lg md:text-2xl ${isActive ? tabConfigs[tab].color : 'text-slate-600'}`}>
                   {tab}
                 </span>
               </button>
@@ -124,8 +126,8 @@ export default function ExploreCourse() {
           })}
         </div>
 
-        {/* Decorative Wave - Color matched to your image */}
-        <div className="w-full relative h-20 pointer-events-none z-0">
+        {/* Decorative Wave - Adjusted height */}
+        <div className="w-full relative h-12 md:h-16 pointer-events-none z-0">
            <svg viewBox="0 0 1440 120" className="absolute top-0 w-full h-full preserve-3d" preserveAspectRatio="none">
              <path 
                className="fill-[#dee2e7] transition-colors duration-500" 
@@ -134,12 +136,14 @@ export default function ExploreCourse() {
            </svg>
         </div>
 
-        <div className="px-8 md:px-14 relative z-10 pt-4">
-          <h2 className="text-2xl md:text-4xl text-slate-800 font-bold mb-10">
+        {/* Step 1 Content - Scaled down padding, text, and icons */}
+        <div className="px-6 md:px-10 relative z-10 pt-2">
+          <h2 className="text-xl md:text-2xl text-slate-800 font-bold mb-6">
             Select {activeTab === 'Academic' ? 'Board' : activeTab === 'Entrance' ? 'Field' : 'Category'} & Exam
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {/* Grid gaps slightly reduced */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {activeData.map((subCategory) => {
               const isActive = expandedSubCat === subCategory.id;
               const Icon = subCategory.icon;
@@ -148,23 +152,23 @@ export default function ExploreCourse() {
                 <button 
                   key={subCategory.id}
                   onClick={() => toggleExpand(subCategory.id)}
-                  className={`w-full p-6 md:p-8 rounded-3xl flex items-center gap-6 transition-all duration-300 border-2 ${
+                  className={`w-full p-4 md:p-6 rounded-2xl flex items-center gap-4 transition-all duration-300 border-2 ${
                     isActive 
                       ? 'bg-blue-50/50 border-blue-600 shadow-md ring-1 ring-blue-600/20 scale-[1.02]' 
                       : 'bg-white border-slate-200 hover:border-blue-400 hover:shadow-sm'
                   }`}
                 >
-                  <div className={`p-4 md:p-5 rounded-2xl shrink-0 transition-colors ${
+                  <div className={`p-3 md:p-4 rounded-xl shrink-0 transition-colors ${
                     isActive ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'
                   }`}>
-                    <Icon className="w-8 h-8 md:w-10 md:h-10" />
+                    <Icon className="w-6 h-6 md:w-8 md:h-8" />
                   </div>
                   
                   <div className="flex flex-col text-left">
-                    <span className="font-bold text-2xl md:text-3xl text-slate-800 leading-tight">
+                    <span className="font-bold text-lg md:text-xl text-slate-800 leading-tight">
                       {subCategory.title}
                     </span>
-                    <span className="text-base md:text-lg text-slate-500 mt-2 line-clamp-1">
+                    <span className="text-sm md:text-base text-slate-500 mt-1 line-clamp-1">
                       {subCategory.desc}
                     </span>
                   </div>
@@ -173,32 +177,34 @@ export default function ExploreCourse() {
             })}
           </div>
 
+          {/* Chevron Divider - Scaled down margins and button size */}
           <div className={`transition-all duration-500 ease-in-out ${expandedSubCat ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-            <div className="relative w-full flex justify-center items-center mt-14 mb-10">
+            <div className="relative w-full flex justify-center items-center mt-8 mb-6">
               <div className="absolute w-full h-0.5 bg-slate-100 -z-10"></div>
               <button 
                 onClick={() => setExpandedSubCat(null)}
-                className="bg-white p-3 md:p-4 rounded-full border-2 border-slate-200 text-blue-600 hover:bg-blue-50 transition-colors shadow-sm"
+                className="bg-white p-2 md:p-3 rounded-full border-2 border-slate-200 text-blue-600 hover:bg-blue-50 transition-colors shadow-sm"
               >
-                <ChevronDown className="w-8 h-8 md:w-10 md:h-10" />
+                <ChevronDown className="w-6 h-6" />
               </button>
             </div>
           </div>
 
+          {/* Step 2 Expanded Content - Scaled down pills and padding */}
           <div className={`transition-all duration-500 ease-in-out origin-top ${
             expandedSubCat ? 'max-h-300 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
           }`}>
             
             {activeCategoryData && (
-              <div className="flex flex-col items-center animate-in fade-in zoom-in-95 duration-300 pb-10">
-                <div className="bg-slate-50 border-2 border-slate-200 rounded-[2.5rem] p-8 md:p-12 w-full flex flex-wrap justify-center gap-4 md:gap-6 shadow-inner">
+              <div className="flex flex-col items-center animate-in fade-in zoom-in-95 duration-300 pb-6">
+                <div className="bg-slate-50 border-2 border-slate-200 rounded-4xl p-6 md:p-8 w-full flex flex-wrap justify-center gap-3 md:gap-4 shadow-inner">
                   {activeCategoryData.items.map((item: string) => {
                     const isSelected = selectedItem === item;
                     return (
                       <button
                         key={item}
                         onClick={() => setSelectedItem(item)}
-                        className={`px-8 py-5 md:px-10 md:py-6 rounded-2xl text-xl md:text-2xl font-bold transition-all duration-300 border-2 ${
+                        className={`px-5 py-3 md:px-6 md:py-4 rounded-xl text-base md:text-lg font-bold transition-all duration-300 border-2 ${
                           isSelected 
                             ? 'bg-blue-700 border-blue-700 text-white shadow-[0_4px_20px_rgba(29,78,216,0.3)]' 
                             : 'bg-white border-slate-200 text-slate-600 hover:border-blue-400 hover:text-blue-700 shadow-sm'
@@ -210,16 +216,17 @@ export default function ExploreCourse() {
                   })}
                 </div>
 
-                <div className="mt-14 w-full flex justify-center">
+                {/* Continue Button - Scaled down padding and text */}
+                <div className="mt-10 w-full flex justify-center">
                   <button 
                     disabled={!selectedItem}
-                    className={`px-24 py-6 md:px-32 md:py-8 rounded-full font-bold text-2xl md:text-3xl transition-all duration-300 flex items-center justify-center gap-4 ${
+                    className={`px-12 py-4 md:px-16 md:py-4 rounded-full font-bold text-lg md:text-xl transition-all duration-300 flex items-center justify-center gap-3 ${
                       selectedItem 
-                        ? 'bg-linear-to-r from-blue-600 to-indigo-700 text-white shadow-[0_10px_40px_rgba(29,78,216,0.4)] hover:-translate-y-2' 
+                        ? 'bg-linear-to-r from-blue-600 to-indigo-700 text-white shadow-[0_8px_30px_rgba(29,78,216,0.4)] hover:-translate-y-1' 
                         : 'bg-slate-100 text-slate-400 cursor-not-allowed border-2 border-slate-200'
                     }`}
                   >
-                    Continue <span className="text-3xl md:text-4xl">→</span>
+                    Continue <span className="text-2xl md:text-3xl leading-none">→</span>
                   </button>
                 </div>
               </div>
