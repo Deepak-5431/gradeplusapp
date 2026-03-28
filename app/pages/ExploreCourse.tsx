@@ -93,16 +93,14 @@ export default function ExploreCourse() {
   return (
     <div className="min-h-screen w-full bg-[#F4F7FE] py-12 px-4 md:px-6 flex flex-col items-center font-sans">
       
-      {/* Scaled down heading */}
       <div className="text-center mb-10">
         <h1 className="text-[#1E293B] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">Explore Your Path</h1>
         <p className="text-slate-500 text-lg md:text-xl">Select your domain, category, and target to get started.</p>
       </div>
 
-      {/* Reduced max-width from 1400px to 1200px and border radius */}
+     
       <div className="w-full max-w-300 rounded-4xl bg-white shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-200 overflow-hidden relative pb-10">
         
-        {/* Top Navigation Tabs - Reduced padding and text size */}
         <div className="flex relative z-10 bg-white border-b-2 border-slate-100">
           {(Object.keys(tabConfigs) as TabKey[]).map((tab) => {
             const Icon = tabConfigs[tab].icon;
@@ -126,7 +124,6 @@ export default function ExploreCourse() {
           })}
         </div>
 
-        {/* Decorative Wave - Adjusted height */}
         <div className="w-full relative h-12 md:h-16 pointer-events-none z-0">
            <svg viewBox="0 0 1440 120" className="absolute top-0 w-full h-full preserve-3d" preserveAspectRatio="none">
              <path 
@@ -136,13 +133,11 @@ export default function ExploreCourse() {
            </svg>
         </div>
 
-        {/* Step 1 Content - Scaled down padding, text, and icons */}
         <div className="px-6 md:px-10 relative z-10 pt-2">
           <h2 className="text-xl md:text-2xl text-slate-800 font-bold mb-6">
             Select {activeTab === 'Academic' ? 'Board' : activeTab === 'Entrance' ? 'Field' : 'Category'} & Exam
           </h2>
 
-          {/* Grid gaps slightly reduced */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {activeData.map((subCategory) => {
               const isActive = expandedSubCat === subCategory.id;
@@ -177,7 +172,6 @@ export default function ExploreCourse() {
             })}
           </div>
 
-          {/* Chevron Divider - Scaled down margins and button size */}
           <div className={`transition-all duration-500 ease-in-out ${expandedSubCat ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0 overflow-hidden'}`}>
             <div className="relative w-full flex justify-center items-center mt-8 mb-6">
               <div className="absolute w-full h-0.5 bg-slate-100 -z-10"></div>
@@ -190,7 +184,6 @@ export default function ExploreCourse() {
             </div>
           </div>
 
-          {/* Step 2 Expanded Content - Scaled down pills and padding */}
           <div className={`transition-all duration-500 ease-in-out origin-top ${
             expandedSubCat ? 'max-h-300 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
           }`}>
@@ -216,7 +209,6 @@ export default function ExploreCourse() {
                   })}
                 </div>
 
-                {/* Continue Button - Scaled down padding and text */}
                 <div className="mt-10 w-full flex justify-center">
                   <button 
                     disabled={!selectedItem}
