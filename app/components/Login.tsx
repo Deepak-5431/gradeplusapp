@@ -90,7 +90,7 @@ const Login = () => {
             <div className="flex flex-row gap-4 items-stretch justify-center w-full">
               <div className="bg-white/20 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl flex flex-col items-center justify-center transition-transform hover:-translate-y-1 hover:bg-white/30">
                 <Image
-                  src="/AI/GradePlusApp.png"
+                  src="/AI/GradePlusApp.webp"
                   alt="Scan to Download"
                   width={80}
                   height={80}
