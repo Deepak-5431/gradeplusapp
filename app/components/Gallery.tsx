@@ -67,7 +67,7 @@ const Gallery = () => {
           </p>
         </div>
 
-        {/* Embla Carousel */}
+        
         <div className="relative">
           <div className="overflow-visible" ref={emblaRef}>
             <div className="flex -ml-4 items-center h-144"> {/* Fixed height container to prevent jumping */}

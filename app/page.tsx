@@ -23,12 +23,13 @@ const Home = () => {
       
       <SubjectiveAssessment />
       <section id="About us"><ExploreCourse /></section>
+      <Featuredcourses />
       <School />
       <section id="herosection"><HeroSection /></section>
       <Details />
       
      
-      <Featuredcourses />
+      
       <section id="gallery"><Gallery /></section>
       <section id="form"><Form /></section>
       <section id="testimonies"><Schools /></section>

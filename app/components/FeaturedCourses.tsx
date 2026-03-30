@@ -9,7 +9,7 @@ const popularCourses = [
     id: 1, 
     name: 'Mole Concept | Lecture - 1 | NEET - Chemistry | Crash Course | NEET 2024', 
     channel: 'GradePlus Foundation',
-    youtubeId: 'agLaWA-O-pE', 
+    youtubeId: 'Lz0kJ0hT-Ic', 
     duration: '1:04:20',
     popular: true 
   },
@@ -17,7 +17,7 @@ const popularCourses = [
     id: 2, 
     name: 'JEE Advanced Prep: Limits & Derivatives Masterclass', 
     channel: 'GradePlus Foundation',
-    youtubeId: 'agLaWA-O-pE',
+    youtubeId: 'dZOAIvyzMSU',
     duration: '45:12',
     popular: false 
   },
@@ -25,7 +25,7 @@ const popularCourses = [
     id: 3, 
     name: 'NEET Biology Focus: Human Anatomy Top 50 MCQs', 
     channel: 'GradePlus Foundation',
-    youtubeId: 'agLaWA-O-pE',
+    youtubeId: '64Ld2OTXiAU',
     duration: '52:10',
     popular: true
   },
@@ -41,7 +41,7 @@ const popularCourses = [
     id: 5, 
     name: 'Olympiad Training: Advanced Number Theory', 
     channel: 'GradePlus Foundation',
-    youtubeId: 'agLaWA-O-pE',
+    youtubeId: 'vka6P22_MiM',
     duration: '38:45',
     popular: true
   },
@@ -54,7 +54,7 @@ const FeaturedCourses = () => {
 
   return (
     <>
-      <section className="py-8 bg-slate-300 border-t border-slate-200 overflow-hidden relative">
+      <section className="py-8 bg-slate-100 border-t border-slate-200 overflow-hidden relative">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           
           <div className="flex items-center justify-between mb-6">

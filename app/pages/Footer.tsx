@@ -45,7 +45,7 @@ const Footer = () => {
     <footer className="w-full bg-white relative">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-2 md:px-6 lg:grid-cols-4">
         
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
           <Image 
             src="/AI/logo.webp" 
@@ -55,16 +55,42 @@ const Footer = () => {
             className="object-contain h-8 w-auto"
           />
           </div>
-          <p className="text-sm text-slate-500 leading-relaxed mt-4">
-            UGF-03, Trinity Square Complex<br />
-            Near Badshahnagar Metro Station<br />
-            Mahanagar Lucknow 226006
-          </p>
-          <p className="text-sm text-slate-500 mt-2">
-            <span className="font-semibold text-slate-700">Phone:</span> 0522-4301355
-            <br />
-            <span className="font-semibold text-slate-700">Email:</span> info@iblib.com
-          </p>
+
+          <div className="space-y-4 text-sm text-slate-500 leading-relaxed mt-2">
+            <div>
+              <h4 className="text-xs font-bold tracking-wide text-slate-800">REGIONAL OFFICE</h4>
+              <p>
+                UGF 03, Trinity Square<br />
+                Badshah Nagar Metro Station<br />
+                Mahanagar, Lucknow-226006
+              </p>
+              <a href="tel:+917080005275" className="mt-1 inline-block font-medium text-slate-700 hover:text-teal-600 transition-colors">
+                (+91) 70800 05275
+              </a>
+            </div>
+
+            <div>
+              <h4 className="text-xs font-bold tracking-wide text-slate-800">REGIONAL OFFICE</h4>
+              <p>
+                B2 404, Boomerang, Chandivali<br />
+                Andheri(E), Mumbai-400084
+              </p>
+              <a href="tel:+916395952271" className="mt-1 inline-block font-medium text-slate-700 hover:text-teal-600 transition-colors">
+                (+91) 63959 52271
+              </a>
+            </div>
+
+            <div>
+              <h4 className="text-xs font-bold tracking-wide text-slate-800">INTERNATIONAL OFFICE</h4>
+              <p>
+                33 Mount Sinai Rise<br />
+                Singapore-276954
+              </p>
+              <a href="tel:+6587980736" className="mt-1 inline-block font-medium text-slate-700 hover:text-teal-600 transition-colors">
+                (+65) 8798 0736
+              </a>
+            </div>
+          </div>
         </div>
 
         <div>
@@ -81,7 +107,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="#gallery" className="hover:text-teal-600 transition-colors">
+              <Link href="#Gallery" className="hover:text-teal-600 transition-colors">
                 Gallery
               </Link>
             </li>

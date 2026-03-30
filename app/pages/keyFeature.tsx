@@ -13,13 +13,13 @@ const KeyFeatures = () => {
     },
     {
       icon: '/SVG/Detailed Solutions.svg',
-      title: 'Detailed solution',
+      title: 'Image Interpreter',
       description: 'Stuck on a problem? Just snap a photo to get instant, detailed solutions. Our AI instantly recognizes complex formulas and text.',
       image: '/AI/4.webp',
     },
     {
       icon: '/SVG/Image Interpreter.svg',
-      title: 'Image Interpreter',
+      title: 'Detailed solution',
       description: 'Write anything. Scribble equations, draw diagrams, or jot down notes and watch our visual AI solve them in real-time.',
       image: '/AI/3.webp',
     },
