@@ -7,41 +7,41 @@ import Image from 'next/image';
 const popularCourses = [
   { 
     id: 1, 
-    name: 'Mole Concept | Lecture - 1 | NEET - Chemistry | Crash Course | NEET 2024', 
+    name: 'Trigonometric Functions of Sum & Difference | Concepts Hatke', 
     channel: 'GradePlus Foundation',
-    youtubeId: 'Lz0kJ0hT-Ic', 
-    duration: '1:04:20',
+    youtubeId: '64Ld2OTXiAU', 
+    duration: '33:20',
     popular: true 
   },
   { 
     id: 2, 
-    name: 'JEE Advanced Prep: Limits & Derivatives Masterclass', 
+    name: 'Effect of temp and pressure on state change | Matter in our surroundings | Chemistry | IBLIB Education', 
     channel: 'GradePlus Foundation',
-    youtubeId: 'dZOAIvyzMSU',
-    duration: '45:12',
+    youtubeId: 'vka6P22_MiM',
+    duration: '14:12',
     popular: false 
   },
   { 
     id: 3, 
-    name: 'NEET Biology Focus: Human Anatomy Top 50 MCQs', 
+    name: 'Interconversion of state of matter | Matter in Our Surrounding | Iblib education', 
     channel: 'GradePlus Foundation',
-    youtubeId: '64Ld2OTXiAU',
-    duration: '52:10',
+    youtubeId: 'Lz28Z8EG8tY',
+    duration: '18:56',
     popular: true
   },
   { 
     id: 4, 
-    name: 'Full-Stack Next.js: Build an AI App from Scratch', 
+    name: 'Electric Potential Due to a Point Charge | Group of Charges | Electric Dipole | Physics Class 12', 
     channel: 'GradePlus Tech',
-    youtubeId: 'agLaWA-O-pE',
-    duration: '2:15:00',
+    youtubeId: 'EaxvMcBAVzI',
+    duration: '41:34',
     popular: false
   },
   { 
     id: 5, 
-    name: 'Olympiad Training: Advanced Number Theory', 
+    name: 'What is Coulombs Law?|What are Point Charges? IWhat is permittivity? |Electrostatic Force Constant?', 
     channel: 'GradePlus Foundation',
-    youtubeId: 'vka6P22_MiM',
+    youtubeId: 'vbcMzzlogSQ',
     duration: '38:45',
     popular: true
   },

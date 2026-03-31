@@ -196,7 +196,7 @@ const Crousal = () => {
                               fill
                               className="object-cover hidden md:block" 
                               priority
-                              quality={80}
+                              quality={75}
                               sizes="100vw"
                             />
                             <Image
@@ -205,7 +205,7 @@ const Crousal = () => {
                               fill
                               className="object-cover block md:hidden" 
                               priority
-                              quality={80}
+                              quality={75}
                               sizes="100vw"
                             />
                           </>
@@ -216,7 +216,7 @@ const Crousal = () => {
                             fill
                             className="object-cover"
                             priority
-                            quality={80}
+                            quality={75}
                             sizes="100vw"
                           />
                         )}
@@ -253,7 +253,7 @@ const Crousal = () => {
                                 fill
                                 className="object-contain drop-shadow-2xl"
                                 priority={index === 0}
-                                quality={80}
+                                quality={75}
                                 sizes="(max-width: 768px) 100vw, 50vw"
                               />
                             </div>

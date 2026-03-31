@@ -103,7 +103,7 @@ export default function AiLearningPage() {
               <p className="text-slate-300 mb-8 grow">
                 Snap photos of questions directly from your textbook and get instant AI assistance on the go.
               </p>
-              <a href="#" className="w-full py-3.5 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-colors">
+              <a href="https://play.google.com/store/apps/details?id=com.app.iblib" className="w-full py-3.5 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-colors">
                 Download App
               </a>
             </div>

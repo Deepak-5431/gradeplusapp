@@ -5,7 +5,6 @@ import {
   Trophy, 
   ChevronLeft,
   Download,
-  CheckCircle2,
   AlertCircle,
   GraduationCap,
   Banknote,
@@ -21,7 +20,6 @@ export default function MegaChampionshipPage() {
   return (
     <main className="min-h-screen bg-slate-50 font-sans pb-24 md:pb-12">
       
-      {/* --- HERO SECTION --- */}
       <div className="bg-slate-900 pt-6 pb-16 px-4 text-center relative overflow-hidden">
         <div className="max-w-5xl mx-auto flex justify-start relative z-20 mb-8">
           <Link href="/" className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-all text-sm font-bold bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full backdrop-blur-md border border-white/10 shadow-sm">
@@ -29,8 +27,6 @@ export default function MegaChampionshipPage() {
           </Link>
         </div>
 
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-md h-full bg-amber-500/20 blur-[100px] pointer-events-none"></div>
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay pointer-events-none"></div>
         
         <div className="mx-auto max-w-3xl relative z-10">
           <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 bg-amber-500/20 border border-amber-500/50 text-amber-400 font-bold tracking-widest text-xs rounded-full mb-6 uppercase">
@@ -39,7 +35,7 @@ export default function MegaChampionshipPage() {
           
           <h1 className="text-4xl font-black text-white md:text-5xl lg:text-6xl uppercase tracking-tight leading-tight mb-4">
             Win Up To <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-500">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-yellow-400 to-orange-500">
               ₹5,00,000 Cash!
             </span>
           </h1>
@@ -52,8 +48,8 @@ export default function MegaChampionshipPage() {
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
         
-        {/* --- MAIN USP: HOW TO PARTICIPATE --- */}
-        <div className="bg-white rounded-[2rem] shadow-2xl shadow-blue-900/10 border-4 border-blue-50 overflow-hidden mb-16">
+        
+        <div className="bg-white rounded-4xl shadow-2xl shadow-blue-900/10 border-4 border-blue-50 overflow-hidden mb-16">
           <div className="bg-blue-600 p-6 text-center text-white">
             <h2 className="text-2xl md:text-3xl font-black tracking-wide">How to get your Entry Ticket?</h2>
             <p className="text-blue-100 mt-2 text-sm md:text-base">Follow these simple steps to confirm your participation</p>
@@ -63,7 +59,7 @@ export default function MegaChampionshipPage() {
             <div className="flex gap-4 items-start">
               <div className="w-12 h-12 shrink-0 bg-slate-100 text-slate-600 rounded-full flex items-center justify-center font-black text-xl border-2 border-slate-200">1</div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-1">Download the App</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-1" >Download the App</h3>
                 <p className="text-slate-600 leading-relaxed text-sm md:text-base">Get the GradePlus App on your phone and create your free student account.</p>
               </div>
             </div>
@@ -87,13 +83,11 @@ export default function MegaChampionshipPage() {
           </div>
         </div>
 
-        {/* --- PRIZE MONEY JOURNEY (WITH ALL DETAILS) --- */}
         <div className="mb-16">
           <h2 className="text-3xl font-black text-slate-900 mb-8 text-center">Your Journey to ₹5 Lakhs</h2>
           
-          <div className="space-y-6 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-gradient-to-b before:from-blue-200 before:via-amber-200 before:to-amber-500">
+          <div className="space-y-6 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-linear-to-b before:from-blue-200 before:via-amber-200 before:to-amber-500">
             
-            {/* Level 1 */}
             <div className="relative flex items-start justify-between md:justify-normal md:odd:flex-row-reverse group">
               <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-blue-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">1</div>
               <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-5 rounded-2xl bg-white border border-slate-200 shadow-sm ml-4 md:ml-0">
@@ -114,7 +108,6 @@ export default function MegaChampionshipPage() {
               </div>
             </div>
 
-            {/* Level 2 */}
             <div className="relative flex items-start justify-between md:justify-normal md:odd:flex-row-reverse group">
               <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-indigo-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">2</div>
               <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-5 rounded-2xl bg-white border border-slate-200 shadow-sm ml-4 md:ml-0">
@@ -135,7 +128,6 @@ export default function MegaChampionshipPage() {
               </div>
             </div>
 
-            {/* Level 3 */}
             <div className="relative flex items-start justify-between md:justify-normal md:odd:flex-row-reverse group">
               <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-amber-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">3</div>
               <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-5 rounded-2xl bg-white border border-slate-200 shadow-sm ml-4 md:ml-0">
@@ -156,9 +148,8 @@ export default function MegaChampionshipPage() {
               </div>
             </div>
 
-            {/* Mega Level */}
             <div className="relative flex items-start justify-between md:justify-normal md:odd:flex-row-reverse group">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full border-4 border-white bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold shadow-lg shadow-amber-500/40 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full border-4 border-white bg-linear-to-r from-orange-500 to-amber-500 text-white font-bold shadow-lg shadow-amber-500/40 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                 <Trophy className="w-8 h-8" />
               </div>
               <div className="w-[calc(100%-5rem)] md:w-[calc(50%-3.5rem)] p-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl ml-4 md:ml-0 relative overflow-hidden">
@@ -168,7 +159,7 @@ export default function MegaChampionshipPage() {
                 <p className="text-slate-400 text-xs mb-4 relative z-10">
                   राजधानी लखनऊ में आयोजित। तीसरे राउंड के बाद प्रत्येक कक्षा से 15 विद्यार्थियों का चयन किया जाएगा।
                 </p>
-                <div className="bg-gradient-to-r from-amber-500 to-orange-600 p-4 rounded-xl flex justify-between items-center relative z-10">
+                <div className="bg-linear-to-r from-amber-500 to-orange-600 p-4 rounded-xl flex justify-between items-center relative z-10">
                   <span className="text-sm font-bold text-white/90">प्रथम (1st Prize)</span>
                   <span className="font-black text-white text-2xl">₹5,00,000</span>
                 </div>
@@ -178,12 +169,11 @@ export default function MegaChampionshipPage() {
           </div>
         </div>
 
-        {/* --- EXAM PATTERN --- */}
         <div className="mb-16">
           <h2 className="text-3xl font-black text-slate-900 mb-6 text-center flex justify-center items-center gap-3">
             <BookOpen className="w-8 h-8 text-blue-600" /> परीक्षा पैटर्न
           </h2>
-          <div className="bg-white rounded-[2rem] p-6 md:p-8 shadow-sm border border-slate-200">
+          <div className="bg-white rounded-4xl p-6 md:p-8 shadow-sm border border-slate-200">
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <span className="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-bold text-sm">कुल प्रश्न: 100</span>
               <span className="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-bold text-sm">अवधि: 120 Minutes</span>
@@ -242,7 +232,7 @@ export default function MegaChampionshipPage() {
           </div>
         </div>
 
-        {/* --- EXACT T&C SECTION --- */}
+        
         <div className="mb-12">
           <h2 className="text-2xl font-black text-slate-900 mb-6 flex justify-center items-center gap-2">
             <AlertCircle className="w-6 h-6 text-slate-700" /> नियम एवं शर्तें (Terms & Conditions)
@@ -310,10 +300,11 @@ export default function MegaChampionshipPage() {
 
       </div>
 
-      {/* --- MOBILE STICKY CTA --- */}
+      
       <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-4 md:hidden z-50 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
-        <button className="w-full bg-blue-600 text-white font-black text-lg py-4 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-transform">
+        <button className="w-full bg-blue-600 text-white font-black text-lg py-4 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-transform" onClick={() => {window.open("https://play.google.com/store/apps/details?id=com.app.iblib")}}>
           <Download className="w-5 h-5" /> Download App to Enter
+          
         </button>
       </div>
 

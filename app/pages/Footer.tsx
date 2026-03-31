@@ -102,23 +102,23 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="#features" className="hover:text-teal-600 transition-colors">
+              <Link href="#keyfeatures" className="hover:text-teal-600 transition-colors">
                 App Features
               </Link>
             </li>
             <li>
-              <Link href="#Gallery" className="hover:text-teal-600 transition-colors">
+              <Link href="#gallery" className="hover:text-teal-600 transition-colors">
                 Gallery
               </Link>
             </li>
             <li>
-              <Link href="#pricing" className="hover:text-teal-600 transition-colors">
-                Pricing
+              <Link href="#form" className="hover:text-teal-600 transition-colors">
+                Contact Form
               </Link>
             </li>
             <li>
-              <Link href="#contact" className="hover:text-teal-600 transition-colors">
-                Contact Us
+              <Link href="#testimonies" className="hover:text-teal-600 transition-colors">
+                Testimonials
               </Link>
             </li>
           </ul>
