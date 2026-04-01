@@ -17,7 +17,7 @@ interface Review {
 const reviews: Review[] = [
   {
     id: 1,
-    name: "Sarah J.",
+    name: "Khusi Jain",
     role: "High School Junior",
     image: "/avatars/sarah.jpg",
     rating: 5,
@@ -28,7 +28,7 @@ const reviews: Review[] = [
   },
   {
     id: 2,
-    name: "Mark D.",
+    name: "Rahul Singh",
     role: "College Freshman",
     image: "/avatars/mark.jpg",
     rating: 5,
@@ -38,7 +38,7 @@ const reviews: Review[] = [
   },
   {
     id: 3,
-    name: "Emily R.",
+    name: "Abhishek Singh.",
     role: "Grad Student",
     image: "/avatars/emily.jpg",
     rating: 5,
@@ -49,7 +49,7 @@ const reviews: Review[] = [
   },
   {
     id: 4,
-    name: "James K.",
+    name: "Vineet K.",
     role: "High School Senior",
     image: "/avatars/james.jpg",
     rating: 5,
@@ -59,7 +59,7 @@ const reviews: Review[] = [
   },
   {
     id: 5,
-    name: "Lisa M.",
+    name: "Krishna Kumar.",
     role: "College Sophomore",
     image: "/avatars/lisa.jpg",
     rating: 5,
@@ -69,7 +69,7 @@ const reviews: Review[] = [
   },
   {
     id: 6,
-    name: "David P.",
+    name: "Harsh Yadav.",
     role: "Graduate Student",
     image: "/avatars/david.jpg",
     rating: 5,

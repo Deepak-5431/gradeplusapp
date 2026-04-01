@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import  { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 
@@ -15,28 +15,28 @@ interface SchoolReview {
 const schoolReviews: SchoolReview[] = [
   {
     id: 1,
-    schoolName: 'St Gabriel Convent',
+    schoolName: 'YADUVANSHI ADARSH INTER COLLEGE',
     role: 'School Principal',
     logo: '/client/client-01.1.png',
     text: 'Always available to answer any questions. Very knowledgeable about the services they provide. Would recommend to everyone!',
   },
   {
     id: 2,
-    schoolName: 'Samir International',
+    schoolName: 'NEW VISION INTER COLLEGE',
     role: 'School Principal',
     logo: '/client/client-2.png',
     text: 'I feel privileged to share my views on IBLIB, it\'s not been too much time connected with them but I can say that my teaching staff and students are delighted nd comfortable in using it.',
   },
   {
     id: 3,
-    schoolName: 'Delhi Public School',
+    schoolName: 'R.S.D.D INTER COLLEGE',
     role: 'Academic Head',
     logo: '/client/client-3.png',
     text: 'The platform has revolutionized how we manage our curriculum. The interface is intuitive and students love using it for their studies.',
   },
   {
     id: 4,
-    schoolName: 'Modern Education Institute',
+    schoolName: 'R.P ADACDEMY',
     role: 'Director',
     logo: '/client/client-4.jpg',
     text: 'Outstanding support team and seamless integration with our existing systems. Highly appreciated by both staff and students.',
@@ -49,10 +49,10 @@ const schoolReviews: SchoolReview[] = [
     text: 'The analytics and reporting features have given us invaluable insights into student performance and learning patterns.',
   },
   {
-    id: 6, // Added the 6th box here
+    id: 6, 
     schoolName: 'Global International Academy',
     role: 'Dean of Academics',
-    logo: '/client/client-2.png', // Reusing image as requested
+    logo: '/client/client-2.png', 
     text: 'An absolute game-changer for our administrative and academic staff. GradePlus simplifies daily tasks and improves communication across the board.',
   }
 ];
@@ -150,7 +150,6 @@ const Client = () => {
           </div>
         </div>
 
-        {/* Dynamic Carousel Dots */}
         <div className="flex justify-center gap-2 mt-8 md:mt-12">
           {scrollSnaps.map((_, index) => (
             <button

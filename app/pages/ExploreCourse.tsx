@@ -94,7 +94,13 @@ export default function ExploreCourse() {
     <div className="min-h-screen w-full bg-[#F4F7FE] py-12 px-4 md:px-6 flex flex-col items-center font-sans">
       
       <div className="text-center mb-10">
-        <h1 className="text-[#1E293B] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">Explore Your Path</h1>
+        <span className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white px-6 py-2.5 text-sm font-extrabold text-slate-800 uppercase tracking-wide shadow-[0_2px_12px_rgba(30,64,175,0.08)]">
+          <BookOpen className="w-4 h-4 text-blue-600" />
+          GradePlus Courses
+        </span>
+        <h1 className="text-[#1E293B] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">Explore Your Path
+          
+        </h1>
         <p className="text-slate-500 text-lg md:text-xl">Select your domain, category, and target to get started.</p>
       </div>
 

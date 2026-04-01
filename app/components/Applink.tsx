@@ -8,14 +8,14 @@ const Applink = () => {
       <div className="mx-auto max-w-6xl  flex flex-col md:flex-row-reverse items-center gap-12  px-4">
         
         <motion.div
-          className="w-full md:w-[30%] flex justify-center md:justify-end"
+          className="w-full md:w-[45%] flex justify-center md:justify-end"
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
         >
           <img
-            src="/AI/newsr.webp"
+            src="/AI/boss.webp"
             alt="GradePlus App Preview Desktop"
             className="hidden md:block w-[150%] max-w-none h-auto max-h-[90vh] object-contain rounded-xl"
           />
@@ -30,7 +30,7 @@ const Applink = () => {
 
         
         <motion.div
-          className="w-full md:w-[70%] text-center md:text-left"
+          className="w-full md:w-[55%] text-center md:text-left"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}

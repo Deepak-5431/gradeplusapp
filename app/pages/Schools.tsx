@@ -19,7 +19,7 @@ interface ClientReview {
 const clientReviews: ClientReview[] = [
   {
     id: 1,
-    name: "Alex Thompson",
+    name: "Rahul Singh",
     company: "Tech Solutions Inc",
     image: "/avatars/alex.jpg",
     rating: 5,
@@ -30,7 +30,7 @@ const clientReviews: ClientReview[] = [
   },
   {
     id: 2,
-    name: "Jennifer Chen",
+    name: "Abhishek Yadav",
     company: "EduTech Ventures",
     image: "/avatars/jennifer.jpg",
     rating: 5,
@@ -41,7 +41,7 @@ const clientReviews: ClientReview[] = [
   },
   {
     id: 3,
-    name: "Michael Rodriguez",
+    name: "Priyanshu Mishra",
     company: "Global Learning Corp",
     image: "/avatars/michael.jpg",
     rating: 5,
@@ -51,7 +51,7 @@ const clientReviews: ClientReview[] = [
   },
   {
     id: 4,
-    name: "Sarah Williams",
+    name: "Pawani Singh",
     company: "Future Academy",
     image: "/avatars/sarah.jpg",
     rating: 5,
@@ -62,7 +62,7 @@ const clientReviews: ClientReview[] = [
   },
   {
     id: 5,
-    name: "David Brown",
+    name: "David Shukla",
     company: "Innovation Hub",
     image: "/avatars/david.jpg",
     rating: 4,
@@ -72,7 +72,7 @@ const clientReviews: ClientReview[] = [
   },
   {
     id: 6,
-    name: "Emily Foster",
+    name: "Khusi Shukla",
     company: "Smart Schools Network",
     image: "/avatars/emily.jpg",
     rating: 4,
@@ -82,7 +82,7 @@ const clientReviews: ClientReview[] = [
   },
   {
     id: 7,
-    name: "Robert Martinez",
+    name: "Juhi Jain",
     company: "Education First",
     image: "/avatars/robert.jpg",
     rating: 5,
@@ -93,7 +93,7 @@ const clientReviews: ClientReview[] = [
   },
   {
     id: 8,
-    name: "Lisa Anderson",
+    name: "Rahul Singh",
     company: "Future Leaders",
     image: "/avatars/lisa.jpg",
     rating: 5,
@@ -103,7 +103,7 @@ const clientReviews: ClientReview[] = [
   },
   {
     id: 9,
-    name: "James Patterson",
+    name: "Varun Kuamar",
     company: "Digital Education Hub",
     image: "/avatars/james.jpg",
     rating: 4,

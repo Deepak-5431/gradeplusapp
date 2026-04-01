@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 const Form = () => {
 	const [formData, setFormData] = useState({
@@ -35,55 +35,54 @@ const Form = () => {
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-12">
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-						<div className="bg-white p-6 rounded-lg shadow-sm">
-							<div className="flex items-center gap-4 mb-3">
+						<div className="bg-white p-6 rounded-lg shadow-sm text-left">
+							<div className="flex items-center gap-3 mb-4">
 								<MapPin className="text-blue-500" size={24} />
 								<h3 className="text-lg font-semibold text-slate-900">ADDRESS</h3>
 							</div>
-							<p className="text-slate-600 ml-10">
-								UGF-03, Trinity Square Complex
-								<br />
-								Near Badshahnagar Metro Station
-								<br />
-								Mahanagar, Lucknow 226006
-							</p>
+							<div className="text-slate-600 pl-9 space-y-5 leading-relaxed">
+								<div>
+									<h4 className="font-semibold text-slate-800">REGIONAL OFFICE</h4>
+									<p>UGF 03, Trinity Square</p>
+									<p>Badshah Nagar Metro Station</p>
+									<p>Mahanagar, Lucknow-226006</p>
+								</div>
+								<div>
+									<h4 className="font-semibold text-slate-800">REGIONAL OFFICE</h4>
+									<p>B2 404, Boomerang, Chandivali</p>
+									<p>Andheri(E), Mumbai-400084</p>
+								</div>
+								<div>
+									<h4 className="font-semibold text-slate-800">INTERNATIONAL OFFICE</h4>
+									<p>33 Mount Sinai Rise</p>
+									<p>Singapore-276954</p>
+								</div>
+							</div>
 						</div>
 
-						{/* Phone */}
-						<div className="bg-white p-6 rounded-lg shadow-sm">
-							<div className="flex items-center gap-4 mb-3">
+						<div className="bg-white p-6 rounded-lg shadow-sm text-left">
+							<div className="flex items-center gap-4 mb-4">
 								<Phone className="text-blue-500" size={24} />
-								<h3 className="text-lg font-semibold text-slate-900">CALL US</h3>
+								<h3 className="text-lg font-semibold text-slate-900">CONTACT</h3>
 							</div>
-							<p className="text-slate-600 ml-10">
-								0522-4301355
-								<br />
-								+91-7522861133
-							</p>
-						</div>
-
-						{/* Email */}
-						<div className="bg-white p-6 rounded-lg shadow-sm">
-							<div className="flex items-center gap-4 mb-3">
-								<Mail className="text-blue-500" size={24} />
-								<h3 className="text-lg font-semibold text-slate-900">EMAIL US</h3>
+							<div className="text-slate-600 pl-9 space-y-5 leading-relaxed">
+								<div>
+									<h4 className="text-sm font-semibold text-slate-800 mb-1">CALL</h4>
+									<p>(+91) 70800 05275</p>
+									<p>(+91) 63959 52271</p>
+									<p>(+65) 8798 0736</p>
+									{/*<p>0522-4301355</p>*/}
+									<p>(+91) 63641 60785</p>
+								</div>
+								<div>
+									<div className="flex items-center gap-2 mb-1">
+										<Mail className="text-blue-500" size={16} />
+										<h4 className="text-sm font-semibold text-slate-800">MAIL</h4>
+									</div>
+									<p>info@iblib.com</p>
+									<p>iblib.info@gmail.com</p>
+								</div>
 							</div>
-							<p className="text-slate-600 ml-10">
-								info@iblib.com
-								<br />
-								iblib.info@gmail.com
-							</p>
-						</div>
-
-						{/* Working Hours */}
-						<div className="bg-white p-6 rounded-lg shadow-sm">
-							<div className="flex items-center gap-4 mb-3">
-								<Clock className="text-blue-500" size={24} />
-								<h3 className="text-lg font-semibold text-slate-900">WORKING HOURS</h3>
-							</div>
-							<p className="text-slate-600 ml-10">
-								Mon - Sat: 9AM to 6PM
-							</p>
 						</div>
 					</div>
 
