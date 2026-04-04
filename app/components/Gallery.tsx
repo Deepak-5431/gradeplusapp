@@ -13,16 +13,16 @@ const Gallery = () => {
   const [canScrollNext, setCanScrollNext] = useState(false);
 
   const galleryImages = [
-    { id: 1, src: '/crowsel/1.png', alt: 'Dashboard Overview' },
-    { id: 2, src: '/crowsel/2.png', alt: 'Analytics Page' },
-    { id: 3, src: '/crowsel/3.png', alt: 'User Management' },
-    { id: 4, src: '/crowsel/4.png', alt: 'Reports Section' },
-    { id: 5, src: '/crowsel/5.png', alt: 'Settings Panel' },
-    { id: 6, src: '/crowsel/6.png', alt: 'Performance Metrics' },
-    { id: 7, src: '/crowsel/7.png', alt: 'Data Visualization' },
-    { id: 8, src: '/crowsel/8.png', alt: 'Mobile Interface' },
-    { id: 9, src: '/crowsel/9.jpg', alt: 'Integration Features' },
-    { id: 10, src: '/crowsel/10.jpg', alt: 'Advanced Dashboard' },
+    { id: 1, src: '/crowsel/1.webp', alt: 'Dashboard Overview' },
+    { id: 2, src: '/crowsel/2.webp', alt: 'Analytics Page' },
+    { id: 3, src: '/crowsel/3.webp', alt: 'User Management' },
+    { id: 4, src: '/crowsel/4.webp', alt: 'Reports Section' },
+    { id: 5, src: '/crowsel/5.webp', alt: 'Settings Panel' },
+    { id: 6, src: '/crowsel/6.webp', alt: 'Performance Metrics' },
+    { id: 7, src: '/crowsel/7.webp', alt: 'Data Visualization' },
+    { id: 8, src: '/crowsel/8.webp', alt: 'Mobile Interface' },
+    { id: 9, src: '/crowsel/9.webp', alt: 'Integration Features' },
+    { id: 10, src: '/crowsel/10.webp', alt: 'Advanced Dashboard' },
   ];
 
   const onSelect = useCallback(() => {

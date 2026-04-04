@@ -40,7 +40,7 @@ const SubjectiveAssessment = () => {
 
               <div 
                 className="relative w-fit bg-white p-3 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 cursor-pointer transition-transform hover:scale-[1.02]"
-                onClick={() => setSelectedImage('/AI/first.jpeg')}
+                onClick={() => setSelectedImage('/AI/first.webp')}
               >
                 <Image 
                   src="/AI/first.webp" 
@@ -92,7 +92,7 @@ const SubjectiveAssessment = () => {
 
               <div 
                 className="relative w-fit bg-white p-3 rounded-3xl border-2 border-teal-300 shadow-2xl shadow-teal-500/10 cursor-pointer transition-transform hover:scale-[1.02]"
-                onClick={() => setSelectedImage('/AI/second.jpeg')}
+                onClick={() => setSelectedImage('/AI/second.webp')}
               >
                 <Image 
                   src="/AI/second.webp"  

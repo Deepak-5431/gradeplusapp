@@ -9,7 +9,7 @@ const Details = () => {
       id: 1,
       title: 'Comprehensive Study Material',
       description: 'Gain an expansive Online CBSE-ICSE & all state board subjects materials in one place.',
-      image: '/school/comprehens.png',
+      image: '/school/comprehens.webp',
       points: [
         'Conceptualized Reports on MCQs/Case Studies',
         'Homework & Assignments Integration with Dedicated Performance Analysis',
@@ -20,7 +20,7 @@ const Details = () => {
       id: 2,
       title: 'Examination System',
       description: 'Manage Exams with our integrated Examination Management System',
-      image: '/school/examination system.png',
+      image: '/school/examination system.webp',
       points: [
         'MCQs & Subjective Questions Feature',
         'Online and Schedule Exams',
@@ -32,7 +32,7 @@ const Details = () => {
       id: 3,
       title: 'School Fee Management System',
       description: 'Streamline Fee collection with School Login & Payment Details',
-      image: '/school/Feemanagement.png',
+      image: '/school/Feemanagement.webp',
       points: [
         'Automated Fee Invoice with School Logo & Payment Details',
         'Integrated Payment Invoice Generation',
@@ -44,7 +44,7 @@ const Details = () => {
       id: 4,
       title: 'TimeTable Management System',
       description: 'Set Your Subject Wise and Class Wise Timetable Respectively',
-      image: '/school/timetable.png',
+      image: '/school/timetable.webp',
       points: [
         'Fully Customizable Period & Timetable',
         'Teacher Practice List Records',
