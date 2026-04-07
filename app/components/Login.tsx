@@ -115,7 +115,7 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Right Side - Login Form */}
+        
         <div className="w-full md:w-1/2 flex flex-col bg-white p-8 md:p-10 lg:p-12">
           
           <div className="text-center mb-8">
@@ -136,7 +136,7 @@ const Login = () => {
 
           <h2 className="text-2xl font-bold text-slate-800 mb-6">Login</h2>
 
-          {/* Global Error Message */}
+          
           {serverError && (
             <div className="mb-6 p-3 bg-red-50 border-l-4 border-red-500 text-red-700 rounded text-sm flex items-start gap-2">
               <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />

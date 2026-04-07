@@ -54,13 +54,13 @@ const Header = () => {
             Contact Us
           </Link>
         </nav>
-
+{/*
         <Link
-          href="/login"
+          href="#blank"
           className="hidden md:block rounded-md border border-blue-600 px-4 py-2 text-sm font-medium text-blue-600 transition hover:bg-blue-50"
         >
           Login
-        </Link>
+        </Link>*/}
 
         <button
           onClick={toggleMobileMenu}
@@ -93,12 +93,12 @@ const Header = () => {
           <Link href="#form" onClick={(e) => handleNavClick(e, '#form')} className="text-slate-600 hover:text-slate-900 transition-colors py-2">
             Contact Us
           </Link>
-          <Link
+          {/*<Link
             href="/login"
             className="rounded-md border border-blue-600 px-4 py-2 text-sm font-medium text-blue-600 transition hover:bg-blue-50 text-center"
           >
             Login
-          </Link>
+          </Link>*/}
         </nav>
       </div>
 
