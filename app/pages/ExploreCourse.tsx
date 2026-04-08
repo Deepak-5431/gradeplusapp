@@ -101,7 +101,7 @@ export default function ExploreCourse() {
         <h1 className="text-[#1E293B] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">Explore Your Path
           
         </h1>
-        <p className="text-slate-500 text-lg md:text-xl">Select your domain, category, and target to get started.</p>
+        <p className="text-slate-500 text-lg md:text-xl">Select your category, board , and target to get started.</p>
       </div>
 
      
