@@ -2,17 +2,20 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image"; 
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const pathname  = usePathname();
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.history.pushState(null, '', href);
+    if(pathname === '/'){
+      e.preventDefault();
+      const element = document.getElementById(targetId);
+      if(element){
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.pushState(null, '', `#${targetId}`);
+      }
     }
     setIsMobileMenuOpen(false);
   };
@@ -35,22 +38,22 @@ const Header = () => {
         </Link>
 
         <nav className="hidden items-center gap-10 text-xl text-slate-600 md:flex">
-          <Link href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-blue-600 hover:text-slate-900 transition-colors">
+          <Link href="/#home" onClick={(e) => handleNavClick(e, '#home')} className="text-blue-600 hover:text-slate-900 transition-colors">
             Home
           </Link>
-          <Link href="#keyfeatures" onClick={(e) => handleNavClick(e, '#keyfeatures')} className="hover:text-slate-900 transition-colors">
+          <Link href="/#keyfeatures" onClick={(e) => handleNavClick(e, '#keyfeatures')} className="hover:text-slate-900 transition-colors">
             App Features
           </Link>
-          <Link href="#herosection" onClick={(e) => handleNavClick(e, '#herosection')} className="hover:text-slate-900 transition-colors">
+          <Link href="/#herosection" onClick={(e) => handleNavClick(e, '#herosection')} className="hover:text-slate-900 transition-colors">
             About
           </Link>
           <Link href="/blogs">
             Blogs
           </Link>
-          <Link href="#gallery" onClick={(e) => handleNavClick(e, '#gallery')} className="hover:text-slate-900 transition-colors">
+          <Link href="/#gallery" onClick={(e) => handleNavClick(e, '#gallery')} className="hover:text-slate-900 transition-colors">
             Gallery
           </Link>
-          <Link href="#form" onClick={(e) => handleNavClick(e, '#form')} className="hover:text-slate-900 transition-colors">
+          <Link href="/#form" onClick={(e) => handleNavClick(e, '#form')} className="hover:text-slate-900 transition-colors">
             Contact Us
           </Link>
         </nav>
@@ -60,8 +63,8 @@ const Header = () => {
           className="hidden md:block rounded-md border border-blue-600 px-4 py-2 text-sm font-medium text-blue-600 transition hover:bg-blue-50"
         >
           Login
-        </Link>*/}
-
+        </Link>
+*/}
         <button
           onClick={toggleMobileMenu}
           className="md:hidden flex flex-col gap-1.5 p-2"
@@ -78,19 +81,19 @@ const Header = () => {
           <Link href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-blue-600 hover:text-slate-900 transition-colors py-2">
             Home
           </Link>
-          <Link href="#keyfeatures" onClick={(e) => handleNavClick(e, '#keyfeatures')} className="text-slate-600 hover:text-slate-900 transition-colors py-2">
+          <Link href="/#keyfeatures" onClick={(e) => handleNavClick(e, '#keyfeatures')} className="text-slate-600 hover:text-slate-900 transition-colors py-2">
             App Features
           </Link>
-          <Link href="#herosection" onClick={(e) => handleNavClick(e, '#herosection')} className="text-slate-600 hover:text-slate-900 transition-colors py-2">
+          <Link href="/#herosection" onClick={(e) => handleNavClick(e, '#herosection')} className="text-slate-600 hover:text-slate-900 transition-colors py-2">
             About
           </Link>
           <Link href="/blogs">
             Blogs
           </Link>
-          <Link href="#gallery" onClick={(e) => handleNavClick(e, '#gallery')} className="text-slate-600 hover:text-slate-900 transition-colors py-2">
+          <Link href="/#gallery" onClick={(e) => handleNavClick(e, '#gallery')} className="text-slate-600 hover:text-slate-900 transition-colors py-2">
             Gallery
           </Link>
-          <Link href="#form" onClick={(e) => handleNavClick(e, '#form')} className="text-slate-600 hover:text-slate-900 transition-colors py-2">
+          <Link href="/#form" onClick={(e) => handleNavClick(e, '#form')} className="text-slate-600 hover:text-slate-900 transition-colors py-2">
             Contact Us
           </Link>
           {/*<Link

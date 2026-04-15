@@ -23,18 +23,14 @@ export function generateStaticParams() {
 export default async function SingleBlog({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   
-  // Filter out the current blog and show other blogs
   const otherBlogs = MOCK_BLOGS.filter(blog => blog.id !== id);
 
   return (
     <>
       <Header />
       <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Two column layout */}
-          <div className="flex flex-col lg:flex-row gap-8">
-            
-            {/* Main blog content - Left side */}
+        <div className="max-w-7xl mx-auto">         
+          <div className="flex flex-col lg:flex-row gap-8">           
             <div className="lg:w-2/3">
               <article className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                 <div className="w-full h-48 md:h-64 bg-slate-900 flex items-center justify-center p-8 relative overflow-hidden">
@@ -44,14 +40,12 @@ export default async function SingleBlog({ params }: { params: Promise<{ id: str
                     Blog Post #{id}
                   </h1>
                 </div>
-
                 <div className="p-8 md:p-12">
                   <div className="flex items-center text-slate-500 text-sm mb-8 border-b border-slate-100 pb-6">
                     <span className="font-semibold text-teal-600 uppercase tracking-wider">Technology</span>
                     <span className="mx-3">•</span>
                     <span>By Deepak editor</span>
                   </div>
-
                   <div className="text-slate-700 leading-relaxed space-y-6 text-lg">
                     <p>This is where the content for blog {id} will go once connected to the API.</p>
                     <div className="w-full h-64 bg-slate-100 rounded-xl flex items-center justify-center border-2 border-dashed border-slate-300 my-8">
@@ -62,7 +56,7 @@ export default async function SingleBlog({ params }: { params: Promise<{ id: str
               </article>
             </div>
 
-            {/* Sidebar with other blogs - Right side */}
+            
             <div className="lg:w-1/3">
               <div className="sticky top-8">
                 <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">

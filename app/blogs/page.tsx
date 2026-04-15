@@ -1,46 +1,156 @@
+"use client";
+
 import Link from 'next/link';
 import Header from '../pages/Header';
 import Footer from '../pages/Footer';
+import { Clock, ThumbsUp, MessageCircle, Eye, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const MOCK_BLOGS = [
-  { id: '1', title: 'The Rise of AI Interpreters', author: 'Deepak Editor', category: 'Technology', readTime: '5 min' },
-  { id: '2', title: 'Understanding System Design', author: 'Tech Team', category: 'Engineering', readTime: '8 min' },
-  { id: '3', title: 'Mastering Advanced SQL', author: 'Data Team', category: 'Database', readTime: '6 min' },
-  { id: '4', title: 'Future of Web Development', author: 'Frontend Team', category: 'Technology', readTime: '7 min' },
-  { id: '5', title: 'Cloud Computing Essentials', author: 'DevOps Team', category: 'Cloud', readTime: '10 min' },
+  { 
+    id: '1', 
+    title: 'English Subject Review', 
+    author: 'Mahendra Ojha', 
+    date: '27 Apr 2023',
+    status: 'PRIVATE',
+    excerpt: 'Recent work and estimates to complete English subject from Kindergarten to Year 12 for all boards.',
+    likes: 2,
+    comments: 0,
+    views: 268,
+    image: "/school/featues.webp"
+  },
+  { 
+    id: '2', 
+    title: 'Understanding System Design', 
+    author: 'Tech Team', 
+    date: '15 May 2023',
+    status: 'PUBLIC',
+    excerpt: 'A guide to scaling backend architectures, load balancing, caching, and sharding.',
+    likes: 45,
+    comments: 12,
+    views: 1024,
+    image: '/school/comprehens.webp'
+  },
+  { 
+    id: '3', 
+    title: 'Mastering Advanced SQL', 
+    author: 'Data Team', 
+    date: '02 Jun 2023',
+    status: 'PRIVATE',
+    excerpt: 'Deep dive into window functions, CTEs, and query optimization.',
+    likes: 18,
+    comments: 3,
+    views: 412,
+    image: '/school/comprehens.webp'
+  }
 ];
 
 export default function Blogs() {
   return (
     <>
-    <Header />
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        <div className="flex justify-between items-center mb-10">
-          <h1 className="text-4xl font-extrabold text-slate-900">Latest Updates</h1>
-         { /*<Link href="/blogs/create" className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-full font-semibold transition-colors">
-            Write a Blog
-          </Link>*/}
-        </div>
+      <Header />
 
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {MOCK_BLOGS.map((blogs) => (
-            <Link href={`/blogs/${blogs.id}`} key={blogs.id}>
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow cursor-pointer h-full flex flex-col">
-                <span className="text-xs font-bold text-teal-600 uppercase tracking-wider mb-2">{blogs.category}</span>
-                <h2 className="text-xl font-bold text-slate-900 mb-3">{blogs.title}</h2>
-                <div className="mt-auto pt-4 border-t border-slate-50 flex justify-between text-sm text-slate-500">
-                  <span>{blogs.author}</span>
-                  <span>{blogs.readTime} read</span>
-                </div>
+      <div className="min-h-screen bg-slate-50 py-10 md:py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+
+          {/* HERO - Left aligned for a more editorial, professional feel */}
+          <div className="mb-10 md:mb-16">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+              Latest Insights
+            </h1>
+            <p className="text-slate-600 text-lg max-w-2xl">
+              Discover powerful ideas on tech, system design, and development from our expert team.
+            </p>
+          </div>
+
+          {/* FEATURED POST - Added active:scale for mobile tap feedback */}
+          <Link href="/blogs/featured" className="block mb-12 active:scale-[0.99] transition-transform duration-200">
+            <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
+              <img
+                src='/school/timetable.webp'
+                alt="Featured post"
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 text-white pr-6">
+                <span className="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
+                  FEATURED
+                </span>
+                <h2 className="text-2xl md:text-3xl font-bold mb-2">Build scalable systems like a pro</h2>
+                <p className="text-slate-200 text-sm md:text-base max-w-xl">Learn the architecture secrets behind handling millions of requests per second.</p>
               </div>
-            </Link>
-          ))}
+            </div>
+          </Link>
+
+          {/* GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {MOCK_BLOGS.map((blog, i) => (
+              <Link href={`/blogs/${blog.id}`} key={blog.id} className="group">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  // MOBILE UX: active:scale-[0.98] creates a satisfying button-press feel on touchscreens
+                  className="bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg active:scale-[0.98] transition-all duration-200 overflow-hidden h-full flex flex-col"
+                >
+
+                  {/* IMAGE */}
+                  <div className="relative h-48 overflow-hidden bg-slate-100">
+                    <img
+                      src={blog.image}
+                      alt={blog.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    />
+                    {blog.status === 'PRIVATE' && (
+                      <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-sm tracking-wider">
+                        PRIVATE
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="p-6 flex flex-col grow">
+
+                    {/* META: Date & Author */}
+                    <div className="flex items-center gap-2 text-xs text-slate-500 mb-3">
+                      <span className="font-semibold text-slate-700">{blog.author}</span>
+                      <span>•</span>
+                      <Clock size={12} /> {blog.date}
+                    </div>
+
+                    {/* TITLE */}
+                    <h2 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                      {blog.title}
+                    </h2>
+
+                    {/* DESC */}
+                    <p className="text-sm text-slate-600 mb-6 line-clamp-3 leading-relaxed">
+                      {blog.excerpt}
+                    </p>
+
+                    <div className="mt-auto" />
+
+                    {/* FOOTER - Made "Read Article" permanently visible for mobile users */}
+                    <div className="flex justify-between items-center pt-4 border-t border-slate-100">
+                      <div className="flex items-center gap-1.5 text-sm font-semibold text-blue-600 group-hover:text-blue-700">
+                        Read <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      </div>
+                      
+                      <div className="flex gap-3.5 text-xs text-slate-500">
+                        <span className="flex items-center gap-1"><ThumbsUp size={14}/> {blog.likes}</span>
+                        <span className="flex items-center gap-1"><MessageCircle size={14}/> {blog.comments}</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+
         </div>
       </div>
-    </div>
-    <Footer />
+
+      <Footer />
     </>
   );
 }
