@@ -7,43 +7,17 @@ import { Clock, ThumbsUp, MessageCircle, Eye, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const MOCK_BLOGS = [
-  { 
-    id: '1', 
-    title: 'English Subject Review', 
-    author: 'Mahendra Ojha', 
-    date: '27 Apr 2023',
-    status: 'PRIVATE',
-    excerpt: 'Recent work and estimates to complete English subject from Kindergarten to Year 12 for all boards.',
-    likes: 2,
-    comments: 0,
-    views: 268,
-    image: "/school/featues.webp"
-  },
-  { 
-    id: '2', 
-    title: 'Understanding System Design', 
-    author: 'Tech Team', 
-    date: '15 May 2023',
-    status: 'PUBLIC',
-    excerpt: 'A guide to scaling backend architectures, load balancing, caching, and sharding.',
-    likes: 45,
-    comments: 12,
-    views: 1024,
-    image: '/school/comprehens.webp'
-  },
-  { 
-    id: '3', 
-    title: 'Mastering Advanced SQL', 
-    author: 'Data Team', 
-    date: '02 Jun 2023',
-    status: 'PRIVATE',
-    excerpt: 'Deep dive into window functions, CTEs, and query optimization.',
-    likes: 18,
-    comments: 3,
-    views: 412,
-    image: '/school/comprehens.webp'
-  }
+  { id: '1', title: 'English Subject Review', author: 'Mahendra Ojha', date: '27 Apr 2023', status: 'PRIVATE', excerpt: 'Recent work and estimates to complete English subject from Kindergarten to Year 12 for all boards.', likes: 2, comments: 0, views: 268 },
+  { id: '2', title: 'Understanding System Design', author: 'Tech Team', date: '15 May 2023', status: 'PUBLIC', excerpt: 'A guide to scaling backend architectures, load balancing, caching, and sharding.', likes: 45, comments: 12, views: 1024 },
+  { id: '3', title: 'Mastering Advanced SQL', author: 'Data Team', date: '02 Jun 2023', status: 'PRIVATE', excerpt: 'Deep dive into window functions, CTEs, and query optimization.', likes: 18, comments: 3, views: 412 },
+  { id: '4', title: 'Future of Web Development', author: 'Frontend Team', date: '02 Jun 2023', status: 'PUBLIC', excerpt: 'Exploring the latest trends in React, Next.js, and modern CSS architecture.', likes: 24, comments: 8, views: 800 }
 ];
+
+const getBlogImage = (id: string) => {
+  const num = parseInt(id);
+  const index = isNaN(num) ? 1 : ((num - 1) % 6) + 1;
+  return `/bloggs/use${index}.webp`; 
+};
 
 export default function Blogs() {
   return (
@@ -53,7 +27,6 @@ export default function Blogs() {
       <div className="min-h-screen bg-slate-50 py-10 md:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
 
-          {/* HERO - Left aligned for a more editorial, professional feel */}
           <div className="mb-10 md:mb-16">
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
               Latest Insights
@@ -63,11 +36,11 @@ export default function Blogs() {
             </p>
           </div>
 
-          {/* FEATURED POST - Added active:scale for mobile tap feedback */}
-          <Link href="/blogs/featured" className="block mb-12 active:scale-[0.99] transition-transform duration-200">
+          {/* 1. Fixed the broken link and assigned Blog #1's image to the Featured post! */}
+          <Link href="/blogs/1" className="block mb-12 active:scale-[0.99] transition-transform duration-200">
             <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
               <img
-                src='/school/timetable.webp'
+                src={getBlogImage('1')}
                 alt="Featured post"
                 className="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out"
               />
@@ -82,7 +55,7 @@ export default function Blogs() {
             </div>
           </Link>
 
-          {/* GRID */}
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {MOCK_BLOGS.map((blog, i) => (
               <Link href={`/blogs/${blog.id}`} key={blog.id} className="group">
@@ -90,14 +63,12 @@ export default function Blogs() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  // MOBILE UX: active:scale-[0.98] creates a satisfying button-press feel on touchscreens
                   className="bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg active:scale-[0.98] transition-all duration-200 overflow-hidden h-full flex flex-col"
                 >
 
-                  {/* IMAGE */}
                   <div className="relative h-48 overflow-hidden bg-slate-100">
                     <img
-                      src={blog.image}
+                      src={getBlogImage(blog.id)}
                       alt={blog.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                     />
@@ -109,27 +80,22 @@ export default function Blogs() {
                   </div>
 
                   <div className="p-6 flex flex-col grow">
-
-                    {/* META: Date & Author */}
                     <div className="flex items-center gap-2 text-xs text-slate-500 mb-3">
                       <span className="font-semibold text-slate-700">{blog.author}</span>
                       <span>•</span>
                       <Clock size={12} /> {blog.date}
                     </div>
 
-                    {/* TITLE */}
                     <h2 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
                       {blog.title}
                     </h2>
 
-                    {/* DESC */}
                     <p className="text-sm text-slate-600 mb-6 line-clamp-3 leading-relaxed">
                       {blog.excerpt}
                     </p>
 
                     <div className="mt-auto" />
 
-                    {/* FOOTER - Made "Read Article" permanently visible for mobile users */}
                     <div className="flex justify-between items-center pt-4 border-t border-slate-100">
                       <div className="flex items-center gap-1.5 text-sm font-semibold text-blue-600 group-hover:text-blue-700">
                         Read <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

@@ -12,18 +12,23 @@ const MOCK_BLOGS = [
 
 export function generateStaticParams() {
   return [
-    { id: '1' },
-    { id: '2' },
-    { id: '3' },
-    { id: '4' },
-    { id: '5' }
+    { id: '1' }, { id: '2' }, { id: '3' }, { id: '4' }, { id: '5' }
   ];
 }
+
+// 1. Helper function to safely pick an image from 1 to 6 based on the ID
+const getBlogImage = (id: string) => {
+  const num = parseInt(id);
+  const index = isNaN(num) ? 1 : ((num - 1) % 6) + 1;
+  // CHANGE THIS EXTENSION IF YOUR IMAGES ARE .png OR .jpg!
+  return `/bloggs/use${index}.webp`; 
+};
 
 export default async function SingleBlog({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   
   const otherBlogs = MOCK_BLOGS.filter(blog => blog.id !== id);
+  const coverImage = getBlogImage(id); // Get the image for this specific blog
 
   return (
     <>
@@ -31,15 +36,28 @@ export default async function SingleBlog({ params }: { params: Promise<{ id: str
       <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">         
           <div className="flex flex-col lg:flex-row gap-8">           
+            
+            {/* MAIN ARTICLE */}
             <div className="lg:w-2/3">
               <article className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                <div className="w-full h-48 md:h-64 bg-slate-900 flex items-center justify-center p-8 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500 opacity-20 rounded-full blur-3xl -mr-20 -mt-20"></div>
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500 opacity-20 rounded-full blur-3xl -ml-10 -mb-10"></div>
+                
+                {/* 2. Updated Header Block with the custom image! */}
+                <div className="w-full h-48 md:h-64 flex items-center justify-center p-8 relative overflow-hidden">
+                  {/* The actual image */}
+                  <img src={coverImage} alt="Cover" className="absolute inset-0 w-full h-full object-cover" />
+                  
+                  {/* A dark gradient overlay to make the white text readable */}
+                  <div className="absolute inset-0 bg-slate-900/60"></div>
+                  
+                  {/* Abstract colorful blurs behind the text */}
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500 opacity-30 rounded-full blur-3xl -mr-20 -mt-20 z-0"></div>
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500 opacity-30 rounded-full blur-3xl -ml-10 -mb-10 z-0"></div>
+                  
                   <h1 className="text-3xl md:text-5xl font-extrabold text-white text-center z-10 leading-tight">
                     Blog Post #{id}
                   </h1>
                 </div>
+
                 <div className="p-8 md:p-12">
                   <div className="flex items-center text-slate-500 text-sm mb-8 border-b border-slate-100 pb-6">
                     <span className="font-semibold text-teal-600 uppercase tracking-wider">Technology</span>
@@ -56,7 +74,7 @@ export default async function SingleBlog({ params }: { params: Promise<{ id: str
               </article>
             </div>
 
-            
+            {/* SIDEBAR */}
             <div className="lg:w-1/3">
               <div className="sticky top-8">
                 <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
@@ -94,6 +112,7 @@ export default async function SingleBlog({ params }: { params: Promise<{ id: str
                 </Link>
               </div>
             </div>
+
           </div>
         </div>
       </div>
