@@ -67,7 +67,7 @@ function BlogContent() {
                   {blog.status === 'PRIVATE' ? 'Private Article' : 'Public Article'}
                 </span>
                 <span className="mx-3">•</span>
-                <span>By {blog.author}</span>
+                {/*<span>By {blog.author}</span>*/}
                 <span className="mx-3">•</span>
                 <span>{blog.date}</span>
               </div>

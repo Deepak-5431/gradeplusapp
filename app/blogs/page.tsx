@@ -91,7 +91,7 @@ export default function Blogs() {
                 </div>
               </Link>
 
-              {/* THE GRID (blogs.slice(1)) */}
+              
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {blogs.slice(1).map((blog: BlogCardData, i: number) => (
                   <Link href={`/blog?id=${blog.id}`} key={blog.id} className="group">
