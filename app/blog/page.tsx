@@ -20,6 +20,9 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     return {
       title: `${blog.title} | GradePlus Blog`,
       description: blog.excerpt || "Read the latest updates and articles from GradePlus.",
+      alternates: {
+      canonical: `/blog?id=${id}`, 
+      },
       openGraph: {
         title: blog.title,
         description: blog.excerpt,

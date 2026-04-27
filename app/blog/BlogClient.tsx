@@ -127,8 +127,34 @@ function BlogContent() {
     return <div className="text-center py-20 text-slate-600">Invalid Blog ID. Go back to <Link href="/blogs" className="text-teal-600 font-semibold hover:underline">Blogs</Link></div>;
   }
 
+  // Generate the JSON-LD object if the blog data exists
+  const jsonLd = blog ? {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: blog.title,
+    image: `https://gradeplusapp.com${coverImage}`,
+    author: {
+      '@type': 'Person',
+      name: blog.author || 'GradePlus Team',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'IBLIB Educations',
+    },
+    datePublished: blog.date, 
+  } : null;
+
   return (
-    <div className="flex flex-col lg:flex-row gap-8">           
+    <div className="flex flex-col lg:flex-row gap-8">          
+      
+      {/* Inject the invisible script for Google's Rich Snippets */}
+      {blog && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
+
       <div className="lg:w-2/3">
         {isLoading && (
             <div className="w-full h-96 bg-white rounded-2xl flex items-center justify-center border border-slate-100 shadow-sm">
@@ -200,7 +226,7 @@ export default function SingleBlogPage() {
     <>
       <Header />
       <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">         
+        <div className="max-w-7xl mx-auto">        
           <Suspense fallback={<div className="w-full py-20 text-center font-semibold animate-pulse text-slate-500">Loading Article...</div>}>
             <BlogContent />
           </Suspense>
