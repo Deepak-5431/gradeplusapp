@@ -9,7 +9,7 @@ const popularCourses = [
     id: 1, 
     name: 'Trigonometric Functions of Sum & Difference | Concepts Hatke', 
     channel: 'GradePlus Foundation',
-    youtubeId: '64Ld2OTXiAU', 
+    youtubeId: 'SKCF4y9GVxo', 
     duration: '33:20',
     popular: true 
   },
@@ -17,7 +17,7 @@ const popularCourses = [
     id: 2, 
     name: 'Effect of temp and pressure on state change | Matter in our surroundings | Chemistry | IBLIB Education', 
     channel: 'GradePlus Foundation',
-    youtubeId: 'vka6P22_MiM',
+    youtubeId: 'b93kyTrC3jk',
     duration: '14:12',
     popular: false 
   },
@@ -25,7 +25,7 @@ const popularCourses = [
     id: 3, 
     name: 'Interconversion of state of matter | Matter in Our Surrounding | Iblib education', 
     channel: 'GradePlus Foundation',
-    youtubeId: 'Lz28Z8EG8tY',
+    youtubeId: 'j2ggu398EwQ',
     duration: '18:56',
     popular: true
   },
@@ -33,7 +33,7 @@ const popularCourses = [
     id: 4, 
     name: 'Electric Potential Due to a Point Charge | Group of Charges | Electric Dipole | Physics Class 12', 
     channel: 'GradePlus Tech',
-    youtubeId: 'EaxvMcBAVzI',
+    youtubeId: 'vS0TEZ3Df7g',
     duration: '41:34',
     popular: false
   },
@@ -41,7 +41,7 @@ const popularCourses = [
     id: 5, 
     name: 'What is Coulombs Law?|What are Point Charges? IWhat is permittivity? |Electrostatic Force Constant?', 
     channel: 'GradePlus Foundation',
-    youtubeId: 'vbcMzzlogSQ',
+    youtubeId: '30OeM4OfF9c',
     duration: '38:45',
     popular: true
   },
