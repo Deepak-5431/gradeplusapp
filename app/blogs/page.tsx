@@ -4,7 +4,7 @@ import Link from 'next/link';
 import useSWR from 'swr';
 import Header from '../pages/Header';
 import Footer from '../pages/Footer';
-import { Clock, ThumbsUp, MessageCircle, ArrowRight } from 'lucide-react';
+import { Clock, ThumbsUp, MessageCircle,Eye, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || '';
@@ -137,7 +137,7 @@ export default function Blogs() {
                           </div>
                           
                           <div className="flex gap-3.5 text-xs text-slate-500">
-                            <span className="flex items-center gap-1"><ThumbsUp size={14}/> {blog.views}</span>
+                            <span className="flex items-center gap-1"><Eye size={15}/> {blog.views}</span>
                             <span className="flex items-center gap-1"><MessageCircle size={14}/> {blog.comments}</span>
                           </div>
                         </div>
