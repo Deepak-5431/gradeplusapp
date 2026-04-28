@@ -7,7 +7,7 @@ import Image from 'next/image';
 const popularCourses = [
   { 
     id: 1, 
-    name: 'Trigonometric Functions of Sum & Difference | Concepts Hatke', 
+    name: 'Foundation Classes Faculty Reveal 🔥 | Meet Our Expert Teachers | Best Coaching for Strong Basics', 
     channel: 'GradePlus Foundation',
     youtubeId: 'SKCF4y9GVxo', 
     duration: '33:20',
@@ -15,7 +15,7 @@ const popularCourses = [
   },
   { 
     id: 2, 
-    name: 'Effect of temp and pressure on state change | Matter in our surroundings | Chemistry | IBLIB Education', 
+    name: 'Chapter - 1 | Lecture - 1 | Exploring Magnets | Magnetic & Non-Magnetic Materials', 
     channel: 'GradePlus Foundation',
     youtubeId: 'b93kyTrC3jk',
     duration: '14:12',
@@ -23,7 +23,7 @@ const popularCourses = [
   },
   { 
     id: 3, 
-    name: 'Interconversion of state of matter | Matter in Our Surrounding | Iblib education', 
+    name: 'Chapter - 1 | Lecture - 1 | The Wonderful World of Science | Welcome to the world of Science', 
     channel: 'GradePlus Foundation',
     youtubeId: 'j2ggu398EwQ',
     duration: '18:56',
@@ -31,7 +31,7 @@ const popularCourses = [
   },
   { 
     id: 4, 
-    name: 'Electric Potential Due to a Point Charge | Group of Charges | Electric Dipole | Physics Class 12', 
+    name: 'Chapter - 1 | Lecture - 1 | Class 6 Science | Diversity in the living world | Introduction', 
     channel: 'GradePlus Tech',
     youtubeId: 'vS0TEZ3Df7g',
     duration: '41:34',
@@ -39,7 +39,7 @@ const popularCourses = [
   },
   { 
     id: 5, 
-    name: 'What is Coulombs Law?|What are Point Charges? IWhat is permittivity? |Electrostatic Force Constant?', 
+    name: 'Chapter - 1 | Lecture - 1 | Electricity : Circuits and their Components | Electric Current', 
     channel: 'GradePlus Foundation',
     youtubeId: '30OeM4OfF9c',
     duration: '38:45',
