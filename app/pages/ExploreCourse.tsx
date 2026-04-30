@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { 
-  ChevronDown,
   BookOpen, 
   Shield, 
   Award, 
@@ -16,7 +15,8 @@ import {
   Microscope,
   Scale,
   Briefcase,
-  LucideIcon 
+  LucideIcon,
+  ArrowLeft
 } from 'lucide-react';
 
 type TabKey = 'Academic' | 'Government' | 'Entrance';
@@ -79,13 +79,9 @@ export default function ExploreCourse() {
     setSelectedItem('');
   };
 
-  const toggleExpand = (subCatId: string) => {
-    if (expandedSubCat === subCatId) {
-      setExpandedSubCat(null);
-    } else {
-      setExpandedSubCat(subCatId);
-      setSelectedItem('');
-    }
+  const handleSubCatSelect = (subCatId: string) => {
+    setExpandedSubCat(subCatId);
+    setSelectedItem('');
   };
 
   const activeCategoryData = activeData.find(cat => cat.id === expandedSubCat);
@@ -98,13 +94,10 @@ export default function ExploreCourse() {
           <BookOpen className="w-4 h-4 text-blue-600" />
           GradePlus Courses
         </span>
-        <h1 className="text-[#1E293B] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">Explore Your Path
-          
-        </h1>
-        <p className="text-slate-500 text-lg md:text-xl">Select your category, board , and target to get started.</p>
+        <h1 className="text-[#1E293B] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">Explore Your Path</h1>
+        <p className="text-slate-500 text-lg md:text-xl">Select your category, board, and target to get started.</p>
       </div>
 
-     
       <div className="w-full max-w-300 rounded-4xl bg-white shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-200 overflow-hidden relative pb-10">
         
         <div className="flex relative z-10 bg-white border-b-2 border-slate-100">
@@ -115,7 +108,7 @@ export default function ExploreCourse() {
               <button
                 key={tab}
                 onClick={() => handleTabChange(tab)}
-                className={`flex-1 py-5 md:py-6 flex items-center justify-center gap-3 transition-all duration-300 border-b-4 ${
+                className={`flex-1 py-5 md:py-6 flex items-center justify-center gap-3 transition-colors duration-200 border-b-4 ${
                   isActive 
                     ? `${tabConfigs[tab].activeBorder} bg-slate-50` 
                     : 'border-transparent hover:bg-slate-50'
@@ -139,63 +132,62 @@ export default function ExploreCourse() {
            </svg>
         </div>
 
-        <div className="px-6 md:px-10 relative z-10 pt-2">
-          <h2 className="text-xl md:text-2xl text-slate-800 font-bold mb-6">
-            Select {activeTab === 'Academic' ? 'Board' : activeTab === 'Entrance' ? 'Field' : 'Category'} & Exam
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-            {activeData.map((subCategory) => {
-              const isActive = expandedSubCat === subCategory.id;
-              const Icon = subCategory.icon;
-              
-              return (
-                <button 
-                  key={subCategory.id}
-                  onClick={() => toggleExpand(subCategory.id)}
-                  className={`w-full p-4 md:p-6 rounded-2xl flex items-center gap-4 transition-all duration-300 border-2 ${
-                    isActive 
-                      ? 'bg-blue-50/50 border-blue-600 shadow-md ring-1 ring-blue-600/20 scale-[1.02]' 
-                      : 'bg-white border-slate-200 hover:border-blue-400 hover:shadow-sm'
-                  }`}
-                >
-                  <div className={`p-3 md:p-4 rounded-xl shrink-0 transition-colors ${
-                    isActive ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'
-                  }`}>
-                    <Icon className="w-6 h-6 md:w-8 md:h-8" />
-                  </div>
+        <div className="px-6 md:px-10 relative z-10 pt-2 min-h-100">
+          
+          {!expandedSubCat ? (
+            <div>
+              <h2 className="text-xl md:text-2xl text-slate-800 font-bold mb-6">
+                Select {activeTab === 'Academic' ? 'Board' : activeTab === 'Entrance' ? 'Field' : 'Category'}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                {activeData.map((subCategory) => {
+                  const Icon = subCategory.icon;
                   
-                  <div className="flex flex-col text-left">
-                    <span className="font-bold text-lg md:text-xl text-slate-800 leading-tight">
-                      {subCategory.title}
-                    </span>
-                    <span className="text-sm md:text-base text-slate-500 mt-1 line-clamp-1">
-                      {subCategory.desc}
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className={`transition-all duration-500 ease-in-out ${expandedSubCat ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-            <div className="relative w-full flex justify-center items-center mt-8 mb-6">
-              <div className="absolute w-full h-0.5 bg-slate-100 -z-10"></div>
-              <button 
-                onClick={() => setExpandedSubCat(null)}
-                className="bg-white p-2 md:p-3 rounded-full border-2 border-slate-200 text-blue-600 hover:bg-blue-50 transition-colors shadow-sm"
-              >
-                <ChevronDown className="w-6 h-6" />
-              </button>
+                  return (
+                    <button 
+                      key={subCategory.id}
+                      onClick={() => handleSubCatSelect(subCategory.id)}
+                      className="w-full p-4 md:p-6 rounded-2xl flex items-center gap-4 transition-all duration-200 border-2 bg-white border-slate-200 hover:border-blue-400 active:scale-95"
+                    >
+                      <div className="p-3 md:p-4 rounded-xl shrink-0 bg-blue-50 text-blue-600">
+                        <Icon className="w-6 h-6 md:w-8 md:h-8" />
+                      </div>
+                      
+                      <div className="flex flex-col text-left">
+                        <span className="font-bold text-lg md:text-xl text-slate-800 leading-tight">
+                          {subCategory.title}
+                        </span>
+                        <span className="text-sm md:text-base text-slate-500 mt-1 line-clamp-1">
+                          {subCategory.desc}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-
-          <div className={`transition-all duration-500 ease-in-out origin-top ${
-            expandedSubCat ? 'max-h-300 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-          }`}>
+          ) : (
             
-            {activeCategoryData && (
-              <div className="flex flex-col items-center animate-in fade-in zoom-in-95 duration-300 pb-6">
+            activeCategoryData && (
+              <div className="flex flex-col items-center pb-6">
+                
+                <div className="w-full flex items-center justify-between mb-6">
+                  <div className="flex flex-col">
+                    <button 
+                      onClick={() => setExpandedSubCat(null)}
+                      className="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-bold transition-colors mb-2 w-fit"
+                    >
+                      <ArrowLeft className="w-4 h-4" /> Back to {activeTab}
+                    </button>
+                    <h2 className="text-xl md:text-2xl text-slate-800 font-bold">
+                      Select specific exam for {activeCategoryData.title}
+                    </h2>
+                  </div>
+                  <div className="hidden md:flex p-3 rounded-xl bg-blue-50 text-blue-600">
+                    <activeCategoryData.icon className="w-8 h-8" />
+                  </div>
+                </div>
+
                 <div className="bg-slate-50 border-2 border-slate-200 rounded-4xl p-6 md:p-8 w-full flex flex-wrap justify-center gap-3 md:gap-4 shadow-inner">
                   {activeCategoryData.items.map((item: string) => {
                     const isSelected = selectedItem === item;
@@ -203,10 +195,10 @@ export default function ExploreCourse() {
                       <button
                         key={item}
                         onClick={() => setSelectedItem(item)}
-                        className={`px-5 py-3 md:px-6 md:py-4 rounded-xl text-base md:text-lg font-bold transition-all duration-300 border-2 ${
+                        className={`px-5 py-3 md:px-6 md:py-4 rounded-xl text-base md:text-lg font-bold transition-all duration-200 border-2 ${
                           isSelected 
-                            ? 'bg-blue-700 border-blue-700 text-white shadow-[0_4px_20px_rgba(29,78,216,0.3)]' 
-                            : 'bg-white border-slate-200 text-slate-600 hover:border-blue-400 hover:text-blue-700 shadow-sm'
+                            ? 'bg-blue-700 border-blue-700 text-white scale-105' 
+                            : 'bg-white border-slate-200 text-slate-600 hover:border-blue-400 hover:text-blue-700'
                         }`}
                       >
                         {item}
@@ -218,9 +210,9 @@ export default function ExploreCourse() {
                 <div className="mt-10 w-full flex justify-center">
                   <button 
                     disabled={!selectedItem}
-                    className={`px-12 py-4 md:px-16 md:py-4 rounded-full font-bold text-lg md:text-xl transition-all duration-300 flex items-center justify-center gap-3 ${
+                    className={`px-12 py-4 md:px-16 md:py-4 rounded-full font-bold text-lg md:text-xl transition-all duration-200 flex items-center justify-center gap-3 ${
                       selectedItem 
-                        ? 'bg-linear-to-r from-blue-600 to-indigo-700 text-white shadow-[0_8px_30px_rgba(29,78,216,0.4)] hover:-translate-y-1' 
+                        ? 'bg-linear-to-r from-blue-600 to-indigo-700 text-white hover:shadow-lg active:scale-95' 
                         : 'bg-slate-100 text-slate-400 cursor-not-allowed border-2 border-slate-200'
                     }`}
                   >
@@ -228,8 +220,8 @@ export default function ExploreCourse() {
                   </button>
                 </div>
               </div>
-            )}
-          </div>
+            )
+          )}
 
         </div>
       </div>
