@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import { MetadataRoute } from 'next';
 
-const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
