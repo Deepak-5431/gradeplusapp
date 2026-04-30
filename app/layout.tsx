@@ -17,6 +17,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Gradeplus - Transforming Your School",
   description: "Gradeplus app.com",
+
+  verification: {
+    google: '-Ecqyvlt8qV-pn8_dUuGy7Gu75CAuSSVPBzkMGF3bWk',
+  },
 };
 
 export default function RootLayout({
