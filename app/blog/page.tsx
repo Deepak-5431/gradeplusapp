@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import SingleBlogPage from "./BlogClient"; 
-const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+
+
+const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ id?: string }> }): Promise<Metadata> {
   const params = await searchParams;
@@ -15,22 +17,25 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
 
     const num = parseInt(id);
     const index = isNaN(num) ? 1 : ((num - 1) % 6) + 1;
-    const imageUrl = `/bloggs/use${index}.webp`;
+    
+    const imageUrl = `https://gradeplusapp.com/bloggs/use${index}.webp`;
+    
+    const pageUrl = `https://gradeplusapp.com/blog?id=${id}`;
 
     return {
       title: `${blog.title} | GradePlus Blog`,
       description: blog.excerpt || "Read the latest updates and articles from GradePlus.",
       alternates: {
-      canonical: `/blog?id=${id}`, 
+        canonical: pageUrl, 
       },
       openGraph: {
         title: blog.title,
         description: blog.excerpt,
-        url: `https://gradeplusapp.com/blog?id=${id}`, 
+        url: pageUrl, 
         siteName: "GradePlus",
         images: [
           {
-            url: imageUrl,
+            url: imageUrl, 
             width: 1200,
             height: 630,
             alt: blog.title,
@@ -42,7 +47,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
         card: "summary_large_image",
         title: blog.title,
         description: blog.excerpt,
-        images: [imageUrl],
+        images: [imageUrl], 
       },
     };
   } catch (error) {

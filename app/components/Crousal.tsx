@@ -141,7 +141,7 @@ const Crousal = () => {
     return () => clearInterval(timer);
   }, [autoPlay, slides.length]);
 
-  const goToSlide = (index: number) => {
+  const goToSlide = (index:number) => {
     setCurrent(index);
     setAutoPlay(false);
   };
@@ -181,13 +181,7 @@ const Crousal = () => {
 
                   {slide.type === 'full-bleed' && (
                     <>
-                      <motion.div
-                        className="absolute inset-0 z-0"
-                        initial={{ scale: 1.1, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 1.1, opacity: 0 }}
-                        transition={{ duration: 0.8 }}
-                      >
+                      <div className="absolute inset-0 z-0">
                         {slide.mobileImage ? (
                           <>
                             <Image
@@ -220,7 +214,7 @@ const Crousal = () => {
                             sizes="100vw"
                           />
                         )}
-                      </motion.div>
+                      </div>
 
                       {slide.id === 'banner' && (
                         <Link
@@ -292,7 +286,8 @@ const Crousal = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`transition-all duration-300 rounded-full ${index === current ? 'bg-white w-8 h-3 shadow-sm' : 'bg-white/40 w-3 h-3 hover:bg-white/80'
+              // FIX 2: Increased w-3 h-3 to w-4 h-4 for better mobile touch targets
+              className={`transition-all duration-300 rounded-full ${index === current ? 'bg-white w-8 h-4 shadow-sm' : 'bg-white/40 w-4 h-4 hover:bg-white/80'
                 }`}
               aria-label={`Go to slide ${index + 1}`}
             />
