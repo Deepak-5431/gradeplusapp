@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import Header from '../pages/Header';
 import Footer from '../pages/Footer';
 import { Clock,  MessageCircle,Eye, ArrowRight } from 'lucide-react';
+
 import { motion } from 'framer-motion';
 
 const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || '';
