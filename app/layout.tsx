@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+//import "./globals.css";
+import './globals.css';
+
+import Script from "next/script";
 
 import Script from "next/script";
 
@@ -15,9 +18,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+<<<<<<< ssr_test
+ // title: "Gradeplus - Transforming Your School",
+ // description: "Gradeplus app.com",
+  metadataBase: new URL('https://gradeplusapp.com'),
+  title: "Gradeplus | AI-Powered Learning",
+  description: 'Stuck on a problem? Simply snap a picture. GradePlus uses advanced AI tools to help students solve questions instantly and empower educators.',
+  authors: [{ name: 'GradePlus Team', url: 'https://gradeplusapp.com' }],
+  publisher: 'IBLIB Educations',
+=======
   title: "Gradeplus - Transforming Your School",
   description: "Gradeplus app.com",
 
+>>>>>>> main
   verification: {
     google: '-Ecqyvlt8qV-pn8_dUuGy7Gu75CAuSSVPBzkMGF3bWk',
   },
@@ -29,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+   <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

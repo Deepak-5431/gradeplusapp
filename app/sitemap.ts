@@ -1,5 +1,5 @@
+export const dynamic = 'force-dynamic';
 
-export const dynamic = "force-static";
 import { MetadataRoute } from 'next';
 
 const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
