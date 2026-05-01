@@ -16,10 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
- // title: "Gradeplus - Transforming Your School",
- // description: "Gradeplus app.com",
+ 
   metadataBase: new URL('https://gradeplusapp.com'),
-  title: "Gradeplus | AI-Powered Learning",
+  title: "GradePlus | AI-Powered Learning",
   description: 'Stuck on a problem? Simply snap a picture. GradePlus uses advanced AI tools to help students solve questions instantly and empower educators.',
   authors: [{ name: 'GradePlus Team', url: 'https://gradeplusapp.com' }],
   publisher: 'IBLIB Educations',
