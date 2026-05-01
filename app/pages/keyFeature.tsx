@@ -12,13 +12,15 @@ const KeyFeatures = () => {
       image: '/AI/2.webp',
     },
     {
-      icon: '/SVG/Detailed Solutions.svg',
+    //  icon: '/SVG/Detailed Solutions.svg',
+      icon: '/SVG/Image Interpreter.svg',
       title: 'Image Interpreter',
       description: 'Stuck on a problem? Just snap a photo to get instant, detailed solutions. Our AI instantly recognizes complex formulas and text.',
       image: '/AI/4.webp',
     },
     {
-      icon: '/SVG/Image Interpreter.svg',
+      //icon: '/SVG/Image Interpreter.svg',
+      icon: '/SVG/Detailed Solutions.svg',
       title: 'Detailed solution',
       description: 'Write anything. Scribble equations, draw diagrams, or jot down notes and watch our visual AI solve them in real-time.',
       image: '/AI/3.webp',
@@ -131,7 +133,7 @@ const KeyFeatures = () => {
 
         <div className="flex flex-col items-center gap-4 relative z-20">
           <button className="group px-8 py-4 bg-transparent border-2 border-[#01CB89] rounded-2xl font-bold text-white text-lg hover:bg-[#01CB89] hover:text-slate-900 transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(1,203,137,0.2)] hover:shadow-[0_0_40px_rgba(1,203,137,0.6)]" >
-            <a href='https://play.google.com/store/apps/details?id=com.app.iblib'>Try Gradeplus AI Assists</a>
+            <a href='https://play.google.com/store/apps/details?id=com.app.iblib'>Try GradePlus AI Assists</a>
             <Rocket size={20} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
           </button>
         </div>
