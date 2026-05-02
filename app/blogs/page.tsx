@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://gradeplusapp.com/bloggs/use1.webp', // Put your favorite blog banner image here!
+        url: 'https://gradeplusapp.com/bloggs/use1.webp', 
         width: 1200,
         height: 630,
         alt: 'GradePlus Blogs',
