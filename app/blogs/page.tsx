@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://gradeplusapp.com/bloggs/use1.webp', 
+        url: 'https://gradeplusapp.com/bloggs/use1.webp',
         width: 1200,
         height: 630,
         alt: 'GradePlus Blogs',
@@ -21,6 +21,23 @@ export const metadata: Metadata = {
   }
 };
 
-export default function BlogsPage() {
-  return <BlogsClient />;
+const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
+
+async function getBlogs() {
+  try {
+    const res = await fetch(`${API_PREFIX}/api/blogs`, {
+      next: { revalidate: 86400 } 
+    });
+    
+    if (!res.ok) return [];
+    return res.json();
+  } catch (error) {
+    return [];
+  }
+}
+
+export default async function BlogsPage() {
+  const blogs = await getBlogs();
+  
+  return <BlogsClient initialBlogs={blogs} />;
 }

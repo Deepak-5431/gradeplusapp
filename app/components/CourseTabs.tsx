@@ -10,17 +10,17 @@ export default function CourseTabs() {
   const tabs = [
     { 
       name: 'Academic Courses', 
-      href: '/course/academic_courses', 
+      href: '/course/academic-courses', 
       icon: BookOpen 
     },
     { 
       name: 'Entrance Exams', 
-      href: '/course/enterance_exams', 
+      href: '/course/enterance-exams', 
       icon: GraduationCap 
     },
     { 
       name: 'Government Exams', 
-      href: '/course/government_exams', 
+      href: '/course/government-exams', 
       icon: Building2 
     },
   ];

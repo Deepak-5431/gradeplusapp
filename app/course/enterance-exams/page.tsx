@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-import CourseTabs from '@/app/components/CourseTabs';
-export default function EntranceExamsPage() {
+import CourseTabs from "@/app/components/CourseTabs";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+export default function EnteranceExamsPage() {
   return (
     <div className="min-h-screen py-10 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -20,10 +20,10 @@ export default function EntranceExamsPage() {
 
         <div className="flex flex-col items-center justify-center pt-10">
           <h1 className="text-4xl font-black text-slate-900 mb-4">
-            Entrance Exams
+            Enterance exams
           </h1>
           <p className="text-lg text-slate-600 text-center max-w-2xl">
-            Prepare for top engineering and medical exams like JEE Main/Advanced and NEET with expert guidance. Course listings will appear here.
+            we will show here latest courses from cirriculam which are of top priority matters
           </p>
         </div>
 
