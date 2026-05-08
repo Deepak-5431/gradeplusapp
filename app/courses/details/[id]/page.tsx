@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import {
-  ChevronRight, Clock, Users, Star, PlayCircle, 
-  ShieldCheck, Check, ChevronDown, Video, FileText
+  ChevronRight, Clock, Users, Star, PlayCircle,  Check, 
 } from 'lucide-react';
 import Header from '@/app/pages/Header';
 import Footer from '@/app/pages/Footer'; 
 
-const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5001';
+const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/';
 
 async function getCourseData(id: string) {
   try {

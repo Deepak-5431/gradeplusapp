@@ -6,11 +6,14 @@ const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
 async function fetchCategory(categoryUrlParam: string) {
   try {
-    const res = await fetch(`${API_PREFIX}/api/study/${categoryUrlParam}`, {
+    // Hits /api/study?category=academics
+    const res = await fetch(`${API_PREFIX}/api/study?category=${categoryUrlParam}`, {
       next: { revalidate: 3600 } 
     });
+    
     if (!res.ok) return { data: [] };
-    return await res.json();
+    const json = await res.json();
+    return json;
   } catch (error) {
     console.error(`Failed to fetch ${categoryUrlParam}:`, error);
     return { data: [] };
@@ -25,11 +28,16 @@ export default async function ExploreCourse() {
   ]);
 
   const fetchedData = {
-    Academic: academics.data || [],
-    Government: govt.data || [],
-    Entrance: entrance.data || []
+    Academic: academics.data || academics || [],
+    Government: govt.data || govt || [],
+    Entrance: entrance.data || entrance || []
   };
 
-  // ✅ FIX: Remove "allCourses={allCourses}" here
-  return <ExploreCourseClient initialData={fetchedData} />;
+  return (
+    <>
+     
+      <ExploreCourseClient initialData={fetchedData} />
+      
+    </>
+  );
 }
