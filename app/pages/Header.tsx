@@ -105,7 +105,7 @@ const Header = () => {
         </nav>
       </div>
 
-      <div className="h-px w-full bg-slate-100" />
+      {/*<div className="h-px w-full bg-slate-100" />*/}
     </header>
   );
 };

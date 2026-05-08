@@ -5,45 +5,68 @@ import { ArrowRight, Flame, Play, X } from 'lucide-react';
 import Image from 'next/image';
 
 const popularCourses = [
-  { 
-    id: 1, 
-    name: 'Foundation Classes Faculty Reveal 🔥 | Meet Our Expert Teachers | Best Coaching for Strong Basics', 
-    channel: 'GradePlus Foundation',
-    youtubeId: 'SKCF4y9GVxo', 
+  {
+    id: 1,
+    name: 'Foundation Classes Faculty Reveal 🔥 | Meet Our Expert Teachers | Best Coaching for Strong Basics',
+    channel: 'GradePlus Educations',
+    youtubeId: 'SKCF4y9GVxo',
     duration: '33:20',
-    popular: true 
+    popular: true,
+    views: 600
   },
-  { 
-    id: 2, 
-    name: 'Chapter - 1 | Lecture - 1 | Exploring Magnets | Magnetic & Non-Magnetic Materials', 
-    channel: 'GradePlus Foundation',
+  {
+    id: 2,
+    name: 'Chapter - 1 | Lecture - 1 | Exploring Magnets | Magnetic & Non-Magnetic Materials',
+    channel: 'GradePlus Educations',
     youtubeId: 'b93kyTrC3jk',
-    duration: '14:12',
-    popular: false 
+    duration: '25:31',
+    popular: false,
+    views: 600
   },
-  { 
-    id: 3, 
-    name: 'Chapter - 1 | Lecture - 1 | The Wonderful World of Science | Welcome to the world of Science', 
-    channel: 'GradePlus Foundation',
+  {
+    id: 3,
+    name: 'Chapter - 1 | Lecture - 1 | The Wonderful World of Science | Welcome to the world of Science',
+    channel: 'GradePlus Educations',
     youtubeId: 'j2ggu398EwQ',
-    duration: '18:56',
-    popular: true
+    duration: '35:36',
+    popular: false,
+    views:350
   },
-  { 
-    id: 4, 
-    name: 'Chapter - 1 | Lecture - 1 | Class 6 Science | Diversity in the living world | Introduction', 
-    channel: 'GradePlus Tech',
+  {
+    id: 4,
+    name: 'Chapter - 1 | Lecture - 1 | Class 6 Science | Diversity in the living world | Introduction',
+    channel: 'GradePlus Educations',
     youtubeId: 'vS0TEZ3Df7g',
     duration: '41:34',
-    popular: false
+    popular: true,
+    views:1500
   },
-  { 
-    id: 5, 
-    name: 'Chapter - 1 | Lecture - 1 | Electricity : Circuits and their Components | Electric Current', 
-    channel: 'GradePlus Foundation',
+  {
+    id: 5,
+    name: 'Chapter - 1 | Lecture - 1 | Electricity : Circuits and their Components | Electric Current',
+    channel: 'GradePlus Educations',
     youtubeId: '30OeM4OfF9c',
     duration: '38:45',
-    popular: true
+    popular: false,
+    views: 450
+  },
+   {
+    id: 7,
+    name: 'L01 Exploring Substances : Acidic Basic & Neutral | Acids and Properties',
+    channel: 'GradePlus Educations',
+    youtubeId: '_VxQtDZe7fk',
+    duration: '29:54',
+    popular: false,
+    views: 200
+  },
+   {
+    id: 8,
+    name: 'L01 Large Numbers Around Us | Natural Numbers, Face Value, Place Value',
+    channel: 'GradePlus Educations',
+    youtubeId: 'U5KV4OrShKM',
+    duration: '43:13',
+    popular: false,
+    views: 100
   },
 ];
 
@@ -56,7 +79,7 @@ const FeaturedCourses = () => {
     <>
       <section className="py-8 bg-slate-100 border-t border-slate-200 overflow-hidden relative">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
-          
+
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <h2 className="text-xl md:text-2xl font-black text-slate-900 leading-none tracking-tight">
@@ -67,16 +90,24 @@ const FeaturedCourses = () => {
                 Watch our latest crash courses
               </p>
             </div>
-            <button className="flex items-center gap-1 text-sm text-red-600 font-bold hover:text-red-700 transition-colors">
-              View channel <ArrowRight className="w-4 h-4" />
+            <button className="flex cursor-pointer items-center gap-1 text-sm text-red-600 font-bold hover:text-red-700 transition-colors">
+              <a
+                href="https://www.youtube.com/@gradepluseducations"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1"
+              >
+                View channel <ArrowRight className="w-4 h-4" />
+              </a>
             </button>
           </div>
 
         </div>
 
         <div className="relative w-full flex overflow-hidden">
-          
-          <style dangerouslySetInnerHTML={{__html: `
+
+          <style dangerouslySetInnerHTML={{
+            __html: `
             @keyframes infinite-scroll {
               0% { transform: translateX(0); }
               100% { transform: translateX(calc(-50% - 8px)); } 
@@ -93,21 +124,21 @@ const FeaturedCourses = () => {
           <div className="flex w-max gap-5 px-4 md:px-8 animate-infinite-scroll pt-2 pb-4">
             {infiniteCourses.map((course, idx) => {
               return (
-                <div 
-                  key={`${course.id}-${idx}`} 
+                <div
+                  key={`${course.id}-${idx}`}
                   onClick={() => setPlayingVideoId(course.youtubeId)}
                   className="w-70 lg:w-85 shrink-0 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300  flex-col group hover:-translate-y-1 cursor-pointer block overflow-hidden text-left"
                 >
-                  
+
                   <div className="relative w-full aspect-video bg-slate-200 overflow-hidden">
-                    <Image 
-                      src={`https://img.youtube.com/vi/${course.youtubeId}/maxresdefault.jpg`} 
+                    <Image
+                      src={`https://img.youtube.com/vi/${course.youtubeId}/maxresdefault.jpg`}
                       alt={course.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       sizes="(max-width: 768px) 280px, 340px"
                     />
-                    
+
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                       <div className="w-12 h-12 bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-red-600 transition-colors duration-300 shadow-lg">
                         <Play className="w-5 h-5 text-white ml-1" fill="currentColor" />
@@ -123,7 +154,7 @@ const FeaturedCourses = () => {
                     <h3 className="font-bold text-slate-900 text-sm leading-snug group-hover:text-red-600 transition-colors line-clamp-2 mb-1.5">
                       {course.name}
                     </h3>
-                    
+
                     <span className="text-xs font-medium text-slate-500 mb-3">
                       {course.channel}
                     </span>
@@ -136,35 +167,35 @@ const FeaturedCourses = () => {
                           </div>
                         )}
                       </div>
-                      <span className="text-[10px] font-bold text-slate-400 group-hover:text-red-600 uppercase tracking-wider transition-colors">
-                        Watch Video
-                      </span>
+                     <span className="text-[10px] font-bold text-slate-400 group-hover:text-red-600  tracking-wider transition-colors">
+                       Views {course.views}
+                      </span> 
                     </div>
 
                   </div>
-                  
+
                 </div>
               );
             })}
           </div>
 
-          
+
 
         </div>
       </section>
 
       {playingVideoId && (
         <div className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-8">
-          
-          <div 
+
+          <div
             className="absolute inset-0 "
             onClick={() => setPlayingVideoId(null)}
           ></div>
 
           <div className="relative w-full max-w-4xl bg-white p-2 md:p-3 rounded-2xl shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-300">
-            
+
             <div className="flex justify-end pb-2 md:pb-3 pr-1 md:pr-2 pt-1">
-              <button 
+              <button
                 onClick={() => setPlayingVideoId(null)}
                 className="text-slate-500 hover:text-red-600 transition-colors bg-slate-100 hover:bg-red-50 rounded-full p-1.5"
                 aria-label="Close video"
@@ -173,7 +204,7 @@ const FeaturedCourses = () => {
               </button>
             </div>
 
-           
+
             <div className="relative w-full aspect-video bg-black rounded-lg md:rounded-xl overflow-hidden ring-1 ring-slate-200">
               <iframe
                 width="100%"
