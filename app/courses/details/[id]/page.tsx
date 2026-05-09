@@ -1,39 +1,57 @@
 import Link from 'next/link';
 import {
-  ChevronRight, Clock, Users, Star, PlayCircle,  Check, 
+  ChevronRight, Clock, Users, Star, PlayCircle, Check, 
 } from 'lucide-react';
 import Header from '@/app/pages/Header';
 import Footer from '@/app/pages/Footer'; 
 
-const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/';
+const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
+// 1. ADDED: Pre-builds all course pages so they load instantly
+export async function generateStaticParams() {
+  try {
+    const res = await fetch(`${API_PREFIX}/api/course`);
+    if (!res.ok) return [];
+    
+    const rawData = await res.json();
+    let courses = [];
+    
+    if (Array.isArray(rawData)) courses = rawData;
+    else if (rawData.data && Array.isArray(rawData.data)) courses = rawData.data;
+    else if (rawData.id) courses = [rawData];
+
+    return courses.map((course: any) => ({
+      id: String(course.id),
+    }));
+  } catch (error) {
+    console.error("Failed to generate static params:", error);
+    return [];
+  }
+}
+
+// 2. FIXED: Fetching is now clean because the proxy is fixed!
 async function getCourseData(id: string) {
   try {
     const res = await fetch(`${API_PREFIX}/api/course?id=${id}`, {
-      next: { revalidate: 3600 } 
+      next: { revalidate: 300 } // FIXED: Now 5 minutes to keep it fresh
     });
 
     if (!res.ok) return null;
-    const rawData = await res.json();
     
-    let apiCourse = null;
-    if (Array.isArray(rawData)) {
-      apiCourse = rawData.find((c: any) => String(c.id) === String(id)) || rawData[0];
-    } else {
-      apiCourse = rawData;
-    }
-
-    if (!apiCourse) return null;
+    // The proxy now successfully returns just the single course object
+    const apiCourse = await res.json();
+    if (!apiCourse || !apiCourse.id) return null;
 
     const rawText = apiCourse.text || id;
     const cleanText = rawText.replace(/course/i, '').trim().toUpperCase();
 
-    // Merging API data with dummy UI data for the layout
+    // Merging API data with dummy UI data
     return {
       id: apiCourse.id || id,
       title: `${cleanText} Complete Course`, 
       thumbnail: apiCourse.image || "https://placehold.co/600x400/e2e8f0/475569?text=Course+Image", 
       description: `The ultimate preparation course. Includes live interactive classes, mock tests, and comprehensive study material tailored for top rankers.`,
+      // TODO: Map these to real backend values when your database supports them!
       price: 2499,
       discountPrice: 1499,
       rating: 4.8,

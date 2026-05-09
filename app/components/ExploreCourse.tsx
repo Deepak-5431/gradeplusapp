@@ -1,12 +1,10 @@
 import ExploreCourseClient from '../pages/ExploreCourseClient';
-import Header from '@/app/pages/Header';
-import Footer from '@/app/pages/Footer';
+
 
 const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
 async function fetchCategory(categoryUrlParam: string) {
   try {
-    // Hits /api/study?category=academics
     const res = await fetch(`${API_PREFIX}/api/study?category=${categoryUrlParam}`, {
       next: { revalidate: 3600 } 
     });
