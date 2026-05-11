@@ -71,7 +71,7 @@ export default function BlogClient({
         </div>
       </div>
 
-      {/* MAIN CONTENT GRID */}
+      
       <div className="min-h-screen bg-slate-50 py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">

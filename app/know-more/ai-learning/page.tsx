@@ -36,7 +36,6 @@ export default function AiLearningPage() {
   return (
     <main className="min-h-screen bg-slate-50 font-sans selection:bg-blue-200">
       
-      {/* Top Navigation Bar */}
       <div className="max-w-5xl mx-auto px-4 py-6 md:px-8">
         <Link href="/" className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-900 transition-colors">
           <ArrowLeft className="w-4 h-4" /> Back to Home

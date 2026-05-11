@@ -109,7 +109,7 @@ export default async function CourseItemPage({
       
       <div className="bg-slate-900 text-white pt-8 pb-28 relative overflow-hidden font-sans">
         <div className="absolute inset-0 bg-slate-900 flex items-center justify-center opacity-20 pointer-events-none">
-          {/* UPDATED: Background Blur Image */}
+          
           <Image 
             src={course.thumbnail} 
             alt="Course background" 

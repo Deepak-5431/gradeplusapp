@@ -19,7 +19,6 @@ const Form = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add form submission logic here
     console.log('Form submitted:', formData);
     alert('Message sent successfully!');
     setFormData({ name: '', email: '', subject: '', message: '', captcha: '' });
@@ -36,10 +35,8 @@ const Form = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="flex flex-col gap-8">
             
-            {/* ADDRESS SECTION */}
             <div className="bg-white p-6 rounded-lg shadow-sm text-left">
               <div className="flex items-center gap-3 mb-4">
-                {/* Fixed width container centers the icon */}
                 <div className="w-6 flex justify-center">
                   <MapPin className="text-blue-500" size={24} />
                 </div>
@@ -65,9 +62,7 @@ const Form = () => {
               </div>
             </div>
 
-            {/* CONTACT SECTION */}
             <div className="bg-white p-6 rounded-lg shadow-sm text-left">
-              {/* Phone Header */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-6 flex justify-center">
                   <Phone className="text-blue-500" size={24} />
@@ -85,7 +80,6 @@ const Form = () => {
                   <p>(+91) 63641 60785</p>
                 </div>
                 
-                {/* MAIL Header & Details - Now pulled out to align perfectly with Phone */}
                 <div>
                   <div className="flex items-center gap-3 mb-1">
                     <div className="w-6 flex justify-center">
@@ -139,7 +133,7 @@ const Form = () => {
               className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
             />
             
-            {/* Captcha */}
+            
             <div className="bg-yellow-400 p-3 rounded text-sm font-semibold">
               What is 34 + 55 ? <span className="text-red-600">*</span>
             </div>

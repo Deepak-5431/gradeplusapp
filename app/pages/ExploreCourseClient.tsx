@@ -85,7 +85,6 @@ export default function CourseBannersFinal() {
             Explore Courses
           </h2>
           
-          {/* FIXED: Added justify-items-center to keep the smaller cards perfectly centered in their columns */}
           <div className="grid grid-cols-3 gap-3 md:gap-5 justify-items-center">
             {exploreCards.map((card) => {
               const isActive = activeTab === card.id;

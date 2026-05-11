@@ -85,7 +85,6 @@ const Review = () => {
   const [email, setEmail] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
-  // Adjust items per page based on screen size
   React.useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -121,7 +120,6 @@ const Review = () => {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Subscribing email:', email);
-    // Add your subscription logic here
     setEmail('');
   };
 
@@ -141,7 +139,7 @@ const Review = () => {
           </p>
         </div>
 
-        {/* Reviews Carousel */}
+       
         <div className="relative mb-12">
           <div className="overflow-hidden">
             <div 
@@ -178,7 +176,6 @@ const Review = () => {
                           )}
                         </div>
 
-                        {/* Rating */}
                         <div className="flex gap-1 mb-4">
                           {[...Array(review.rating)].map((_, i) => (
                             <svg
@@ -191,12 +188,10 @@ const Review = () => {
                           ))}
                         </div>
 
-                        {/* Review Text */}
                         <p className="text-gray-700 mb-6 leading-relaxed">
                           "{review.text}"
                         </p>
 
-                        {/* Like/Dislike */}
                         <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
                           <button className="flex items-center gap-2 text-gray-600 hover:text-[#01CB89] transition-colors">
                             <ThumbsUp className="w-4 h-4" />
@@ -215,7 +210,6 @@ const Review = () => {
             </div>
           </div>
 
-          {/* Navigation Arrows */}
           {totalSlides > 1 && (
             <>
               <button
@@ -236,7 +230,6 @@ const Review = () => {
           )}
         </div>
 
-        {/* Carousel Dots */}
         {totalSlides > 1 && (
           <div className="flex justify-center gap-2 mb-16">
             {Array.from({ length: totalSlides }).map((_, index) => (
@@ -254,7 +247,6 @@ const Review = () => {
           </div>
         )}
 
-        {/* Newsletter Section */}
         <div className="bg-linear-to-br from-gray-50 to-white rounded-2xl p-8 md:p-12 border border-gray-200 max-w-3xl mx-auto shadow-lg">
           <div className="text-center mb-6">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">

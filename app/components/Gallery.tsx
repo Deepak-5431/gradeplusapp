@@ -39,7 +39,6 @@ const Gallery = () => {
     emblaApi.on('reInit', onSelect);
   }, [emblaApi, onSelect]);
 
-  // Auto-scroll every 3 seconds
   useEffect(() => {
     if (!emblaApi) return;
     
@@ -57,7 +56,7 @@ const Gallery = () => {
   return (
     <section className="py-16 px-4 overflow-hidden">
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
+      
         <div className="mb-12 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Platform <span className="bg-linear-to-r from-[#016DAB] to-[#01CB89] bg-clip-text text-transparent">Gallery</span>
@@ -79,7 +78,6 @@ const Gallery = () => {
                     key={image.id}
                     className="min-w-0 pl-4 flex-[0_0_60%] sm:flex-[0_0_40%] md:flex-[0_0_30%] lg:flex-[0_0_22%] flex justify-center py-12"
                   >
-                    {/* Container scaling applied here for pure 3D effect */}
                     <div
                       className={`relative group cursor-pointer w-full max-w-65 transition-all duration-700 ease-out ${
                         isActive ? 'scale-[1.15] opacity-100 z-20' : 'scale-90 opacity-40 z-0'
@@ -92,15 +90,12 @@ const Gallery = () => {
                         }
                       }}
                     >
-                      {/* Dynamic Frame: Black phone bezel when active, clean screenshot when inactive */}
                       <div className={`rounded-4xl relative transition-all duration-500 overflow-hidden ${
                         isActive ? 'bg-black p-2 shadow-[0_20px_50px_rgba(1,203,137,0.2)]' : 'bg-transparent p-0 shadow-lg'
                       }`}>
                         
-                        {/* Notch - only visible on active */}
                         <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-b-2xl z-20 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`}></div>
 
-                        {/* Screen */}
                         <div className="relative bg-white rounded-2xl overflow-hidden aspect-9/19">
                           <Image
                             src={image.src}
@@ -110,7 +105,6 @@ const Gallery = () => {
                             sizes="(max-width: 768px) 60vw, (max-width: 1024px) 30vw, 22vw"
                           />
 
-                          {/* Zoom Overlay (Only on active slide) */}
                           {isActive && (
                             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-5">
                               <div>
@@ -132,7 +126,6 @@ const Gallery = () => {
 
         </div>
 
-        {/* Pagination Dots */}
         <div className="flex justify-center items-center gap-3 mt-8">
           {galleryImages.map((_, index) => (
             <button
@@ -148,7 +141,6 @@ const Gallery = () => {
           ))}
         </div>
 
-        {/* Lightbox Modal (Unchanged) */}
         {selectedImage !== null && (
           <div
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm"

@@ -144,10 +144,8 @@ const Login = () => {
             </div>
           )}
 
-          {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             
-            {/* Email Input */}
             <div>
               <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="email">
                 Email Address
@@ -181,7 +179,6 @@ const Login = () => {
               )}
             </div>
 
-            {/* Password Input */}
             <div>
               <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="password">
                 Password
@@ -217,7 +214,6 @@ const Login = () => {
               )}
             </div>
 
-            {/* Forgot Password Link */}
             <div className="text-right">
               <Link 
                 href="/forgot-password" 
@@ -227,7 +223,6 @@ const Login = () => {
               </Link>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={isSubmitting}

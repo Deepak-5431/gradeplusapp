@@ -103,8 +103,7 @@ const Details = () => {
                 </div>
               </div>
 
-              {/* Content Area */}
-              {/* Updated: grow instead of flex-grow */}
+              
               <div className="w-full flex flex-col grow">
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 text-center md:text-left">
                   {feature.title}
@@ -129,7 +128,6 @@ const Details = () => {
           ))}
         </div>
 
-        {/* CTA Section Placeholder */}
         
       </div>
     </section>
