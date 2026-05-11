@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'img.youtube.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'gradeplus.s3.ap-south-1.amazonaws.com',
+      },
     ],
   },
 };

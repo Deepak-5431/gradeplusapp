@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ChevronRight, Clock, Users, Star, PlayCircle, Check, 
 } from 'lucide-react';
@@ -7,7 +8,6 @@ import Footer from '@/app/pages/Footer';
 
 const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
-// 1. ADDED: Pre-builds all course pages so they load instantly
 export async function generateStaticParams() {
   try {
     const res = await fetch(`${API_PREFIX}/api/course`);
@@ -29,29 +29,25 @@ export async function generateStaticParams() {
   }
 }
 
-// 2. FIXED: Fetching is now clean because the proxy is fixed!
 async function getCourseData(id: string) {
   try {
     const res = await fetch(`${API_PREFIX}/api/course?id=${id}`, {
-      next: { revalidate: 300 } // FIXED: Now 5 minutes to keep it fresh
+      next: { revalidate: 3600 } 
     });
 
     if (!res.ok) return null;
     
-    // The proxy now successfully returns just the single course object
     const apiCourse = await res.json();
     if (!apiCourse || !apiCourse.id) return null;
 
     const rawText = apiCourse.text || id;
     const cleanText = rawText.replace(/course/i, '').trim().toUpperCase();
 
-    // Merging API data with dummy UI data
     return {
       id: apiCourse.id || id,
       title: `${cleanText} Complete Course`, 
-      thumbnail: apiCourse.image || "https://placehold.co/600x400/e2e8f0/475569?text=Course+Image", 
+      thumbnail: apiCourse.image || "", 
       description: `The ultimate preparation course. Includes live interactive classes, mock tests, and comprehensive study material tailored for top rankers.`,
-      // TODO: Map these to real backend values when your database supports them!
       price: 2499,
       discountPrice: 1499,
       rating: 4.8,
@@ -113,7 +109,14 @@ export default async function CourseItemPage({
       
       <div className="bg-slate-900 text-white pt-8 pb-28 relative overflow-hidden font-sans">
         <div className="absolute inset-0 bg-slate-900 flex items-center justify-center opacity-20 pointer-events-none">
-          <img src={course.thumbnail} alt="Course background" className="w-full h-full object-cover blur-xl" />
+          {/* UPDATED: Background Blur Image */}
+          <Image 
+            src={course.thumbnail} 
+            alt="Course background" 
+            fill
+            priority
+            className="object-cover blur-xl" 
+          />
           <div className="absolute inset-0 bg-linear-to-b from-slate-900/40 via-slate-900/80 to-slate-900" />
         </div>
 
@@ -156,7 +159,13 @@ export default async function CourseItemPage({
 
             <aside className="lg:hidden col-span-1 bg-white p-5 rounded-2xl shadow-xl text-slate-900 border border-slate-200">
               <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-100 mb-4 border border-slate-200">
-                <img src={course.thumbnail} alt={course.title} className="w-full h-full object-contain" />
+                
+                <Image 
+                  src={course.thumbnail} 
+                  alt={course.title} 
+                  fill
+                  className="object-contain" 
+                />
               </div>
               <div className="flex items-end gap-3 mb-1">
                 <span className="text-4xl font-extrabold">₹{course.discountPrice}</span>
@@ -189,8 +198,13 @@ export default async function CourseItemPage({
 
             <div className="lg:col-span-4 hidden lg:block">
               <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-1.5 sticky top-24">
-                <div className="w-full aspect-video bg-slate-50 rounded-xl overflow-hidden relative group cursor-pointer border border-slate-100">
-                  <img src={course.thumbnail} alt={course.title} className="w-full h-full object-contain" />
+                <div className="relative w-full aspect-video bg-slate-50 rounded-xl overflow-hidden group cursor-pointer border border-slate-100">
+                  <Image 
+                    src={course.thumbnail} 
+                    alt={course.title} 
+                    fill
+                    className="object-contain" 
+                  />
                   <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/30 transition-colors flex items-center justify-center">
                     <div className="bg-white/95 p-4 rounded-full shadow-lg group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
                       <PlayCircle size={36} fill="currentColor" className="text-slate-800 group-hover:text-blue-600 group-hover:fill-white" />

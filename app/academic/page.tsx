@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/app/pages/Header';
 import Footer from '@/app/pages/Footer';
-import { PlayCircle, Star, Clock, BookOpen } from 'lucide-react';
+import { PlayCircle, Star,  BookOpen } from 'lucide-react';
 
 const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
@@ -15,10 +15,9 @@ async function fetchAllCourses() {
     
     const rawData = await res.json();
     
-    // Handle the formatting depending on how your proxy returns it
     if (Array.isArray(rawData)) return rawData;
     if (rawData.data && Array.isArray(rawData.data)) return rawData.data;
-    if (rawData.id) return [rawData]; // Single object fallback
+    if (rawData.id) return [rawData]; 
     
     return [];
   } catch (error) {
@@ -41,7 +40,7 @@ export default async function AllCoursesPage() {
             Our Catalog
           </span>
           <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
-            Explore All Courses
+            Explore Academic Courses
           </h1>
           <p className="text-slate-500 text-lg max-w-2xl">
             Browse our complete collection of interactive courses, live classes, and test series. Select a course to view details and enroll.
@@ -49,9 +48,8 @@ export default async function AllCoursesPage() {
         </div>
 
         {courses.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 md:gap-8">
             {courses.map((course: any) => {
-              // Clean up the text for display
               const cleanTitle = course.text ? course.text.replace(/Course/i, '').trim() : 'Course';
               
               return (
@@ -60,14 +58,15 @@ export default async function AllCoursesPage() {
                   key={course.id}
                   className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:border-blue-200 transition-all duration-300 flex flex-col"
                 >
-                  {/* Image Container */}
                   <div className="relative w-full aspect-4/3 bg-slate-100 overflow-hidden">
                     
-                    <img 
-                      src={course.image || 'https://placehold.co/600x400/e2e8f0/475569?text=Course+Image'} 
+                    <Image 
+                      src={course.image || '/course/academic.jpg'} 
                       alt={course.text || 'Course'}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-contain group-hover:scale-105 transition-transform duration-500"                    />
+                    
                     <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/20 transition-colors duration-300" />
                     
                     {/* Play Button Overlay */}
@@ -77,13 +76,11 @@ export default async function AllCoursesPage() {
                       </div>
                     </div>
 
-                    {/* Course Type Badge */}
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold text-slate-800 uppercase tracking-wide border border-white/20 shadow-sm">
                       {course.type || 'Course'}
                     </div>
                   </div>
 
-                  {/* Content Container */}
                   <div className="p-6 flex flex-col grow">
                     <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
                       {course.text}

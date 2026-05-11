@@ -26,7 +26,7 @@ const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 async function getBlogs() {
   try {
     const res = await fetch(`${API_PREFIX}/api/blogs`, {
-      next: { revalidate: 300 } 
+      next: { revalidate: 3600 } 
     });
     
     if (!res.ok) return [];

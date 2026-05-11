@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 async function getSingleBlog(id: string) {
   try {
     const res = await fetch(`${API_PREFIX}/api/blogs/${id}`, {
-      next: { revalidate: 31536000 } 
+      next: { revalidate: 3600 } 
     });
     if (!res.ok) return null;
     return res.json();
@@ -72,7 +72,7 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
   let relatedBlogs = [];
   try {
     const relatedRes = await fetch(`${API_PREFIX}/api/blogs?author=${encodeURIComponent(blog.author)}`, {
-      next: { revalidate: 86400 }
+      next: { revalidate: 3600 }
     });
     
     if (relatedRes.ok) {
