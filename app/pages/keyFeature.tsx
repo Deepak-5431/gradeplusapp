@@ -106,7 +106,7 @@ const KeyFeatures = () => {
                     />
                   </div>
                   
-                  <h3> className="text-3xl md:text-4xl font-bold mb-4 text-white"
+                  <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white"> 
                     {feature.title}
                   </h3>
                   
