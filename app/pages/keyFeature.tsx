@@ -19,7 +19,6 @@ const KeyFeatures = () => {
       image: '/AI/4.webp',
     },
     {
-      //icon: '/SVG/Image Interpreter.svg',
       icon: '/SVG/Detailed Solutions.svg',
       title: 'Detailed solution',
       description: 'Write anything. Scribble equations, draw diagrams, or jot down notes and watch our visual AI solve them in real-time.',
