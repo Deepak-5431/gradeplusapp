@@ -49,7 +49,7 @@ async function getCourseData(id: string) {
       thumbnail: apiCourse.image || "", 
       description: `The ultimate preparation course. Includes live interactive classes, mock tests, and comprehensive study material tailored for top rankers.`,
       price: 2499,
-      discountPrice: 1499,
+      discountPrice: 1399,
       rating: 4.8,
       reviews: 1245,
       enrolled: 8500,
@@ -216,9 +216,9 @@ export default async function CourseItemPage({
                     <span className="text-4xl font-extrabold text-slate-900">₹{course.discountPrice}</span>
                     <span className="text-lg text-slate-400 line-through mb-1">₹{course.price}</span>
                   </div>
-                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 mb-3 shadow-md shadow-blue-600/20 text-lg">
+                 {/* <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 mb-3 shadow-md shadow-blue-600/20 text-lg">
                     Add to Cart
-                  </button>
+                  </button>*/}
                   <button className="w-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold py-4 rounded-xl transition-all active:scale-95 text-lg">
                     Buy Now
                   </button>

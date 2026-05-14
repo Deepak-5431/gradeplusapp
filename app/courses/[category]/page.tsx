@@ -1,16 +1,28 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import Header from '@/app/pages/Header';
 import Footer from '@/app/pages/Footer';
-import { PlayCircle, Star,  BookOpen } from 'lucide-react';
+import { PlayCircle, Star, BookOpen } from 'lucide-react';
 
 const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
-async function fetchAllCourses() {
+interface Course {
+  id: string | number;
+  text: string;
+  image?: string;
+  type?: string;
+  link?: string;
+}
+
+async function fetchCoursesByCategory(keyword: string): Promise<Course[]> {
   try {
-    const res = await fetch(`${API_PREFIX}/api/course`, {
-      next: { revalidate: 3600 }
+    const res = await fetch(`${API_PREFIX}/api/course?keyword=${keyword}`, {
+       // cache: 'no-store' 
+       next: { revalidate: 3600 } 
+
     });
+    
     if (!res.ok) return [];
     
     const rawData = await res.json();
@@ -26,8 +38,35 @@ async function fetchAllCourses() {
   }
 }
 
-export default async function AllCoursesPage() {
-  const courses = await fetchAllCourses();
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+  const resolvedParams = await params;
+  const urlCategory = resolvedParams.category;
+
+  const categoryConfig: Record<string, { keyword: string; title: string; description: string }> = {
+    'academics': { 
+      keyword: 'academics', 
+      title: 'Explore Academic Courses',
+      description: 'Master your school curriculum with our comprehensive interactive classes and study materials.'
+    },
+    'government': { 
+      keyword: 'government', 
+      title: 'Government Exams',
+      description: 'Prepare for top government exams with expertly crafted test series and live sessions.'
+    },
+    'entrance': { 
+      keyword: 'entrance', 
+      title: 'Entrance Exams',
+      description: 'Crack your competitive entrance exams and secure your future with our targeted preparation courses.'
+    }
+  };
+
+  const pageData = categoryConfig[urlCategory];
+
+  if (!pageData) {
+    notFound();
+  }
+
+  const courses = await fetchCoursesByCategory(pageData.keyword);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F4F7FE] font-sans">
@@ -39,19 +78,22 @@ export default async function AllCoursesPage() {
             <BookOpen className="w-4 h-4" />
             Our Catalog
           </span>
+          
           <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
-            Explore Academic Courses
+            {pageData.title}
           </h1>
+          
           <p className="text-slate-500 text-lg max-w-2xl">
-            Browse our complete collection of interactive courses, live classes, and test series. Select a course to view details and enroll.
+            {pageData.description}
           </p>
         </div>
 
         {courses.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 md:gap-8">
-            {courses.map((course: any) => {
-              const cleanTitle = course.text ? course.text.replace(/Course/i, '').trim() : 'Course';
-              
+            {courses.map((course: Course) => {
+              const cleanTitle = course.text ? course.text : 'Course';
+              // const cleanTitle = course.text ? course.text.replace(/Course/i, '').trim() : 'Course';
+
               return (
                 <Link 
                   href={`/courses/details/${course.id}`} 
@@ -62,14 +104,14 @@ export default async function AllCoursesPage() {
                     
                     <Image 
                       src={course.image || '/course/academic.jpg'} 
-                      alt={course.text || 'Course'}
+                      alt={cleanTitle}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-contain group-hover:scale-105 transition-transform duration-500"                    />
+                      className="object-fill group-hover:scale-105 transition-transform duration-500"                    
+                    />
                     
                     <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/20 transition-colors duration-300" />
                     
-                    {/* Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-90 group-hover:scale-100">
                       <div className="bg-white/95 p-3 rounded-full shadow-xl text-blue-600">
                         <PlayCircle size={32} fill="currentColor" className="text-white" />
@@ -83,7 +125,7 @@ export default async function AllCoursesPage() {
 
                   <div className="p-6 flex flex-col grow">
                     <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                      {course.text}
+                      {cleanTitle}
                     </h3>
                     
                     <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
@@ -105,8 +147,8 @@ export default async function AllCoursesPage() {
             <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-4">
               <BookOpen className="w-10 h-10 text-slate-300" />
             </div>
-            <h3 className="text-xl font-bold text-slate-700 mb-2">No courses found</h3>
-            <p className="text-slate-500">Check back later or ensure your backend API is running.</p>
+            <h3 className="text-xl font-bold text-slate-700 mb-2">No courses available for {pageData.title}</h3>
+            <p className="text-slate-500">courses will be available soon we are working on it</p>
           </div>
         )}
       </main>
@@ -115,3 +157,5 @@ export default async function AllCoursesPage() {
     </div>
   );
 }
+
+
