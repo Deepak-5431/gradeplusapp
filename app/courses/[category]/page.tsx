@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import Header from '@/app/pages/Header';
 import Footer from '@/app/pages/Footer';
 import { PlayCircle, Star, BookOpen } from 'lucide-react';
@@ -15,12 +16,28 @@ interface Course {
   link?: string;
 }
 
+const categoryConfig: Record<string, { keyword: string; title: string; description: string }> = {
+  'academics': { 
+    keyword: 'academics', 
+    title: 'Explore Academic Courses',
+    description: 'Master your school curriculum with our comprehensive interactive classes and study materials.'
+  },
+  'government': { 
+    keyword: 'government', 
+    title: 'Government Exams',
+    description: 'Prepare for top government exams with expertly crafted test series and live sessions.'
+  },
+  'entrance': { 
+    keyword: 'entrance', 
+    title: 'Entrance Exams',
+    description: 'Crack your competitive entrance exams and secure your future with our targeted preparation courses.'
+  }
+};
+
 async function fetchCoursesByCategory(keyword: string): Promise<Course[]> {
   try {
     const res = await fetch(`${API_PREFIX}/api/course?keyword=${keyword}`, {
-       // cache: 'no-store' 
        next: { revalidate: 3600 } 
-
     });
     
     if (!res.ok) return [];
@@ -38,27 +55,40 @@ async function fetchCoursesByCategory(keyword: string): Promise<Course[]> {
   }
 }
 
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ category: string }> 
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const urlCategory = resolvedParams.category;
+  const pageData = categoryConfig[urlCategory];
+
+  if (!pageData) {
+    return { title: 'Category Not Found | Gradeplus' };
+  }
+
+  return {
+    title: `${pageData.title} | Gradeplus`,
+    description: pageData.description,
+    openGraph: {
+      title: `${pageData.title} | Gradeplus`,
+      description: pageData.description,
+      url: `https://gradeplusapp.com/courses/${urlCategory}`,
+      siteName: 'Gradeplus',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary',
+      title: pageData.title,
+      description: pageData.description,
+    }
+  };
+}
+
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
   const resolvedParams = await params;
   const urlCategory = resolvedParams.category;
-
-  const categoryConfig: Record<string, { keyword: string; title: string; description: string }> = {
-    'academics': { 
-      keyword: 'academics', 
-      title: 'Explore Academic Courses',
-      description: 'Master your school curriculum with our comprehensive interactive classes and study materials.'
-    },
-    'government': { 
-      keyword: 'government', 
-      title: 'Government Exams',
-      description: 'Prepare for top government exams with expertly crafted test series and live sessions.'
-    },
-    'entrance': { 
-      keyword: 'entrance', 
-      title: 'Entrance Exams',
-      description: 'Crack your competitive entrance exams and secure your future with our targeted preparation courses.'
-    }
-  };
 
   const pageData = categoryConfig[urlCategory];
 
@@ -92,7 +122,6 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 md:gap-8">
             {courses.map((course: Course) => {
               const cleanTitle = course.text ? course.text : 'Course';
-              // const cleanTitle = course.text ? course.text.replace(/Course/i, '').trim() : 'Course';
 
               return (
                 <Link 
@@ -100,8 +129,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                   key={course.id}
                   className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:border-blue-200 transition-all duration-300 flex flex-col"
                 >
-                  <div className="relative w-full aspect-4/3 bg-slate-100 overflow-hidden">
-                    
+                      <div className="relative w-full aspect-video bg-slate-100 overflow-hidden">                    
                     <Image 
                       src={course.image || '/course/academic.jpg'} 
                       alt={cleanTitle}
@@ -123,7 +151,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                     </div>
                   </div>
 
-                  <div className="p-6 flex flex-col grow">
+                  
+                      <div className="p-4 sm:p-5 flex flex-col grow">
                     <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
                       {cleanTitle}
                     </h3>
@@ -157,5 +186,3 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     </div>
   );
 }
-
-

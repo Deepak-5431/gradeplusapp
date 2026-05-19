@@ -41,8 +41,8 @@ const Header = () => {
           <Link href="/#home" onClick={(e) => handleNavClick(e, '#home')} className="text-blue-600 hover:text-slate-900 transition-colors">
             Home
           </Link>
-          <Link href="/#keyfeatures" onClick={(e) => handleNavClick(e, '#keyfeatures')} className="hover:text-slate-900 transition-colors">
-            App Features
+          <Link href="/#Courses" onClick={(e) => handleNavClick(e, '#Courses')} className="hover:text-slate-900 transition-colors">
+            Courses
           </Link>
           <Link href="/#herosection" onClick={(e) => handleNavClick(e, '#herosection')} className="hover:text-slate-900 transition-colors">
             About

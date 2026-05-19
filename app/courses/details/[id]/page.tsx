@@ -48,8 +48,8 @@ async function getCourseData(id: string) {
       title: `${cleanText} Complete Course`, 
       thumbnail: apiCourse.image || "", 
       description: `The ultimate preparation course. Includes live interactive classes, mock tests, and comprehensive study material tailored for top rankers.`,
-      price: 2499,
-      discountPrice: 1399,
+     // price: 2499,
+     // discountPrice: 1399,
       rating: 4.8,
       reviews: 1245,
       enrolled: 8500,
@@ -168,8 +168,8 @@ export default async function CourseItemPage({
                 />
               </div>
               <div className="flex items-end gap-3 mb-1">
-                <span className="text-4xl font-extrabold">₹{course.discountPrice}</span>
-                <span className="text-lg text-slate-500 line-through mb-1">₹{course.price}</span>
+                {/*<span className="text-4xl font-extrabold">₹{course.discountPrice}</span>
+                <span className="text-lg text-slate-500 line-through mb-1">₹{course.price}</span> */}
               </div>
               <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-md shadow-blue-600/20">
                 Enroll Now
@@ -213,8 +213,8 @@ export default async function CourseItemPage({
                 </div>
                 <div className="p-6">
                   <div className="flex items-end gap-3 mb-4">
-                    <span className="text-4xl font-extrabold text-slate-900">₹{course.discountPrice}</span>
-                    <span className="text-lg text-slate-400 line-through mb-1">₹{course.price}</span>
+                   {/* <span className="text-4xl font-extrabold text-slate-900">₹{course.discountPrice}</span> */}
+                   {/* <span className="text-lg text-slate-400 line-through mb-1">₹{course.price}</span> */}
                   </div>
                  {/* <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 mb-3 shadow-md shadow-blue-600/20 text-lg">
                     Add to Cart

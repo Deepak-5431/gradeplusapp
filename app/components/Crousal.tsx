@@ -47,19 +47,18 @@ const Crousal = () => {
         >
           <div className="mb-8">
             <h1 className="text-3xl md:text-5xl font-black leading-tight mb-4 [text-shadow:0px_2px_12px_rgba(0,0,0,0.9),0px_4px_25px_rgba(0,0,0,0.9)] text-white">
-              AI-Powered Learning
+              AI Homework App & AI Study Assistant for Smarter Learning
             </h1>
             <p className="text-sm md:text-lg text-white/95 leading-relaxed font-semibold [text-shadow:0px_2px_8px_rgba(0,0,0,0.9),0px_2px_15px_rgba(0,0,0,0.8)]">
-              Experience personalized education with our advanced AI technology that adapts to your learning style and pace.
-            </p>
+                  GradePlus is an AI-powered education app designed for students who want instant doubt solving, step-by-step homework solutions, exam preparation support, and personalized learning assistance.            </p>
           </div>
 
           <div className="flex flex-wrap gap-3 justify-center md:justify-start w-full">
             <a href="https://play.google.com/store/apps/details?id=com.app.iblib" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-white text-[#016DAB] hover:bg-gray-100 text-sm">
-              <Play className="w-4 h-4 fill-current" /> Play Store
+              <Play className="w-4 h-4 fill-current" /> Download GradePlus App
             </a>
             <Link href="/know-more/ai-learning" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-[0_4px_15px_rgba(0,0,0,0.5)] bg-slate-900/60 backdrop-blur-sm border-2 border-white/50 text-white hover:border-white hover:bg-white/20 text-sm">
-              <Info className="w-4 h-4" /> Know More
+              <Info className="w-4 h-4" /> Explore AI Features
             </Link>
           </div>
         </motion.div>
@@ -80,10 +79,10 @@ const Crousal = () => {
         >
           <div className="mb-8">
             <h1 className="text-3xl md:text-5xl font-black leading-tight mb-4 [text-shadow:0px_2px_12px_rgba(0,0,0,0.9),0px_4px_25px_rgba(0,0,0,0.6)] text-white">
-              Smart Study Assistant
+              24x7 AI Doubt Solving App for Students
             </h1>
             <p className="text-sm md:text-lg text-white/95 leading-relaxed font-semibold [text-shadow:0px_2px_8px_rgba(0,0,0,0.9),0px_2px_15px_rgba(0,0,0,0.8)]">
-              Get instant help with our AI tutor available 24/7. Learn and practice in your own time and schedule beside given school assignments.
+              Get instant homework help, concept explanations, and AI-powered study support anytime. GradePlus helps students learn smarter with adaptive learning and personalized AI tutoring.
             </p>
           </div>
 
@@ -286,7 +285,6 @@ const Crousal = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              // FIX 2: Increased w-3 h-3 to w-4 h-4 for better mobile touch targets
               className={`transition-all duration-300 rounded-full ${index === current ? 'bg-white w-8 h-4 shadow-sm' : 'bg-white/40 w-4 h-4 hover:bg-white/80'
                 }`}
               aria-label={`Go to slide ${index + 1}`}

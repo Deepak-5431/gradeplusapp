@@ -9,7 +9,7 @@ import Client from "./pages/Client";
 import Schools from "./pages/Schools";
 import Details from "./pages/Details";
 import Applink from "./components/Applink";
-import CourseBannersFinal from "./pages/ExploreCourseClient";
+import ExploreCourse from "./components/ExploreCourse";
 import Featuredcourses from "./components/FeaturedCourses";
 import SubjectiveAssessment from "./components/SubjectiveAssessment";
 import School from "./components/School";
@@ -20,16 +20,12 @@ const Home = () => {
       <Header />
       <section id="home"><Crousal /></section>
       <section id="keyfeatures"><KeyFeatures /></section>
-      
       <SubjectiveAssessment />
-      <section id="About us"><CourseBannersFinal /></section>
+      <section id="Courses"><ExploreCourse /></section>
       <Featuredcourses />
       <School />
       <section id="herosection"><HeroSection /></section>
-      <Details />
-      
-     
-      
+      <Details />     
       <section id="gallery"><Gallery /></section>
       <section id="form"><Form /></section>
       <section id="testimonies"><Schools /></section>
