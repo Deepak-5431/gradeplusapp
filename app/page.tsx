@@ -13,6 +13,7 @@ import ExploreCourse from "./components/ExploreCourse";
 import Featuredcourses from "./components/FeaturedCourses";
 import SubjectiveAssessment from "./components/SubjectiveAssessment";
 import School from "./components/School";
+import FaqSection from "./components/FaqSection";
 //import { Section } from "lucide-react";
 const Home = () => {
   return (
@@ -31,6 +32,7 @@ const Home = () => {
       <section id="testimonies"><Schools /></section>
       <Client />
       <Applink />
+      <FaqSection />
       <Footer />
     </div>
   );

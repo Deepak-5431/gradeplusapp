@@ -77,6 +77,7 @@ export async function generateMetadata({
       url: `https://gradeplusapp.com/courses/${urlCategory}`,
       siteName: 'Gradeplus',
       type: 'website',
+    //need a img here  images: ['/og-main.jpg'],
     },
     twitter: {
       card: 'summary',

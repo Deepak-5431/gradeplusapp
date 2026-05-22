@@ -27,7 +27,7 @@ const Crousal = () => {
           key={current}
         >
           <Link href="/know-more/mega-championship" className="absolute bottom-[20%] left-[1%] flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-[0_4px_15px_rgba(0,0,0,0.5)] bg-slate-900/60 backdrop-blur-sm border-2 border-white/50 text-white hover:border-white hover:bg-white/20 text-sm">
-            <Info className="w-4 h-4" /> Know More
+            <Info className="w-4 h-4" /> Explore AI Features
           </Link>
         </motion.div>
       )
@@ -88,10 +88,10 @@ const Crousal = () => {
 
           <div className="flex flex-wrap gap-3 justify-center md:justify-start w-full">
             <a href="https://play.google.com/store/apps/details?id=com.app.iblib" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-white text-[#016DAB] hover:bg-gray-100 text-sm">
-              <Play className="w-4 h-4 fill-current" /> Play Store
+              <Play className="w-4 h-4 fill-current" /> Download GradePlus App
             </a>
             <Link href="/know-more/smart-assistant" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-[0_4px_15px_rgba(0,0,0,0.5)] bg-slate-900/60 backdrop-blur-sm border-2 border-white/50 text-white hover:border-white hover:bg-white/20 text-sm">
-              <Info className="w-4 h-4" /> Know More
+              <Info className="w-4 h-4" /> Explore AI Features
             </Link>
           </div>
         </motion.div>
@@ -112,19 +112,18 @@ const Crousal = () => {
         >
           <div className="mb-8">
             <h1 className="text-3xl md:text-5xl font-black leading-tight mb-4 [text-shadow:0px_2px_12px_rgba(0,0,0,0.9),0px_4px_25px_rgba(0,0,0,0.6)] text-white">
-              Self-Paced Learning
+              AI-Powered Study Superpowers
             </h1>
             <p className="text-sm md:text-lg text-white/95 leading-relaxed font-semibold [text-shadow:0px_2px_8px_rgba(0,0,0,0.9),0px_2px_15px_rgba(0,0,0,0.8)]">
-              You can learn and practice in your own time and schedule beside given school home assignments or exam.
-            </p>
+              Experience the next generation of AI learning with instant doubt solving, image-based homework support, and personalized study assistance.            </p>
           </div>
 
           <div className="flex flex-wrap gap-3 justify-center md:justify-start w-full">
             <a href="https://play.google.com/store/apps/details?id=com.app.iblib" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg bg-white text-[#016DAB] hover:bg-gray-100 text-sm">
-              <Play className="w-4 h-4 fill-current" /> Play Store
+              <Play className="w-4 h-4 fill-current" /> Download GradePlus App
             </a>
             <Link href="/know-more/self-paced" className="flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-[0_4px_15px_rgba(0,0,0,0.5)] bg-slate-900/60 backdrop-blur-sm border-2 border-white/50 text-white hover:border-white hover:bg-white/20 text-sm">
-              <Info className="w-4 h-4" /> Know More
+              <Info className="w-4 h-4" /> Explore AI Features
             </Link>
           </div>
         </motion.div>

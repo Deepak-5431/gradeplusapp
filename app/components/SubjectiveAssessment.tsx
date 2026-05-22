@@ -23,10 +23,10 @@ const SubjectiveAssessment = () => {
             <span className="text-sm font-bold text-slate-700 uppercase tracking-wide">Smart Evaluation</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6 text-slate-900">
-            AI Subjective Assessment
+            AI-Based Homework Evaluation & Performance Analysis
           </h2>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Stop manually checking homework. Upload handwritten answers and watch our AI detect calculation errors and provide step-by-step solutions instantly.
+            Upload handwritten answers and let GradePlus analyze mistakes, detect logical errors, and provide instant AI-generated corrections with personalized feedback.
           </p>
         </div>
 
@@ -114,10 +114,10 @@ const SubjectiveAssessment = () => {
 
             <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
               <h3 className="text-3xl md:text-4xl font-black mb-4 text-slate-900">
-                2. Instant AI Grading
+                2. AI-Powered Answer Evaluation
               </h3>
               <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                Our AI doesn't just check the final answer. It reads line by line to find exactly where the logical mistake happened, acting as a personal 24/7 tutor.
+                The AI checks answers line-by-line, identifies conceptual mistakes and provides smart correction guidance for better learning.
               </p>
               
               <div className="space-y-4 w-full max-w-md">

@@ -8,7 +8,7 @@ const Details = () => {
     {
       id: 1,
       title: 'Comprehensive Study Material',
-      description: 'Gain an expansive Online CBSE-ICSE & all state board subjects materials in one place.',
+      description: 'Access CBSE, ICSE, and state board learning material, revision notes, MCQ practice, and exam preparation resources',
       image: '/school/comprehens.webp',
       points: [
         'Conceptualized Reports on MCQs/Case Studies',
@@ -19,7 +19,7 @@ const Details = () => {
     {
       id: 2,
       title: 'Examination System',
-      description: 'Manage Exams with our integrated Examination Management System',
+      description: 'Manage online exams, MCQ tests, subjective assessments, and student progress reports from one centralized platform.',
       image: '/school/examination system.webp',
       points: [
         'MCQs & Subjective Questions Feature',
@@ -31,10 +31,10 @@ const Details = () => {
     {
       id: 3,
       title: 'School Fee Management System',
-      description: 'Streamline Fee collection with School Login & Payment Details',
+      description: 'Automate fee collection, payment tracking, invoice generation, and school financial reporting efficiently.',
       image: '/school/Feemanagement.webp',
       points: [
-        'Automated Fee Invoice with School Logo & Payment Details',
+        'Create customizable class schedules, teacher timetables, substitute tracking, and academic planning workflows',
         'Integrated Payment Invoice Generation',
         'Comprehensive M/S Reports (Integration with Machine School Ledger)',
         'Evaluate payment Activity & Detailed Attendance facility'
@@ -43,7 +43,7 @@ const Details = () => {
     {
       id: 4,
       title: 'TimeTable Management System',
-      description: 'Set Your Subject Wise and Class Wise Timetable Respectively',
+      description: 'Create customizable class schedules, teacher timetables, substitute tracking, and academic planning workflows',
       image: '/school/timetable.webp',
       points: [
         'Fully Customizable Period & Timetable',
@@ -78,11 +78,9 @@ const Details = () => {
             Our <span className="bg-linear-to-r from-[#016DAB] to-[#01CB89] bg-clip-text text-transparent">Key Features</span>
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Discover powerful tools designed to transform the educational experience
-          </p>
+            Explore AI-powered educational tools, student performance systems and school management solutions designed for modern digital learning.</p>
         </div>
 
-        {/* Feature Cards - 2x2 Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
           {features.map((feature, index) => (
             <div
@@ -112,7 +110,6 @@ const Details = () => {
                   {feature.description}
                 </p>
 
-                {/* Feature Points - Pushed to bottom using mt-auto if needed */}
                 <ul className="space-y-4 mt-auto">
                   {feature.points.map((point, idx) => (
                     <li key={idx} className="flex items-start gap-3">

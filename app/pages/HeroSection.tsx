@@ -8,32 +8,32 @@ const FeaturesSection = () => {
     {
       icon: ScanSearch,
       title: 'AI Image Interpreter',
-      description: 'Stuck on a problem? Simply snap a picture. Our AI instantly interprets complex equations, geometry diagrams, and word problems.',
+      description: 'Upload textbook questions, handwritten notes, and diagrams to receive instant AI-generated explanations and homework support',
     },
     {
       icon: Sparkles,
       title: '"Help Me to Solve" Tutor',
-      description: 'Instead of just giving the final answer, our AI acts as a personal tutor, guiding students step-by-step to master core concepts.',
+      description: 'Get guided step-by-step learning support from an AI tutor designed to improve conceptual understanding and problem-solving skills.',
     },
     {
       icon: FileText,
       title: 'Detailed AI Solutions',
-      description: 'Generate instant, comprehensive step-by-step solutions for homework and test preparation across all major subjects.',
+      description: 'Receive accurate AI-generated solutions with detailed explanations for homework, assignments, and exam preparation.',
     },
     {
       icon: Brain,
       title: 'Adaptive AI Learning',
-      description: 'Our AI analyzes learning patterns to provide a highly personalized and interactive path tailored to each student\'s pace.',
+      description: 'GradePlus adapts learning recommendations based on student performance, learning speed, and academic progress.',
     },
     {
       icon: BarChart2,
       title: 'Predictive Performance',
-      description: 'Leverage artificial intelligence to analyze student and teacher performance trends, predicting areas where extra support is needed.',
+      description: 'Track student performance using AI-powered analytics, progress reports, and smart academic insights',
     },
     {
       icon: Video,
       title: 'Smart Video Classrooms',
-      description: 'Take classes online with our fully integrated video conferencing system, enhanced with AI-driven engagement tracking.',
+      description: 'Conduct engaging online classes with integrated virtual classrooms and digital learning support',
     },
   ];
 
@@ -43,11 +43,10 @@ const FeaturesSection = () => {
         
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-[#5A6A85] mb-4">
-            Why GradePlus is a right choice for you
+            Why Students & Schools Choose GradePlus
           </h2>
           <p className="text-gray-500 max-w-4xl mx-auto text-sm md:text-base">
-            GradePlus's advanced AI features make it the best choice for your educational institute. 
-            Explore how our smart tools empower students and educators.
+            GradePlus helps students study smarter with AI tutoring, adaptive learning, and instant doubt solving while helping schools manage academics, examinations, and performance tracking efficiently.
           </p>
         </div>
 

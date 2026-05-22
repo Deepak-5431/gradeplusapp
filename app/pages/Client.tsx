@@ -96,7 +96,7 @@ const Client = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Trusted by <span className="bg-linear-to-r from-[#016DAB] to-[#01CB89] bg-clip-text text-transparent">Leading Organizations</span>
+            Trusted by <span className="bg-linear-to-r from-[#016DAB] to-[#01CB89] bg-clip-text text-transparent">Schools & Educational Institutions</span>
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Discover what industry leaders say about their experience with GradePlus

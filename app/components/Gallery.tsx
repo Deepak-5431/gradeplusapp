@@ -59,10 +59,10 @@ const Gallery = () => {
       
         <div className="mb-12 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Platform <span className="bg-linear-to-r from-[#016DAB] to-[#01CB89] bg-clip-text text-transparent">Gallery</span>
+           GradePlus App<span className="bg-linear-to-r from-[#016DAB] to-[#01CB89] bg-clip-text text-transparent"> Screenshots & Learning Dashboard</span>
           </h2>
           <p className="text-gray-600 text-lg">
-            Explore screenshots and app visuals. Click on any image to zoom in.
+            Explore the GradePlus AI learning interface, smart analytics dashboard, online examination system and personalized study experience.
           </p>
         </div>
 

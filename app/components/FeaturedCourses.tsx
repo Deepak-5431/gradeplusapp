@@ -160,16 +160,16 @@ const FeaturedCourses = () => {
                     </span>
 
                     <div className="flex items-center justify-between mt-auto pt-3 border-t border-slate-100">
-                      <div className="flex items-center gap-2">
+                     {/* <div className="flex items-center gap-2">
                         {course.popular && (
                           <div className="flex items-center gap-0.5 bg-red-50 border border-red-100 text-red-600 text-[9px] font-bold uppercase px-1.5 py-0.5 rounded-md">
                             <Flame className="w-2.5 h-2.5" /> Trending
                           </div>
                         )}
-                      </div>
+                      </div>*
                      <span className="text-[10px] font-bold text-slate-400 group-hover:text-red-600  tracking-wider transition-colors">
-                       Views {course.views}
-                      </span> 
+                      Views {course.views} 
+                      </span> */}
                     </div>
 
                   </div>

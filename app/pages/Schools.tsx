@@ -152,10 +152,10 @@ const Schools = () => {
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            <span className="bg-linear-to-r from-[#4A7BA7] to-[#016DAB] bg-clip-text text-transparent">Testimonials</span>
+            <span className="bg-linear-to-r from-[#4A7BA7] to-[#016DAB] bg-clip-text text-transparent">What Students & Institutions Say About GradePlus</span>
           </h2>
           <p className="text-gray-600 text-lg md:text-xl px-4">
-            Here What our Users Say...
+            Discover how students, schools and educational organizations use GradePlus for smarter learning and academic management.
           </p>
         </div>
 

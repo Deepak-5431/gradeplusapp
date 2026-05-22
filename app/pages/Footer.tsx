@@ -138,7 +138,7 @@ const Footer = () => {
             </li>
             <li>
               <Link href="#testimonies" className="hover:text-teal-600 transition-colors">
-                Testimonials
+                What Students & Institutions Say About GradePlus
               </Link>
             </li>
           </ul>

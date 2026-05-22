@@ -7,21 +7,21 @@ const KeyFeatures = () => {
   const features = [
     {
       icon: '/SVG/Help me to Solve.svg',
-      title: 'Help me to Solve',
-      description: "Don't just get the answer. Understand the 'why' with complex logic broken down into bite-sized, digestible steps.",
+      title: 'AI Homework Assistant',
+      description: "Get step-by-step homework solutions with detailed explanations that help students understand concepts instead of memorizing answers.",
       image: '/AI/2.webp',
     },
     {
     //  icon: '/SVG/Detailed Solutions.svg',
       icon: '/SVG/Image Interpreter.svg',
-      title: 'Image Interpreter',
-      description: 'Stuck on a problem? Just snap a photo to get instant, detailed solutions. Our AI instantly recognizes complex formulas and text.',
+      title: 'AI Doubt Solving from Images',
+      description: 'Upload handwritten questions, formulas, diagrams, or textbook problems and receive instant AI-powered doubt solving with accurate explanations',
       image: '/AI/4.webp',
     },
     {
       icon: '/SVG/Detailed Solutions.svg',
-      title: 'Detailed solution',
-      description: 'Write anything. Scribble equations, draw diagrams, or jot down notes and watch our visual AI solve them in real-time.',
+      title: 'Step-by-Step AI Solutions',
+      description: 'Learn with detailed AI-generated solutions designed to improve conceptual understanding, exam preparation, and problem-solving skills.',
       image: '/AI/3.webp',
     },
   ];

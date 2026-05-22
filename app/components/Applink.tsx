@@ -41,11 +41,7 @@ const Applink = () => {
           </h2>
 
           <p className="mt-6 text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto md:mx-0">
-            GradePlus for Parents/Students is a simple application. Parents can
-            check and monitor their kids' performance and activities in school.
-            This application facilitates and provides a holistic view of kid's
-            attendance, fee invoices, exam results, performance in tests and many
-            more details.
+            GradePlus helps students with AI homework support, instant doubt solving, exam preparation, and performance tracking while helping parents monitor attendance, results, and academic progress in real-time.
           </p>
 
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-8">

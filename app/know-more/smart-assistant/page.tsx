@@ -150,7 +150,6 @@ export default function SmartAssistantPage() {
               </div>
             </div>
 
-            {/* Desktop/Web */}
             <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl flex items-center gap-4 w-full md:w-auto hover:bg-white/15 transition-colors cursor-pointer">
               <div className="p-3 bg-fuchsia-500 rounded-xl">
                 <MousePointer2 className="w-6 h-6 text-white" />
