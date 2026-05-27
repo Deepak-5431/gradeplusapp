@@ -1,26 +1,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  ChevronRight, Clock, Users, Star, PlayCircle, Check, 
-} from 'lucide-react';
+import { Metadata } from 'next';
+import { Star, PlayCircle } from 'lucide-react';
 import Header from '@/app/pages/Header';
-import Footer from '@/app/pages/Footer'; 
-
-const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
+import Footer from '@/app/pages/Footer';
+import { Course, CourseModerator,CourseApiResponse } from '@/app/utils/types';
+import { fetcher } from '@/app/utils/ApiServices';
+import { ENDPOINTS } from '@/app/utils/endpoints';
 
 export async function generateStaticParams() {
   try {
-    const res = await fetch(`${API_PREFIX}/api/course`);
-    if (!res.ok) return [];
-    
-    const rawData = await res.json();
-    let courses = [];
-    
-    if (Array.isArray(rawData)) courses = rawData;
-    else if (rawData.data && Array.isArray(rawData.data)) courses = rawData.data;
-    else if (rawData.id) courses = [rawData];
+    const rawData = await fetcher<CourseApiResponse>(ENDPOINTS.COURSES.ALL);
+  
+    if (!rawData) return [];
+    const courses: Course[] = Array.isArray(rawData) ? rawData : [rawData];
 
-    return courses.map((course: any) => ({
+    return courses.map((course: Course) => ({
       id: String(course.id),
     }));
   } catch (error) {
@@ -29,47 +24,36 @@ export async function generateStaticParams() {
   }
 }
 
-async function getCourseData(id: string) {
+async function getCourseData(id: string): Promise<Course | null> {
   try {
-    const res = await fetch(`${API_PREFIX}/api/course?id=${id}`, {
-      next: { revalidate: 3600 } 
-    });
+    const apiResponse = await fetcher<CourseApiResponse>(ENDPOINTS.COURSES.BY_ID(id));
 
-    if (!res.ok) return null;
-    
-    const apiCourse = await res.json();
+    if (!apiResponse) return null;
+
+    const apiCourse: Course = Array.isArray(apiResponse) ? apiResponse[0] : apiResponse;
+
     if (!apiCourse || !apiCourse.id) return null;
 
-    const rawText = apiCourse.text || id;
+    const rawText = apiCourse.title || apiCourse.text || id;
     const cleanText = rawText.replace(/course/i, '').trim().toUpperCase();
 
     return {
       id: apiCourse.id || id,
-      title: `${cleanText} Complete Course`, 
-      thumbnail: apiCourse.image || "", 
+      title: apiCourse.title || `${cleanText} Complete Course`,
+      thumbnail: apiCourse.image || "",
+      price: apiCourse.price,
+      priceInWords: apiCourse.priceInWords,
+      moderators: apiCourse.moderators || [],
+      qualification: apiCourse.qualification,
       description: `The ultimate preparation course. Includes live interactive classes, mock tests, and comprehensive study material tailored for top rankers.`,
-     // price: 2499,
-     // discountPrice: 1399,
       rating: 4.8,
       reviews: 1245,
       enrolled: 8500,
       duration: 'Lifetime',
-      instructor: {
-        name: 'Rahul Sharma',
-        expertise: 'Senior Faculty'
-      },
       features: [
         '200+ Hours of Live & Recorded Classes',
         '50+ Full-Length Mock Tests',
         'Detailed PDF Notes & Assignments'
-      ],
-      syllabus: [
-        { 
-          module: 'Module 1: Foundations & Basics', 
-          lessons: 12, 
-          duration: '14 hrs',
-          topics: ['Introduction to Core Concepts', 'Important Formulas & Shortcuts'] 
-        }
       ]
     };
   } catch (error) {
@@ -78,13 +62,51 @@ async function getCourseData(id: string) {
   }
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const course = await getCourseData(id);
+
+  if (!course) {
+    return { title: 'Course Not Found | GradePlus' };
+  }
+
+  const baseUrl = 'https://gradeplusapp.com';
+  const ogImage = course.thumbnail?.startsWith('http')
+    ? course.thumbnail
+    : `${baseUrl}${course.thumbnail || '/og-main.jpg'}`;
+
+  return {
+    title: `${course.title} | GradePlus`,
+    description: course.description,
+    openGraph: {
+      title: `${course.title} | GradePlus`,
+      description: course.description,
+      url: `${baseUrl}/courses/details/${id}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: course.title,
+        },
+      ],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: course.title,
+      description: course.description,
+      images: [ogImage],
+    },
+  };
+}
+
 export default async function CourseItemPage({
   params
 }: {
   params: Promise<{ id: string }>
 }) {
   const { id } = await params;
-  
   const course = await getCourseData(id);
 
   if (!course) {
@@ -94,7 +116,7 @@ export default async function CourseItemPage({
         <div className="grow flex flex-col items-center justify-center">
           <h1 className="text-3xl font-bold text-slate-800 mb-2">Course Not Found</h1>
           <p className="text-slate-500 mb-6">We couldn't find the details for this specific course.</p>
-          <Link href="/all-courses" className="px-6 py-3 bg-blue-600 text-white rounded-lg font-bold">
+          <Link href="/courses/academics" className="px-6 py-3 bg-blue-600 text-white rounded-lg font-bold">
             Explore All Courses
           </Link>
         </div>
@@ -104,131 +126,128 @@ export default async function CourseItemPage({
   }
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
       <Header />
-      
-      <div className="bg-slate-900 text-white pt-8 pb-28 relative overflow-hidden font-sans">
-        <div className="absolute inset-0 bg-slate-900 flex items-center justify-center opacity-20 pointer-events-none">
-          
-          <Image 
-            src={course.thumbnail} 
-            alt="Course background" 
-            fill
-            priority
-            className="object-cover blur-xl" 
-          />
-          <div className="absolute inset-0 bg-linear-to-b from-slate-900/40 via-slate-900/80 to-slate-900" />
-        </div>
 
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400 mb-8 capitalize font-medium">
-            <Link href="/all-courses" className="hover:text-white transition-colors">All Courses</Link>
-            <ChevronRight size={14} className="text-slate-600" />
-            <span className="text-slate-200">Course {id}</span>
+      <section className="w-full border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-16 flex flex-col md:flex-row gap-8 lg:gap-16 items-center">
+
+          <div className="w-full md:w-[70%] relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group shrink-0 h-64 sm:h-80 md:h-80 lg:h-80">
+            <div className="relative w-full h-full">
+              <Image
+                src={ENDPOINTS.ASSETS.AVATAR(course.thumbnail)}
+                alt={course.title || 'Course Image'}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                priority
+              />
+            </div>
+            <div className="absolute inset-0 bg-slate-900/10 flex items-center justify-center group-hover:bg-slate-900/20 transition-colors pointer-events-none">
+              <PlayCircle size={64} className="text-white/90 drop-shadow-md" strokeWidth={1.5} />
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-8">
-              <div className="flex flex-wrap items-center gap-3 mb-5">
-                <span className="bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-widest">
-                  Best Seller
-                </span>
-                <span className="flex items-center gap-1.5 text-yellow-400 text-sm font-bold">
-                  <Star size={16} className="fill-yellow-400" /> 
-                  {course.rating} <span className="text-slate-400 font-normal">({course.reviews.toLocaleString()} ratings)</span>
-                </span>
-              </div>
-              
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight lg:pr-10">
-                {course.title}
-              </h1>
-              <p className="text-lg text-slate-300 mb-8 leading-relaxed max-w-3xl">
-                {course.description}
-              </p>
+          <div className="w-full md:w-[30%] flex flex-col justify-center">
+            <span className="text-xs md:text-sm text-blue-500 font-bold uppercase tracking-wider mb-2">
+              Course Details
+            </span>
 
-              <div className="flex flex-wrap gap-4 text-sm font-medium">
-                <div className="flex items-center gap-2 text-slate-200">
-                  <Clock size={18} className="text-slate-400" /> {course.duration} Access
-                </div>
-                <div className="hidden sm:block w-px h-5 bg-slate-700"></div>
-                <div className="flex items-center gap-2 text-slate-200">
-                  <Users size={18} className="text-slate-400" /> {course.enrolled.toLocaleString()}+ Students enrolled
-                </div>
-              </div>
-            </div>
+            <h1 className="text-2xl md:text-2xl lg:text-3xl font-extrabold mb-4 leading-tight text-slate-900">
+              {course.title}
+            </h1>
 
-            <aside className="lg:hidden col-span-1 bg-white p-5 rounded-2xl shadow-xl text-slate-900 border border-slate-200">
-              <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-100 mb-4 border border-slate-200">
-                
-                <Image 
-                  src={course.thumbnail} 
-                  alt={course.title} 
-                  fill
-                  className="object-contain" 
-                />
-              </div>
-              <div className="flex items-end gap-3 mb-1">
-                {/*<span className="text-4xl font-extrabold">₹{course.discountPrice}</span>
-                <span className="text-lg text-slate-500 line-through mb-1">₹{course.price}</span> */}
-              </div>
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-md shadow-blue-600/20">
-                Enroll Now
-              </button>
-            </aside>
-          </div>
-        </div>
-      </div>
-
-      <div className="min-h-screen bg-slate-50 pb-20 font-sans">
-        <div className="max-w-7xl mx-auto px-4 -mt-10 relative z-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-8 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-              <section className="p-6 md:p-10 border-b border-slate-100 bg-slate-50/50">
-                <h2 className="text-2xl font-bold text-slate-900 mb-6">What you'll learn</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                  {course.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <Check size={20} className="text-blue-600 shrink-0 mt-0.5" strokeWidth={2.5} />
-                      <span className="text-slate-700 text-sm leading-relaxed">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            </div>
-
-            <div className="lg:col-span-4 hidden lg:block">
-              <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-1.5 sticky top-24">
-                <div className="relative w-full aspect-video bg-slate-50 rounded-xl overflow-hidden group cursor-pointer border border-slate-100">
-                  <Image 
-                    src={course.thumbnail} 
-                    alt={course.title} 
-                    fill
-                    className="object-contain" 
+            <div className="flex items-center gap-2 mb-8">
+              <div className="flex text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    size={18}
+                    className={i < Math.floor(course.rating || 0) ? "fill-yellow-400" : "fill-slate-200 text-slate-200"}
                   />
-                  <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/30 transition-colors flex items-center justify-center">
-                    <div className="bg-white/95 p-4 rounded-full shadow-lg group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                      <PlayCircle size={36} fill="currentColor" className="text-slate-800 group-hover:text-blue-600 group-hover:fill-white" />
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-end gap-3 mb-4">
-                   {/* <span className="text-4xl font-extrabold text-slate-900">₹{course.discountPrice}</span> */}
-                   {/* <span className="text-lg text-slate-400 line-through mb-1">₹{course.price}</span> */}
-                  </div>
-                 {/* <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all active:scale-95 mb-3 shadow-md shadow-blue-600/20 text-lg">
-                    Add to Cart
-                  </button>*/}
-                  <button className="w-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold py-4 rounded-xl transition-all active:scale-95 text-lg">
-                    Buy Now
-                  </button>
-                </div>
+                ))}
               </div>
+              <span className="text-sm text-slate-500 font-medium ml-1">
+                {course.reviews?.toLocaleString()} ratings
+              </span>
+            </div>
+
+            <div className="text-slate-600 mb-8 text-lg">
+              Price: <span className="text-3xl font-bold text-slate-900 ml-2">
+                ₹{course.price?.toLocaleString()}
+              </span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold py-3.5 px-10 rounded-xl transition-all active:scale-95 shadow-md hover:shadow-lg w-full sm:w-auto">
+                <a href='https://play.google.com/store/apps/details?id=com.app.iblib' target='#'>Enroll Now</a>
+              </button>
             </div>
           </div>
+
         </div>
-      </div>
+      </section>
+
+      <main className="w-full max-w-7xl mx-auto py-12 px-4 md:px-8">
+        {course.moderators && course.moderators.length > 0 && (
+          <section className=" w-full">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
+              Know Your Instructors
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {course.moderators.map((teacher: CourseModerator, index: number) => {
+                const headerColors = ['bg-blue-500', 'bg-orange-500', 'bg-emerald-500'];
+                const headerColor = headerColors[index % headerColors.length];
+
+                const avatar = ENDPOINTS.ASSETS.AVATAR(teacher.image);
+
+                return (
+                  <div
+                    key={teacher.id || index}
+                    className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col"
+                  >
+                    <div className={`h-24 ${headerColor} relative flex justify-center`}>
+                      <div className="absolute -bottom-10 w-24 h-30 rounded-2xl overflow-hidden border-4 border-white shadow-md bg-white">
+                        <Image
+                          src={avatar}
+                          alt={teacher.fullName || teacher.name || 'Instructor'}
+                          width={96}
+                          height={96}
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="pt-14 pb-8 px-6 grow flex flex-col">
+                      <h3 className="text-xl font-bold text-slate-900 text-center mb-6">
+                        {teacher.fullName || teacher.name || 'Instructor'}
+                      </h3>
+
+                      <div className="grid grid-cols-2 gap-y-5 gap-x-4 text-sm text-left">
+                        <div>
+                          <span className="block text-slate-900 font-bold mb-1">Experience</span>
+                          <span className="text-slate-600">{teacher.experience || 'N/A'}</span>
+                        </div>
+                        <div>
+                          <span className="block text-slate-900 font-bold mb-1">Expertise</span>
+                          <span className="text-slate-600">{teacher.expertise || 'N/A'}</span>
+                        </div>
+                        <div>
+                          <span className="block text-slate-900 font-bold mb-1">Qualification</span>
+                          <span className="text-slate-600">{teacher.qualification || 'N/A'}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 }

@@ -3,31 +3,22 @@
 import Link from 'next/link';
 import Header from '../pages/Header';
 import Footer from '../pages/Footer';
+import Image from 'next/image';
 import { Clock, MessageCircle, Eye, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-interface BlogCardData {
-  id: string;
-  title: string;
-  author: string;
-  date: string;
-  status: string;
-  excerpt: string;
-  views: number;
-  likes: number;
-  comments: number;
-}
+import { Blog } from '../utils/types';
 
 const getBlogImage = (id: string) => {
   const num = parseInt(id);
   const index = isNaN(num) ? 1 : ((num - 1) % 6) + 1;
   return `/bloggs/use${index}.webp`; 
 };
+
 const createSlug = (title: string) => {
   return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 };
 
-export default function BlogsClient({ initialBlogs }: { initialBlogs: BlogCardData[] }) {
+export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) {
   
   return (
     <>
@@ -45,11 +36,16 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: BlogCardDa
 
           {initialBlogs && initialBlogs.length > 0 ? (
             <>
-                 <Link href={`/blog/${initialBlogs[0].id}-${createSlug(initialBlogs[0].title)}`} className="block mb-12 active:scale-[0.99] transition-transform duration-200">                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
-                  <img
+                 {/* FEATURED BLOG POST */}
+                 <Link href={`/blog/${initialBlogs[0].id}-${createSlug(initialBlogs[0].title)}`} className="block mb-12 active:scale-[0.99] transition-transform duration-200">                
+                  <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-sm border border-slate-200 group">
+                  {/* 👇 2. Upgraded to Next.js Image with priority for the LCP (Largest Contentful Paint) */}
+                  <Image
                     src={getBlogImage(initialBlogs[0].id)}
-                    alt="Featured post"
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out"
+                    alt={initialBlogs[0].title || "Featured post"}
+                    fill
+                    priority
+                    className="object-cover group-hover:scale-105 transition duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
                   <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 text-white pr-6">
@@ -64,19 +60,24 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: BlogCardDa
                 </div>
               </Link>
 
+              {/* BLOG GRID */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {initialBlogs.slice(1).map((blog: BlogCardData, i: number) => (
-                    <Link href={`/blog/${blog.id}-${createSlug(blog.title)}`} key={blog.id} className="group">                    <motion.div
+                {initialBlogs.slice(1).map((blog: Blog, i: number) => (
+                    <Link href={`/blog/${blog.id}-${createSlug(blog.title)}`} key={blog.id} className="group">                    
+                    <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.1 }}
                       className="bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg active:scale-[0.98] transition-all duration-200 overflow-hidden h-full flex flex-col"
                     >
                       <div className="relative h-48 overflow-hidden bg-slate-100">
-                        <img
+                        {/* 👇 3. Upgraded grid images to Next.js Image (these will automatically lazy load!) */}
+                        <Image
                           src={getBlogImage(blog.id)}
                           alt={blog.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover group-hover:scale-105 transition duration-500"
                         />
                         {blog.status === 'PRIVATE' && (
                           <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-sm tracking-wider">

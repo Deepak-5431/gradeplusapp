@@ -1,26 +1,19 @@
 "use client";
 
 import { useState } from 'react';
+import Link from 'next/link'; 
+import Image from 'next/image';
 import Header from '@/app/pages/Header';
 import Footer from '@/app/pages/Footer';
 import { Clock, Eye, Share2, Check } from 'lucide-react';
-
-interface Blog {
-  id: string;
-  title: string;
-  author: string;
-  date: string;
-  views: number;
-  content: string;
-  excerpt?: string; 
-}
+import { Blog } from '@/app/utils/types';
 
 export default function BlogClient({ 
   initialBlog, 
   relatedBlogs 
 }: { 
   initialBlog: Blog;
-  relatedBlogs: any[]; 
+  relatedBlogs: Blog[]; 
 }) {
   const [isCopied, setIsCopied] = useState(false);
 
@@ -53,10 +46,13 @@ export default function BlogClient({
       <Header />
       
       <div className="h-64 md:h-96 w-full bg-slate-900 relative">
-        <img 
+        {/* 👇 2. Upgraded to Next.js Image for LCP performance! */}
+        <Image 
           src={`/bloggs/use${(parseInt(initialBlog.id) % 6) || 1}.webp`} 
           alt={initialBlog.title}
-          className="w-full h-full object-cover opacity-80"
+          fill
+          priority
+          className="object-cover opacity-80"
         />
         <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 max-w-7xl mx-auto">
@@ -71,7 +67,6 @@ export default function BlogClient({
         </div>
       </div>
 
-      
       <div className="min-h-screen bg-slate-50 py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -82,7 +77,6 @@ export default function BlogClient({
               </article>
             </div>
 
-          
             <aside className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 
@@ -108,7 +102,6 @@ export default function BlogClient({
                   </button>
                 </div>
 
-                
                 {relatedBlogs && relatedBlogs.length > 0 && (
                   <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
                     <h3 className="text-lg font-bold text-slate-900 mb-4">
@@ -118,7 +111,7 @@ export default function BlogClient({
                       {relatedBlogs.map((sideBlog) => {
                         const titleSlug = sideBlog.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
                         return (
-                          <a 
+                          <Link  
                             key={sideBlog.id}
                             href={`/blog/${sideBlog.id}-${titleSlug}`}
                             className="group block border-b border-slate-100 pb-4 last:border-0 last:pb-0"
@@ -129,16 +122,14 @@ export default function BlogClient({
                             <span className="text-xs text-slate-500 flex items-center gap-1">
                               <Clock size={12}/> {sideBlog.date}
                             </span>
-                          </a>
+                          </Link>
                         )
                       })}
                     </div>
                   </div>
                 )}
-
               </div>
             </aside>
-
           </div>
         </div>
       </div>

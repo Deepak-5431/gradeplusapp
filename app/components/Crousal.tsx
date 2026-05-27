@@ -255,7 +255,6 @@ const Crousal = () => {
                       </div>
                     </div>
                   )}
-
                 </motion.div>
               );
             })}

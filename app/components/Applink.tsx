@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const Applink = () => {
@@ -8,21 +9,25 @@ const Applink = () => {
       <div className="mx-auto max-w-6xl  flex flex-col md:flex-row-reverse items-center gap-12  px-4">
         
         <motion.div
-          className="w-full md:w-[45%] flex justify-center md:justify-end"
+          className="w-full md:w-[54%] flex justify-center md:justify-end"
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
         >
+          <div className="relative hidden md:block w-full max-w-200 h-180 lg:h-240">
+            <Image
+              src="/AI/boss.webp"
+              alt="GradePlus App Preview Desktop"
+              fill
+              priority
+              className="object-contain scale-175 lg:scale-125 origin-center lg:origin-right"
+              
+            />
+          </div>
+
           <img
             src="/AI/boss.webp"
-            alt="GradePlus App Preview Desktop"
-            className="hidden md:block w-[150%] max-w-none h-auto max-h-[90vh] object-contain rounded-xl"
-          />
-
-          
-          <img
-            src="/AI/logins.webp"
             alt="GradePlus App Preview Mobile"
             className="block md:hidden w-full max-w-75 h-auto object-contain rounded-xl"
           />

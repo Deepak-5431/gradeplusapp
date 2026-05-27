@@ -5,16 +5,9 @@ import { Metadata } from 'next';
 import Header from '@/app/pages/Header';
 import Footer from '@/app/pages/Footer';
 import { PlayCircle, Star, BookOpen } from 'lucide-react';
-
-const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
-
-interface Course {
-  id: string | number;
-  text: string;
-  image?: string;
-  type?: string;
-  link?: string;
-}
+import { Course,CourseApiResponse } from '@/app/utils/types';
+import { fetcher } from '@/app/utils/ApiServices';
+import { ENDPOINTS } from '@/app/utils/endpoints';
 
 const categoryConfig: Record<string, { keyword: string; title: string; description: string }> = {
   'academics': { 
@@ -36,19 +29,11 @@ const categoryConfig: Record<string, { keyword: string; title: string; descripti
 
 async function fetchCoursesByCategory(keyword: string): Promise<Course[]> {
   try {
-    const res = await fetch(`${API_PREFIX}/api/course?keyword=${keyword}`, {
-       next: { revalidate: 3600 } 
-    });
+    const rawData = await fetcher<CourseApiResponse>(ENDPOINTS.COURSES.BY_CATEGORY(keyword));
     
-    if (!res.ok) return [];
+    if (!rawData) return [];
+    return Array.isArray(rawData) ? rawData : [rawData];
     
-    const rawData = await res.json();
-    
-    if (Array.isArray(rawData)) return rawData;
-    if (rawData.data && Array.isArray(rawData.data)) return rawData.data;
-    if (rawData.id) return [rawData]; 
-    
-    return [];
   } catch (error) {
     console.error("Failed to fetch courses:", error);
     return [];
@@ -77,7 +62,6 @@ export async function generateMetadata({
       url: `https://gradeplusapp.com/courses/${urlCategory}`,
       siteName: 'Gradeplus',
       type: 'website',
-    //need a img here  images: ['/og-main.jpg'],
     },
     twitter: {
       card: 'summary',
@@ -130,9 +114,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                   key={course.id}
                   className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:border-blue-200 transition-all duration-300 flex flex-col"
                 >
-                      <div className="relative w-full aspect-video bg-slate-100 overflow-hidden">                    
+                  <div className="relative w-full aspect-video bg-slate-100 overflow-hidden">                    
                     <Image 
-                      src={course.image || '/course/academic.jpg'} 
+                      src={ENDPOINTS.ASSETS.AVATAR(course.image)} 
                       alt={cleanTitle}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -152,8 +136,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                     </div>
                   </div>
 
-                  
-                      <div className="p-4 sm:p-5 flex flex-col grow">
+                  <div className="p-4 sm:p-5 flex flex-col grow">
                     <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
                       {cleanTitle}
                     </h3>

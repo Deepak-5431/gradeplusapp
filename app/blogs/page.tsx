@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import BlogsClient from './BlogsClient';
+import { fetcher } from '../utils/ApiServices';
+import { Blog } from '../utils/types';
+import { ENDPOINTS } from '../utils/endpoints';
 
 export const metadata: Metadata = {
   title: "All Blogs & Articles | GradePlus",
@@ -21,23 +24,9 @@ export const metadata: Metadata = {
   }
 };
 
-const API_PREFIX = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
-
-async function getBlogs() {
-  try {
-    const res = await fetch(`${API_PREFIX}/api/blogs`, {
-      next: { revalidate: 3600 } 
-    });
-    
-    if (!res.ok) return [];
-    return res.json();
-  } catch (error) {
-    return [];
-  }
-}
-
 export default async function BlogsPage() {
-  const blogs = await getBlogs();
+  // 👇 2. Using the smart fetcher with strict <Blog[]> typing!
+  const blogs = await fetcher<Blog[]>(ENDPOINTS.BLOGS.ALL) || [];
   
   return <BlogsClient initialBlogs={blogs} />;
 }
