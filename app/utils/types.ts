@@ -12,6 +12,16 @@ export interface Blog {
   comments?: number
 }
 
+export interface TestSeries {
+  data: string;
+  response: string;
+}
+
+export interface Schedule {
+  data: string;
+  response: string;
+}
+
 export interface Course {
   id: string | number;
   text?: string;        
@@ -30,6 +40,12 @@ export interface Course {
   features?: string[];
   qualification?: string; 
   description?: string;
+  module?: string;
+  weblink?: string;
+  docs?: string;
+  testseries?: TestSeries | null; 
+  schedules?: Schedule[];
+  alreadyPurchased?: string;
 }
 
 export interface CourseModerator {

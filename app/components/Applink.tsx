@@ -75,7 +75,6 @@ const Applink = () => {
             </div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

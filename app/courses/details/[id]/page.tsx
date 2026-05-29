@@ -186,8 +186,11 @@ export default async function CourseItemPage({
 
         </div>
       </section>
-
+       
       <main className="w-full max-w-7xl mx-auto py-12 px-4 md:px-8">
+
+         
+
         {course.moderators && course.moderators.length > 0 && (
           <section className=" w-full">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
@@ -251,3 +254,4 @@ export default async function CourseItemPage({
     </div>
   );
 }
+
