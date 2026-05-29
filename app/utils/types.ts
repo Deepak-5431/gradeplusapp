@@ -29,7 +29,7 @@ export interface Course {
   image?: string;       
   thumbnail?: string;
   type?: string;        
-  link?: string;
+  link?: string ;
   price?: number;
   priceInWords?: string;
   moderators?: CourseModerator[];

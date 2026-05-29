@@ -4,14 +4,14 @@ import { Metadata } from 'next';
 import { Star, PlayCircle } from 'lucide-react';
 import Header from '@/app/pages/Header';
 import Footer from '@/app/pages/Footer';
-import { Course, CourseModerator,CourseApiResponse } from '@/app/utils/types';
+import { Course, CourseModerator, CourseApiResponse } from '@/app/utils/types';
 import { fetcher } from '@/app/utils/ApiServices';
 import { ENDPOINTS } from '@/app/utils/endpoints';
 
 export async function generateStaticParams() {
   try {
     const rawData = await fetcher<CourseApiResponse>(ENDPOINTS.COURSES.ALL);
-  
+
     if (!rawData) return [];
     const courses: Course[] = Array.isArray(rawData) ? rawData : [rawData];
 
@@ -39,6 +39,7 @@ async function getCourseData(id: string): Promise<Course | null> {
 
     return {
       id: apiCourse.id || id,
+      link: apiCourse.link,
       title: apiCourse.title || `${cleanText} Complete Course`,
       thumbnail: apiCourse.image || "",
       price: apiCourse.price,
@@ -61,6 +62,8 @@ async function getCourseData(id: string): Promise<Course | null> {
     return null;
   }
 }
+
+
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
@@ -108,6 +111,8 @@ export default async function CourseItemPage({
 }) {
   const { id } = await params;
   const course = await getCourseData(id);
+
+
 
   if (!course) {
     return (
@@ -186,13 +191,28 @@ export default async function CourseItemPage({
 
         </div>
       </section>
-       
+
       <main className="w-full max-w-7xl mx-auto py-12 px-4 md:px-8">
 
-         
+
+
+
+        {course.link && (
+          <section className="w-full mt-12">
+            <h2 className="text-2xl font-bold mb-10">Course Content / Details</h2>
+            <div className="w-full h-150 bg-white rounded-2xl overflow-hidden border border-slate-200">
+              <iframe
+                src={`https://iblib.com/user/eventdetails.html?id=${course.link}`}
+                className="w-full h-full"
+                title="Course Details"
+              />
+            </div>
+          </section>
+        )}
+
 
         {course.moderators && course.moderators.length > 0 && (
-          <section className=" w-full">
+          <section className="mt-6 w-full">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
               Know Your Instructors
             </h2>
@@ -254,4 +274,3 @@ export default async function CourseItemPage({
     </div>
   );
 }
-
