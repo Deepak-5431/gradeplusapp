@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { Star, PlayCircle } from 'lucide-react';
+import { Star, PlayCircle, FileText } from 'lucide-react';
 import Header from '@/app/pages/Header';
 import Footer from '@/app/pages/Footer';
 import { Course, CourseModerator, CourseApiResponse } from '@/app/utils/types';
@@ -40,6 +40,7 @@ async function getCourseData(id: string): Promise<Course | null> {
     return {
       id: apiCourse.id || id,
       link: apiCourse.link,
+      docs: apiCourse.docs,
       title: apiCourse.title || `${cleanText} Complete Course`,
       thumbnail: apiCourse.image || "",
       price: apiCourse.price,
@@ -62,8 +63,6 @@ async function getCourseData(id: string): Promise<Course | null> {
     return null;
   }
 }
-
-
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
@@ -111,8 +110,6 @@ export default async function CourseItemPage({
 }) {
   const { id } = await params;
   const course = await getCourseData(id);
-
-
 
   if (!course) {
     return (
@@ -184,8 +181,20 @@ export default async function CourseItemPage({
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold py-3.5 px-10 rounded-xl transition-all active:scale-95 shadow-md hover:shadow-lg w-full sm:w-auto">
-                <a href='https://play.google.com/store/apps/details?id=com.app.iblib' target='#'>Enroll Now</a>
+                <a href='https://play.google.com/store/apps/details?id=com.app.iblib' target='_blank' rel="noopener noreferrer">Enroll Now</a>
               </button>
+
+              {course.docs && (
+                <a 
+                  href={course.docs}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 text-lg font-bold py-3.5 px-8 rounded-xl transition-all active:scale-95 shadow-sm w-full sm:w-auto"
+                >
+                  <FileText size={20} />
+                  Download PDF
+                </a>
+              )}
             </div>
           </div>
 
@@ -193,9 +202,6 @@ export default async function CourseItemPage({
       </section>
 
       <main className="w-full max-w-7xl mx-auto py-12 px-4 md:px-8">
-
-
-
 
         {course.link && (
           <section className="w-full mt-12">
@@ -210,7 +216,6 @@ export default async function CourseItemPage({
           </section>
         )}
 
-
         {course.moderators && course.moderators.length > 0 && (
           <section className="mt-6 w-full">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
@@ -221,7 +226,6 @@ export default async function CourseItemPage({
               {course.moderators.map((teacher: CourseModerator, index: number) => {
                 const headerColors = ['bg-blue-500', 'bg-orange-500', 'bg-emerald-500'];
                 const headerColor = headerColors[index % headerColors.length];
-
                 const avatar = ENDPOINTS.ASSETS.AVATAR(teacher.image);
 
                 return (
