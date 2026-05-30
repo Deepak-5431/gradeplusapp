@@ -87,8 +87,8 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       images: [
         {
           url: ogImage,
-          width: 1200,
-          height: 630,
+          width: 500,
+          height: 1200,
           alt: course.title,
         },
       ],
@@ -134,19 +134,21 @@ export default async function CourseItemPage({
       <section className="w-full border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-16 flex flex-col md:flex-row gap-8 lg:gap-16 items-center">
 
-          <div className="w-full md:w-[70%] relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group shrink-0 h-64 sm:h-80 md:h-80 lg:h-80">
-            <div className="relative w-full h-full">
-              <Image
-                src={ENDPOINTS.ASSETS.AVATAR(course.thumbnail)}
-                alt={course.title || 'Course Image'}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                priority
-              />
-            </div>
+          <div className="w-full md:w-[70%] relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group shrink-0">
+
+            <Image
+              src={ENDPOINTS.ASSETS.AVATAR(course.thumbnail)}
+              alt={course.title || 'Course Image'}
+              width={1200}
+              height={550}
+              className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+              priority
+            />
+
             <div className="absolute inset-0 bg-slate-900/10 flex items-center justify-center group-hover:bg-slate-900/20 transition-colors pointer-events-none">
               <PlayCircle size={64} className="text-white/90 drop-shadow-md" strokeWidth={1.5} />
             </div>
+
           </div>
 
           <div className="w-full md:w-[30%] flex flex-col justify-center">
@@ -185,7 +187,7 @@ export default async function CourseItemPage({
               </button>
 
               {course.docs && (
-                <a 
+                <a
                   href={course.docs}
                   target="_blank"
                   rel="noopener noreferrer"
