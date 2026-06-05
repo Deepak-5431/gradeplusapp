@@ -25,7 +25,6 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogsPage() {
-  // 👇 2. Using the smart fetcher with strict <Blog[]> typing!
   const blogs = await fetcher<Blog[]>(ENDPOINTS.BLOGS.ALL) || [];
   
   return <BlogsClient initialBlogs={blogs} />;

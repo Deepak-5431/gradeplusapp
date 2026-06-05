@@ -15,7 +15,9 @@ const getBlogImage = (id: string) => {
 };
 
 const createSlug = (title: string) => {
-  return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  const rawSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  
+  return rawSlug.substring(0, 80).replace(/-$/, ''); 
 };
 
 export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) {
