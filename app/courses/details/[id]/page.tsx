@@ -1,12 +1,35 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { Star, PlayCircle, FileText } from 'lucide-react';
+import AppDownloadWidget from '@/app/components/ui/AppDownloadWidget';
+import SupportWidget from '@/app/components/ui/callwidget';
+import {Calendar,Trophy,ChevronRight,BookOpen, Star, FileText } from 'lucide-react';
 import Header from '@/app/pages/Header';
 import Footer from '@/app/pages/Footer';
 import { Course, CourseModerator, CourseApiResponse } from '@/app/utils/types';
 import { fetcher } from '@/app/utils/ApiServices';
 import { ENDPOINTS } from '@/app/utils/endpoints';
+
+
+
+function formatScheduleDate(rawString: string) {
+  if (!rawString || rawString.length < 8) return rawString; // Fallback if format is weird
+
+  const year = rawString.substring(0, 4);
+  const month = rawString.substring(4, 6);
+  const day = rawString.substring(6, 8);
+
+ 
+  const dateObj = new Date(`${year}-${month}-${day}T00:00:00`);
+
+  return new Intl.DateTimeFormat('en-GB', {
+    weekday: 'short',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  }).format(dateObj);
+}
+
 
 export async function generateStaticParams() {
   try {
@@ -56,7 +79,9 @@ async function getCourseData(id: string): Promise<Course | null> {
         '200+ Hours of Live & Recorded Classes',
         '50+ Full-Length Mock Tests',
         'Detailed PDF Notes & Assignments'
-      ]
+      ],
+      testseries: apiCourse.testseries || null,
+      schedules: apiCourse.schedules || []
     };
   } catch (error) {
     console.error("Failed to fetch course data:", error);
@@ -130,7 +155,8 @@ export default async function CourseItemPage({
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
       <Header />
-
+       <AppDownloadWidget />
+       <SupportWidget />
       <section className="w-full border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-16 flex flex-col md:flex-row gap-8 lg:gap-16 items-center">
 
@@ -145,9 +171,7 @@ export default async function CourseItemPage({
               priority
             />
 
-            <div className="absolute inset-0 bg-slate-900/10 flex items-center justify-center group-hover:bg-slate-900/20 transition-colors pointer-events-none">
-              <PlayCircle size={64} className="text-white/90 drop-shadow-md" strokeWidth={1.5} />
-            </div>
+          
 
           </div>
 
@@ -205,18 +229,7 @@ export default async function CourseItemPage({
 
       <main className="w-full max-w-7xl mx-auto py-12 px-4 md:px-8">
 
-        {course.link && (
-          <section className="w-full mt-12">
-            <h2 className="text-2xl font-bold mb-10">Course Content / Details</h2>
-            <div className="w-full h-150 bg-white rounded-2xl overflow-hidden border border-slate-200">
-              <iframe
-                src={`https://iblib.com/user/eventdetails.html?id=${course.link}`}
-                className="w-full h-full"
-                title="Course Details"
-              />
-            </div>
-          </section>
-        )}
+       
 
         {course.moderators && course.moderators.length > 0 && (
           <section className="mt-6 w-full">
@@ -274,7 +287,99 @@ export default async function CourseItemPage({
             </div>
           </section>
         )}
+
+
+        {(course.testseries || (course.schedules && course.schedules.length > 0)) && (
+          <div className="mt-16 flex flex-col gap-8 w-full">
+            
+            {course.testseries && (
+              <section className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm w-full">
+                
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 bg-purple-50 text-purple-600 rounded-2xl shrink-0">
+                      <Trophy size={28} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-slate-900">Included Test Series</h2>
+                      <p className="text-slate-500 mt-1">All test series included in your plan</p>
+                    </div>
+                  </div>
+                  <a href='https://play.google.com/store/apps/details?id=com.app.iblib' target='_blank' rel="noopener noreferrer" className="text-blue-600 font-semibold flex items-center gap-1 hover:text-blue-700 transition-colors text-sm sm:text-base">
+                    View All <ChevronRight size={18} />
+                  </a>
+                </div>
+
+                <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                  <a href='https://play.google.com/store/apps/details?id=com.app.iblib' target='_blank' rel="noopener noreferrer" className="flex flex-col min-w-60 max-w-70 p-6 rounded-2xl border-2 border-purple-100 bg-purple-50/30 snap-start shrink-0 hover:bg-purple-50/60 transition-colors">
+                    <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-6">
+                      <BookOpen size={24} />
+                    </div>
+                    <h3 className="font-bold text-slate-900 text-lg">{course.testseries.data}</h3>
+                    <p className="text-slate-500 text-sm mb-6">Test Series</p>
+                    <div className="mt-auto">
+                      <span className="text-2xl font-bold text-purple-700">{course.testseries.response}</span>
+                      <span className="text-slate-500 ml-2">Tests</span>
+                    </div>
+                  </a>
+                </div>
+              </section>
+            )}
+
+            {course.schedules && course.schedules.length > 0 && (
+              <section className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm w-full">
+                
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl shrink-0">
+                      <Calendar size={28} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-slate-900">Class Schedule</h2>
+                      <p className="text-slate-500 mt-1">Your upcoming classes</p>
+                    </div>
+                  </div>
+                  <button className="text-blue-600 font-semibold flex items-center gap-1 hover:text-blue-700 transition-colors text-sm sm:text-base">
+                    View All <ChevronRight size={18} />
+                  </button>
+                </div>
+
+                <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                  {course.schedules.map((schedule, index) => (
+                    <div key={index} className="flex flex-col min-w-70 p-6 rounded-2xl border border-slate-100 bg-slate-50 snap-start shrink-0 hover:border-blue-200 transition-colors">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
+                        <h3 className="font-bold text-slate-900 leading-tight">{schedule.data}</h3>
+                      </div>
+                      
+                      <div className="flex flex-col gap-3 mt-auto text-slate-600 text-sm font-medium">
+                        <div className="flex items-center gap-2">
+                          <Calendar size={16} className="text-slate-400 shrink-0" />
+                          <span>{formatScheduleDate(schedule.response)}</span> 
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+          </div>
+        )}
+
       </main>
+      
+           {course.link && (
+          <section className="w-full mt-12">
+            <div className="w-full h-262 bg-white rounded-2xl overflow-hidden border border-slate-200">
+              <iframe
+                src={`https://iblib.com/user/eventdetails.html?id=${course.link}`}
+                className="w-full h-full"
+                title="Course Details"
+              />
+            </div>
+          </section>
+        )}
 
       <Footer />
     </div>
