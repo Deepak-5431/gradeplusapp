@@ -8,6 +8,15 @@ import Footer from '@/app/pages/Footer';
 import { Clock, Eye, Share2, Check } from 'lucide-react';
 import { Blog } from '@/app/utils/types';
 
+const createSafeSlug = (title: string) => {
+  if (!title) return 'untitled';
+  return title.toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '')
+    .substring(0, 80)
+    .replace(/-$/, ''); 
+};
+
 export default function BlogClient({ 
   initialBlog, 
   relatedBlogs 
@@ -46,7 +55,6 @@ export default function BlogClient({
       <Header />
       
       <div className="h-64 md:h-96 w-full bg-slate-900 relative">
-        {/* 👇 2. Upgraded to Next.js Image for LCP performance! */}
         <Image 
           src={`/bloggs/use${(parseInt(initialBlog.id) % 6) || 1}.webp`} 
           alt={initialBlog.title}
@@ -109,7 +117,8 @@ export default function BlogClient({
                     </h3>
                     <div className="space-y-4">
                       {relatedBlogs.map((sideBlog) => {
-                        const titleSlug = sideBlog.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                        // Use the safe slug generator here!
+                        const titleSlug = createSafeSlug(sideBlog.title);
                         return (
                           <Link  
                             key={sideBlog.id}

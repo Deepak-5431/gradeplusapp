@@ -6,6 +6,16 @@ import { Blog } from '@/app/utils/types';
 
 export const dynamicParams = true;
 
+const createSafeSlug = (title: string) => {
+  if (!title) return 'untitled';
+  return title.toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '')
+    .substring(0, 80) 
+    .replace(/-$/, ''); 
+};
+
+
 export async function generateStaticParams() {
   try {
     const blogs = await fetcher<Blog[]>(ENDPOINTS.BLOGS.ALL);
@@ -14,7 +24,7 @@ export async function generateStaticParams() {
     return blogs.map((blog: Blog) => {
       const titleSlug = blog.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
       return {
-        slug: `${blog.id}-${titleSlug}`,
+        slug: `${blog.id}-${createSafeSlug(blog.title)}`,
       };
     });
   } catch (error) {
