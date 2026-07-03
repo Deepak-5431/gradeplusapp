@@ -10,8 +10,6 @@ import { Course, CourseModerator, CourseApiResponse } from '@/app/utils/types';
 import { fetcher } from '@/app/utils/ApiServices';
 import { ENDPOINTS } from '@/app/utils/endpoints';
 
-
-
 function formatScheduleDate(rawString: string) {
   if (!rawString || rawString.length < 8) return rawString; // Fallback if format is weird
 
@@ -19,7 +17,6 @@ function formatScheduleDate(rawString: string) {
   const month = rawString.substring(4, 6);
   const day = rawString.substring(6, 8);
 
- 
   const dateObj = new Date(`${year}-${month}-${day}T00:00:00`);
 
   return new Intl.DateTimeFormat('en-GB', {
@@ -29,7 +26,6 @@ function formatScheduleDate(rawString: string) {
     year: 'numeric'
   }).format(dateObj);
 }
-
 
 export async function generateStaticParams() {
   try {
@@ -171,8 +167,6 @@ export default async function CourseItemPage({
               priority
             />
 
-          
-
           </div>
 
           <div className="w-full md:w-[30%] flex flex-col justify-center">
@@ -228,8 +222,6 @@ export default async function CourseItemPage({
       </section>
 
       <main className="w-full max-w-7xl mx-auto py-12 px-4 md:px-8">
-
-       
 
         {course.moderators && course.moderators.length > 0 && (
           <section className="mt-6 w-full">
@@ -288,7 +280,6 @@ export default async function CourseItemPage({
           </section>
         )}
 
-
         {(course.testseries || (course.schedules && course.schedules.length > 0)) && (
           <div className="mt-16 flex flex-col gap-8 w-full">
             
@@ -305,13 +296,11 @@ export default async function CourseItemPage({
                       <p className="text-slate-500 mt-1">All test series included in your plan</p>
                     </div>
                   </div>
-                  <a href='https://play.google.com/store/apps/details?id=com.app.iblib' target='_blank' rel="noopener noreferrer" className="text-blue-600 font-semibold flex items-center gap-1 hover:text-blue-700 transition-colors text-sm sm:text-base">
-                    View All <ChevronRight size={18} />
-                  </a>
+                  
                 </div>
 
-                <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                  <a href='https://play.google.com/store/apps/details?id=com.app.iblib' target='_blank' rel="noopener noreferrer" className="flex flex-col min-w-60 max-w-70 p-6 rounded-2xl border-2 border-purple-100 bg-purple-50/30 snap-start shrink-0 hover:bg-purple-50/60 transition-colors">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <a href='https://play.google.com/store/apps/details?id=com.app.iblib' target='_blank' rel="noopener noreferrer" className="flex flex-col p-6 rounded-2xl border-2 border-purple-100 bg-purple-50/30 hover:bg-purple-50/60 transition-colors h-full">
                     <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-6">
                       <BookOpen size={24} />
                     </div>
@@ -339,14 +328,12 @@ export default async function CourseItemPage({
                       <p className="text-slate-500 mt-1">Your upcoming classes</p>
                     </div>
                   </div>
-                  <button className="text-blue-600 font-semibold flex items-center gap-1 hover:text-blue-700 transition-colors text-sm sm:text-base">
-                    View All <ChevronRight size={18} />
-                  </button>
+                  
                 </div>
 
-                <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {course.schedules.map((schedule, index) => (
-                    <div key={index} className="flex flex-col min-w-70 p-6 rounded-2xl border border-slate-100 bg-slate-50 snap-start shrink-0 hover:border-blue-200 transition-colors">
+                    <div key={index} className="flex flex-col p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:border-blue-200 transition-colors h-full">
                       <div className="flex items-center gap-3 mb-6">
                         <div className="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
                         <h3 className="font-bold text-slate-900 leading-tight">{schedule.data}</h3>
@@ -369,17 +356,17 @@ export default async function CourseItemPage({
 
       </main>
       
-           {course.link && (
-          <section className="w-full mt-12">
-            <div className="w-full h-262 bg-white rounded-2xl overflow-hidden border border-slate-200">
-              <iframe
-                src={`https://iblib.com/user/eventdetails.html?id=${course.link}`}
-                className="w-full h-full"
-                title="Course Details"
-              />
-            </div>
-          </section>
-        )}
+      {course.link && (
+        <section className="w-full mt-12">
+          <div className="w-full h-262 bg-white rounded-2xl overflow-hidden border border-slate-200">
+            <iframe
+              src={`https://iblib.com/user/eventdetails.html?id=${course.link}`}
+              className="w-full h-full"
+              title="Course Details"
+            />
+          </div>
+        </section>
+      )}
 
       <Footer />
     </div>
