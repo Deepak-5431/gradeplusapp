@@ -11,27 +11,7 @@ const Crousal = () => {
   const [autoPlay, setAutoPlay] = useState(true);
 
   const slides = [
-    {
-      id: 'banner',
-      type: 'full-bleed',
-      image: '/crowsel/banner.webp',
-      mobileImage: '/crowsel/mobileview.webp',
-
-      content: (
-        <motion.div
-          className="text-white flex flex-row items-center text-center z-10 w-full max-w-xl p-4 md:p-8"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          key={current}
-        >
-          <Link href="/know-more/mega-championship" className="absolute bottom-[20%] left-[1%] flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-[0_4px_15px_rgba(0,0,0,0.5)] bg-slate-900/60 backdrop-blur-sm border-2 border-white/50 text-white hover:border-white hover:bg-white/20 text-sm">
-            <Info className="w-4 h-4" /> Explore AI Features
-          </Link>
-        </motion.div>
-      )
-    },
+  
     {
       id: 'ai-learning',
       type: 'full-bleed',
@@ -180,28 +160,7 @@ const Crousal = () => {
                   {slide.type === 'full-bleed' && (
                     <>
                       <div className="absolute inset-0 z-0">
-                        {slide.mobileImage ? (
-                          <>
-                            <Image
-                              src={slide.image}
-                              alt="Carousel Background Desktop"
-                              fill
-                              className="object-cover hidden md:block"
-                              priority
-                              quality={75}
-                              sizes="100vw"
-                            />
-                            <Image
-                              src={slide.mobileImage}
-                              alt="Carousel Background Mobile"
-                              fill
-                              className="object-cover block md:hidden"
-                              priority
-                              quality={75}
-                              sizes="100vw"
-                            />
-                          </>
-                        ) : (
+                       
                           <Image
                             src={slide.image}
                             alt="Carousel Background"
@@ -211,8 +170,8 @@ const Crousal = () => {
                             quality={75}
                             sizes="100vw"
                           />
-                        )}
-                      </div>
+                        
+                      </div> 
 
                       {slide.id === 'banner' && (
                         <Link
